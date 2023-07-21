@@ -28,33 +28,33 @@ return(
            { 
            opcion == 'menu' ? 
            <>
-           <Input texto="Imagen" register={...register("urlImagen")}/>
-           <Input texto="Nombre"  register={...register("nombre")}/>
-           <Input texto="Descripción"  register={...register("descripcion")}/>
-           <Input texto="Precio"  register={...register("precio")}/>
-           <Input texto="Categoria"  register={...register("categoria")}/>
+           <Input texto="Imagen" register={ register("urlImagen")}/>
+           <Input texto="Nombre"  register={ register("nombre")}/>
+           <Input texto="Descripción"  register={ register("descripcion")}/>
+           <Input texto="Precio"  register={ register("precio")}/>
+           <Input texto="Categoria"  register={register("categoria")}/>
            {
             isEditing !== true ? 
             <>
-            <Input texto="Publicado"  register={...register("publicado")}/>
-           <Input texto="Combo"  register={...register("combo")}/>
+            <Input texto="Publicado"  register={register("publicado")}/>
+           <Input texto="Combo"  register={register("combo")}/>
             </>
             : null
            }
            </>
            :  opcion == 'usuario' ?
            <>
-           <Input texto="Nombre" readOnly={isEditing ? true : false}  register={...register("nombre")} />
-          <Input texto="Email" readOnly={isEditing ? true : false}  register={...register("email")} />
-          <Input texto="Estado"  register={...register("estado")}/>
-          <Input texto="Rol"  register={...register("rol")}/>
+           <Input texto="Nombre" readOnly={isEditing ? true : false}  register={register("nombre")} />
+          <Input texto="Email" readOnly={isEditing ? true : false}  register={register("email")} />
+          <Input texto="Estado"  register={register("estado")}/>
+          <Input texto="Rol"  register={register("rol")}/>
          </>
            : opcion == 'pedido'?
            <>
-          <Input texto="Fecha" readOnly={isEditing ? true : false}   register={...register("fecha")}/>
-          <Input texto="Usuario" readOnly={isEditing ? true : false}   register={...register("usuario")}/>
-          <Input texto="Menu" readOnly={isEditing ? true : false}   register={...register("menu")}/>
-          <Input texto="Estado"  register={...register("estado")}/>
+          <Input texto="Fecha" readOnly={isEditing ? true : false}   register={register("fecha")}/>
+          <Input texto="Usuario" readOnly={isEditing ? true : false}   register={register("usuario")}/>
+          <Input texto="Menu" readOnly={isEditing ? true : false}   register={register("menu")}/>
+          <Input texto="Estado"  register={register("estado")}/>
            </>
            : null
            }

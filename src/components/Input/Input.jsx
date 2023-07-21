@@ -57,6 +57,13 @@ function Input({texto, register,readOnly}){
              <Form.Check  {...register} type="switch" id="custom-switch" />
              </Col>
              </>
+            : texto == 'Password' ?
+            <>
+            <Form.Label column sm="3">{texto}: </Form.Label>
+             <Col sm="9">
+             <Form.Control  type='password' placeholder= {`Ingrese su ${texto}`} disabled={readOnly}  {...register}/>
+            </Col>
+            </>
             :
             <>
             <Form.Label column sm="3">{texto}: </Form.Label>
@@ -64,7 +71,6 @@ function Input({texto, register,readOnly}){
              <Form.Control  type='text' placeholder= {`Ingrese su ${texto}`} disabled={readOnly}  {...register}/>
             </Col>
             </>
-          
             }
 
       </Form.Group>
