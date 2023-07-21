@@ -1,15 +1,18 @@
 import { useForm } from "react-hook-form";
 import Input from "../Input/Input";
 import './Formulario.css'; 
+import { useState } from "react";
 
 function Formulario({handleShow, idItem , isRemoving, isEditing , opcion ,addItem}){
     const {register,handleSubmit, reset} = useForm();
+    const [isCreate, setIsCreate ] = useState(false)
     const Agregar = (data)=>{
         {
             opcion == 'menu'?data.urlImagen = URL.createObjectURL(data.urlImagen[0]) : null
         }
         
         addItem(data);
+        setIsCreate(true)
         alert(isEditing ? `${opcion} Modificado` : `${opcion} Creado`);
         reset();
     }
@@ -28,7 +31,7 @@ return(
            { 
            opcion == 'menu' ? 
            <>
-           <Input texto="Imagen" register={ register("urlImagen")}/>
+           <Input texto="Imagen" register={ register("urlImagen")} isCreate={isCreate}/>
            <Input texto="Nombre"  register={ register("nombre")}/>
            <Input texto="Descripción"  register={ register("descripcion")}/>
            <Input texto="Precio"  register={ register("precio")}/>

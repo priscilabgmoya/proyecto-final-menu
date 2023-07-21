@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './input.css'; 
 import {Form , Row , Col  }from 'react-bootstrap';
 import {MdCloudUpload} from 'react-icons/md'
-function Input({texto, register,readOnly}){
+function Input({texto, register,readOnly , isCreate}){
   const [selectedImage, setSelectedImage] = useState(null);
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -19,7 +19,7 @@ function Input({texto, register,readOnly}){
             <>
             <div className='contenedor-img'>
               {
-                selectedImage?  <img src={selectedImage} alt="Imagen seleccionada" />
+                selectedImage && !isCreate?  <img src={selectedImage} alt="Imagen seleccionada" />
                 :
                 <div className='noFile'>
                 <MdCloudUpload className='iconFile'/>
