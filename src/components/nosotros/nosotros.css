@@ -1,3 +1,6 @@
+.Cont{ width: 100%;
+    background-color: bisque;}
+
 .text-center{
     display: flex;
     width: 100%;
@@ -17,10 +20,17 @@
             width: 100%;}
     }
     @media (min-width: 768px) {
+        .Cont{ display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: column;
+            align-items: center }
         .text-center{
             display: flex;
             flex-direction: row;
             justify-content: center;
             align-items: center;
+            margin-right: 15px;
+            height: 400px;
             width: 60%;}
     }

@@ -21,11 +21,8 @@ function App() {
     <>
       <NavBars />
       <main>
-        <Anosotros />
-        <Anosotros />
-        <Anosotros />
-        <Anosotros />
-        <Anosotros />
+       <Anosotros>  </Anosotros> 
+        
       </main>
 
 
