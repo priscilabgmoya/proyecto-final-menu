@@ -20,13 +20,11 @@ function App() {
 
     <>
       <NavBars />
-      <main>
-       <Anosotros>  </Anosotros> 
-        
+      <body>
+        <main>
+       <Anosotros/>
       </main>
-
-
-
+    </body >
     </>
   )
 }
