@@ -1,4 +1,43 @@
+:root{
+    --night: #000f08ff;
+    --paynes-gray: #5d737eff;
+    --amaranth-purple: #a5243dff;
+    --ghost-white: #fbfbffff;
+    --vanilla: #f6f5aeff;
+}
 
+.header-nav{
+    position: fixed !important;
+    width: 100%;
+    background-color: var(--amaranth-purple);
+    color: var(--ghost-white);
+    
+}
+
+.nav-link{
+    color: var(--ghost-white) !important;
+}
+
+.logo-nav{
+    font-size: 1.3rem;
+    color: var(--ghost-white);
+    text-decoration: none;
+}
+
+.reg{
+    padding-left: 2rem !important;
+}
+
+@media screen and (max-width: 768px) {
+    .reg{
+        padding-left: 0 !important;
+        padding-top: 1rem !important;
+    }
+
+    .log{
+        padding-top: 0.5rem !important;
+    }
+}
 
 
 
