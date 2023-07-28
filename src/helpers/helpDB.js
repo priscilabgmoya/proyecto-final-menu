@@ -1,54 +1,67 @@
+
 import { v4 as uuidv4 } from 'uuid';
 const menuPrueba = [
     {
         codigo: uuidv4(),
         nombre: 'pizza comun', 
-        urlImagen: '../../src/assets/pizza-prueba.jpg',
+        urlImagen: 'https://images.deliveryhero.io/image/pedidosya/products/d03c4737-893b-40a4-8e61-750e02a20f5d.jpg?quality=90&width=1440&webp=1',
         descripcion: 'pizza de muzzarella con salsa tricolor',
-        precio: '500 USD',
+        precio: 500,
         categoria: 'pizza',
         publicado: true,
-        combo: false
+        combo: false,
+        descuento: true,
+        montoDescuento: 20
     },
     {
         codigo: uuidv4(),
         nombre: 'hambuerguesa casera', 
-        urlImagen: '../../src/assets/hambuerguesa-prueba.jpg',
+        urlImagen: 'https://images.deliveryhero.io/image/pedidosya/products/d03c4737-893b-40a4-8e61-750e02a20f5d.jpg?quality=90&width=1440&webp=1',
         descripcion: 'hamburguesa con pan casero creada con carne 100% real no Fake',
-        precio: '300 USD',
+        precio: 300,
         categoria: 'hambuerguesas',
         publicado: true,
-        combo: false
+        combo: false,
+        descuento: false,
+        montoDescuento: 0
     },
     {
         codigo: uuidv4(),
         nombre: 'Sandwich de Miga', 
-        urlImagen: '../../src/assets/sandwich-de-miga.jpg',
+        urlImagen: 'https://images.deliveryhero.io/image/pedidosya/products/a330544f-255b-4fe0-90c6-dc0e73e73933.jpg?quality=90&width=1440&webp=1',
         descripcion: 'Los mejores Sandwich de tu vida, triples de Jamon y queso',
-        precio: '600 USD',
+        precio: 600,
         categoria: 'Sandwich',
         publicado: true,
-        combo: false
+        combo: false,
+        descuento: true,
+        montoDescuento: 15
+
     },
     {
         codigo: uuidv4(),
         nombre: 'Sandwich de Milanesa', 
-        urlImagen: '../../src/assets/sanguche-milanesa.jpg',
+        urlImagen: 'https://images.deliveryhero.io/image/pedidosya/products/a330544f-255b-4fe0-90c6-dc0e73e73933.jpg?quality=90&width=1440&webp=1',
         descripcion: 'El mejor Sandwich de milanesa que van a probar en su vida...',
-        precio: '700 USD',
+        precio:700,
         categoria: 'Sandwich',
         publicado: true,
-        combo: false
+        combo: false,
+        descuento: false,
+        montoDescuento: 0
+
     },
     {
         codigo: uuidv4(),
-        nombre: 'Papas Fritas', 
-        urlImagen: '../../src/assets/plato-con-papas-fritas.jpg',
-        descripcion: 'En el mundo siempre estan nuestras amigas, las papas fritas',
-        precio: '500 USD',
-        categoria: 'papas fritas',
+        nombre: 'Lomito de Carne', 
+        urlImagen: 'https://images.deliveryhero.io/image/pedidosya/products/10969185-2936bae2-bf10-4e4f-aa49-fc9062dd06d1.jpeg?quality=90&width=1440&webp=1',
+        descripcion: 'En el mundo siempre estan nuestras amigas, los Lomitos',
+        precio: 500,
+        categoria: 'Sandwich',
         publicado: true,
-        combo: false
+        combo: false,
+        descuento: false,
+        montoDescuento: 0
     }
 ]; 
 
@@ -117,8 +130,60 @@ const pedidosPrueba = [
         estado: 'realizado'
     }
 ]; 
+const staticFooter = [
+    {
+        title: 'Friky Sangucheria', 
+        item_uno: {
+            title: 'Dirección: Pueblo Paleta 1966', 
+            url: null
+        },
+        item_dos: {
+            title: 'telefono: + 34 726 731 724', 
+            url: null
+        },
+        item_tres: {
+            title: 'Email: geunnounn-7992@yopmail.com', 
+            url: null
+        }
+    },
+    {
+        title: 'Navegación', 
+        item_uno: {
+            title: 'Inicio', 
+            url: '/inicio'
+        },
+        item_dos: {
+            title: 'Quienés Somos', 
+            url: '/quienesSomos'
+        },
+        item_tres: {
+            title: 'Contactanós', 
+            url: '/contactanos'
+        }
+    },
+    {
+        title: 'Legal', 
+        item_uno: {
+            title: 'Terminos y condiciones', 
+            url: '/error404'
+        },
+        item_dos: {
+            title: 'Politica de privacidad', 
+            url: '/error404'
+        },
+        item_tres: {
+            title: 'Politica de derecho de autor', 
+            url: '/error404'
+        }
+    }
+]; 
 const cabeceraTablaMenu = ['Imagen','Nombre','Descripción', 'Precio','Categoria', 'Publicado', 'Combo', 'Operaciones']; 
 const cabeceraTablaUsuario = ['Nombre','Email', 'Estado','Rol', 'Operaciones'];
 const cabeceraTablaPedido = ['Fecha','Usuario','Menú','Estado','Operaciones']; 
+let pedidoInicial = {
+    menu: "",
+    cantidad: 0
+}
 
+export{pedidosPrueba, usuariosPrueba , menuPrueba,cabeceraTablaMenu, cabeceraTablaUsuario, cabeceraTablaPedido, staticFooter,pedidoInicial}; 
 export{pedidosPrueba, usuariosPrueba , menuPrueba,cabeceraTablaMenu, cabeceraTablaUsuario, cabeceraTablaPedido }; 
