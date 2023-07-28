@@ -6,3 +6,10 @@ body {
 main {
     flex-grow: 1 !important;
   }
+:root{
+    --night: #000f08ff;
+    --paynes-gray: #5d737eff;
+    --amaranth-purple: #a5243dff;
+    --ghost-white: #fbfbffff;
+    --vanilla: #f6f5aeff;
+}

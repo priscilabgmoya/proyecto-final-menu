@@ -1,0 +1,70 @@
+.card-body-pedido{
+    display: grid;
+    grid-template-columns: 0.7fr 2fr 1fr;
+    gap: 5px !important;
+    padding: 5px !important;
+}
+.texto-card{
+    text-align: center;
+}
+.card-img{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-img img{
+    width: 100%;
+    object-fit: cover;
+}
+.contendorBtnMenu{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    text-align: center;
+}
+.btnMenu{
+    width: 26px !important;
+    height: 26px !important;
+    padding: 0px !important;
+    margin: 0px 5px !important;
+    background-color: white !important;
+    border: none !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.iconMasMenu , .iconMenosMenu{
+    font-size: 30px ;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.iconEliminarMenu{
+font-size: 20px;
+font-weight: 600;
+}
+.iconMasMenu {
+color: green;
+}
+.iconMenosMenu{
+color: red !important;
+}
+.header-pedido{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    background-color: white !important;
+    border: none !important;
+}
+.contendorTexto{
+    display: flex;
+    flex-direction: column;
+}
+.textoPrecio{
+    text-decoration: line-through;
+    font-size: 15px;
+}
+.textoPrecioNuevo{
+    color:red;
+    font-size: 25px;
+}
