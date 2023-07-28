@@ -117,7 +117,7 @@ const Login = ({ setUser }) => {
     }
     return (<>
 
-        <main>
+        <main className='mainLoginRegister'>
             <div className='conteinerTodo'>
 
                 <div className='conteinerTrasero'>
