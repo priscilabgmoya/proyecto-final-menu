@@ -1,6 +1,6 @@
 import './Contacto.css'
-import InputC from "../components/Input/InputC";
-import Titulo from "../components/Titulo/Titulo";
+import InputC from "../Input/InputC";
+import Titulo from "../Titulo/Titulo";
 import {AiFillPhone} from "react-icons/ai"
 import {FaMapMarkedAlt} from "react-icons/fa"
 
