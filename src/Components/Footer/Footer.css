@@ -1,0 +1,32 @@
+.footer{
+    background-color: black !important;
+}
+.rowInfo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.listadoRedesSociales {
+    background-color:#ffa07a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+}
+.listadoRedesSociales li{
+    list-style: none;
+}
+.listadoRedesSociales li a{
+    font-size: 45px;
+    padding: 0px  15px;
+}
+.iconWhatsapp{
+    color: #00A884;
+}
+.iconInstagram{
+    color: #eb0171;
+}
+.tituloCopy{
+    color: white !important;
+    text-align: center;
+}
