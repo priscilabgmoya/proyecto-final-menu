@@ -23,8 +23,7 @@ const NavBars = () => {
               <Link className="nav-link" to="/quienesSomos">Sobre Nosotros</Link>
               <Link className="nav-link" to="/contactanos">Contactanos</Link>                                                 
             </Nav>
-            <Link className="nav-link log" to="/">Login</Link>
-            <Link className="nav-link reg" to="/">Registrarse</Link>
+            <Link className="nav-link log" to="/login">Login</Link>
           </Navbar.Collapse>
         </Container>
       </Navbar>

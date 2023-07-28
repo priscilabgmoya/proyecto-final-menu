@@ -1,8 +1,7 @@
 
 import './App.css'
 
-import Login from './components/login'
-import Register from './components/register'
+import Login from './components/Login-Register/login'
 import Error404 from './Components/Error404/Error404';
 import {Outlet, Link, Route , Routes, useLocation } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
@@ -20,24 +19,16 @@ const [localizacion] = useState(useLocation())
     
 
     <>
-    {/* <Register></Register>
-    <Routes>
-      <Route path='Login' element = {<Login/>}/>
-      
-      
-      <Routes/> */}
-    
-    <Login/>
-    
+ 
     <header>
       {
-        localizacion.pathname == '/error404' ? null :   <NavBars />
+        localizacion.pathname == '/error404' 
+        || localizacion.pathname == '/login' 
+        ? null :   <NavBars />
       }
       
     </header>
-    <main>
-
-    </main>
+    
     <Routes>
       {
         /**
@@ -48,7 +39,8 @@ const [localizacion] = useState(useLocation())
         * 
         */
       }
- <Route path='inicio'/>
+ <Route path='/'/>
+ <Route path='login' element={ <Login/>} />
  <Route path='contactanos'  element={<Contacto />}/>
  <Route path='quienesSomos' element ={<Anosotros/>} />
  <Route  path='error404' element={<Error404/>}/>
@@ -57,7 +49,9 @@ const [localizacion] = useState(useLocation())
 
   
    {
-    localizacion.pathname == '/error404' ? null :   <Footer />
+    localizacion.pathname == '/error404' 
+    || localizacion.pathname == '/login' 
+    ? null :   <Footer />
    }
 
     </>
