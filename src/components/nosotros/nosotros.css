@@ -1,0 +1,52 @@
+.Cont {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 100%;
+    margin-top: 15px;
+    background-color: bisque;
+
+}
+
+.text-center {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+
+}
+
+@media (max-width : 426px) {
+    .text-center {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+    .text-center {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+@media (min-width: 768px) {
+    .Cont {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: column;
+        align-items: center
+    }
+
+    .text-center {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-right: 15px;
+        height: 400px;
+        width: 60%;
+    }
+}
