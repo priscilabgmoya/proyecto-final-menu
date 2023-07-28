@@ -1,22 +1,27 @@
 
 import './App.css'
 import Error404 from './Components/Error404/Error404';
-import {Outlet, Link, Route , Routes } from 'react-router-dom';
+import {Outlet, Link, Route , Routes, useLocation } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
 import NavBars from './components/navbar/navbar.jsx';
 import Anosotros from './components/nosotros/nosotros.jsx';
+import Contacto from './components/contacto/Contacto.jsx';
+import { useState } from 'react';
 
 
 function App() {
 
-
+const [localizacion] = useState(useLocation())
   return (
     
 
     <>
 
     <header>
-        <NavBars />
+      {
+        localizacion.pathname == '/error404' ? null :   <NavBars />
+      }
+      
     </header>
     <main>
 
@@ -31,13 +36,17 @@ function App() {
         * 
         */
       }
+ <Route path='inicio'/>
+ <Route path='contactanos'  element={<Contacto />}/>
+ <Route path='quienesSomos' element ={<Anosotros/>} />
  <Route  path='error404' element={<Error404/>}/>
- <Route path='inicio' />
 </Routes>
-      <Footer />
+
 
   
-   
+   {
+    localizacion.pathname == '/error404' ? null :   <Footer />
+   }
 
     </>
   )
