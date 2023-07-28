@@ -33,7 +33,6 @@ return(
            <>
            <Input texto="Imagen" register={ register("urlImagen")} isCreate={isCreate}/>
            <Input texto="Nombre"  register={ register("nombre")}/>
-           <Input texto="Descripción"  register={ register("descripcion")}/>
            <Input texto="Precio"  register={ register("precio")}/>
            <Input texto="Categoria"  register={register("categoria")}/>
            {
@@ -41,9 +40,11 @@ return(
             <>
             <Input texto="Publicado"  register={register("publicado")}/>
            <Input texto="Combo"  register={register("combo")}/>
+           <Input texto="Descuento"  register={ register("descuento")}/>
             </>
             : null
            }
+           <Input texto="Porcentaje"  register={ register("porcentaje")}/>
            </>
            :  opcion == 'usuario' ?
            <>

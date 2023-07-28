@@ -9,7 +9,7 @@ import './App.css';
 import { useState } from 'react';
 import swal from 'sweetalert';
 import {Route , Routes, useLocation } from 'react-router-dom';
-import { menuPrueba, pedidosPrueba , usuariosPrueba, menuPrueba ,cabeceraTablaMenu, cabeceraTablaUsuario, cabeceraTablaPedido } from './helpers/helpDB';
+import { pedidosPrueba , usuariosPrueba, menuPrueba ,cabeceraTablaMenu, cabeceraTablaUsuario, cabeceraTablaPedido } from './helpers/helpDB';
 
 function App() {
 

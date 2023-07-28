@@ -19,7 +19,7 @@ function Input({texto, register,readOnly , isCreate}){
             <>
             <div className='contenedor-img'>
               {
-                selectedImage && !isCreate?  <img src={selectedImage} alt="Imagen seleccionada" />
+                selectedImage && !isCreate?  <img src={selectedImage} alt="Imagen seleccionada" required />
                 :
                 <div className='noFile'>
                 <MdCloudUpload className='iconFile'/>
@@ -28,21 +28,21 @@ function Input({texto, register,readOnly , isCreate}){
             </div>
             <Form.Label column sm="3">{texto}: </Form.Label>
              <Col sm="9">
-            <input type='file' {...register}  placeholder= {`Ingrese su ${texto}`}   onChange={handleImageChange}        />
+            <input type='file' {...register}  placeholder= {`Ingrese su ${texto}`}   onChange={handleImageChange}      required  />
             </Col>
             </>
             :  texto == 'Email' ?
             <>
             <Form.Label column sm="3">{texto}: </Form.Label>
             <Col sm="9">
-            <Form.Control  type='email' disabled={readOnly}  placeholder= {`Ingrese su ${texto}`}   {...register}/>
+            <Form.Control  type='email' disabled={readOnly}  placeholder= {`Ingrese su ${texto}`}   {...register} required/>
             </Col>
             </>
             :  texto == 'Estado'  ||  texto == 'Rol' ? 
             <>
              <Form.Label column sm="3">{texto}: </Form.Label>
             <Col sm="9">
-                <Form.Select  {...register}>
+                <Form.Select  {...register} required>
                   <option disabled selected>Seleccione una Opcion</option>
                    <option value="1">One</option>
                    <option value="2">Two</option>
@@ -50,25 +50,25 @@ function Input({texto, register,readOnly , isCreate}){
                  </Form.Select>
                  </Col>
             </>
-            : texto == 'Publicado' || texto == 'Combo'?
+            : texto == 'Publicado' || texto == 'Combo' ||  texto == 'Descuento'?
             <>
             <Form.Label column sm="3">{texto}: </Form.Label>
             <Col sm="9"> 
-             <Form.Check  {...register} type="switch" id="custom-switch" />
+             <Form.Check  {...register} type="switch" id="custom-switch"  required/>
              </Col>
              </>
             : texto == 'Password' ?
             <>
             <Form.Label column sm="3">{texto}: </Form.Label>
              <Col sm="9">
-             <Form.Control  type='password' placeholder= {`Ingrese su ${texto}`} disabled={readOnly}  {...register}/>
+             <Form.Control  type='password' placeholder= {`Ingrese su ${texto}`} disabled={readOnly}  {...register} required/>
             </Col>
             </>
             :
             <>
             <Form.Label column sm="3">{texto}: </Form.Label>
              <Col sm="9">
-             <Form.Control  type='text' placeholder= {`Ingrese su ${texto}`} disabled={readOnly}  {...register}/>
+             <Form.Control  type='text' placeholder= {`Ingrese su ${texto}`} disabled={readOnly}  {...register} required/>
             </Col>
             </>
             }

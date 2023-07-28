@@ -1,5 +1,6 @@
-table{
+td{
     text-align: center;
+    vertical-align: middle;
 }
 .title{
     display: flex;
@@ -9,6 +10,7 @@ table{
 .title h4{
     text-align: center;
     text-decoration: underline;
+    color: white;
 }
 .buttons{
     display: flex;
@@ -64,6 +66,7 @@ table{
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 30px !important;
 }
 .input-check{
     text-align: center;
