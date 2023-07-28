@@ -5,7 +5,7 @@ function Error404(){
     return(
         <Container>
             <Row className="Error404">
-                <img src="/csm_404-not-found-t_9dd01d0a24.webp" alt="Error 404 Not Found" />
+                <img src="./csm_404-not-found-t_9dd01d0a24.webp" alt="Error 404 Not Found" />
             </Row>
             <Row className="contenedor-btn">
                 <Col xxl={2} sm={2} md={2} lg={2} xl={2}> 

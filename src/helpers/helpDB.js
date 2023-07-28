@@ -177,7 +177,7 @@ const staticFooter = [
         }
     }
 ]; 
-const cabeceraTablaMenu = ['Imagen','Nombre','Descripción', 'Precio','Categoria', 'Publicado', 'Combo', 'Operaciones']; 
+const cabeceraTablaMenu = ['Imagen','Nombre', 'Precio','Categoria', 'Publicado', 'Combo','Descuento', 'Porcentaje','Precio Final', 'Operaciones']; 
 const cabeceraTablaUsuario = ['Nombre','Email', 'Estado','Rol', 'Operaciones'];
 const cabeceraTablaPedido = ['Fecha','Usuario','Menú','Estado','Operaciones']; 
 let pedidoInicial = {
@@ -186,4 +186,3 @@ let pedidoInicial = {
 }
 
 export{pedidosPrueba, usuariosPrueba , menuPrueba,cabeceraTablaMenu, cabeceraTablaUsuario, cabeceraTablaPedido, staticFooter,pedidoInicial}; 
-export{pedidosPrueba, usuariosPrueba , menuPrueba,cabeceraTablaMenu, cabeceraTablaUsuario, cabeceraTablaPedido }; 
