@@ -1,5 +1,8 @@
 
 import './App.css'
+
+import Login from './components/login'
+import Register from './components/register'
 import Error404 from './Components/Error404/Error404';
 import {Outlet, Link, Route , Routes, useLocation } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
@@ -9,6 +12,7 @@ import Contacto from './components/contacto/Contacto.jsx';
 import { useState } from 'react';
 
 
+
 function App() {
 
 const [localizacion] = useState(useLocation())
@@ -16,7 +20,15 @@ const [localizacion] = useState(useLocation())
     
 
     <>
-
+    {/* <Register></Register>
+    <Routes>
+      <Route path='Login' element = {<Login/>}/>
+      
+      
+      <Routes/> */}
+    
+    <Login/>
+    
     <header>
       {
         localizacion.pathname == '/error404' ? null :   <NavBars />
@@ -49,6 +61,7 @@ const [localizacion] = useState(useLocation())
    }
 
     </>
+
   )
 }
 
