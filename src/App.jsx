@@ -1,5 +1,5 @@
 import TablaAdministracion from './components/TablaAdministracion/TablaAdministracion';
-import Login from './components/Login-Register/login'
+import Login from './components/Login/login'
 import Error404 from './Components/Error404/Error404';
 import Footer from './Components/Footer/Footer';
 import NavBars from './components/navbar/navbar.jsx';
