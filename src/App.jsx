@@ -1,11 +1,12 @@
 import './App.css'
+import Contacto from './contacto/contacto';
+import './contacto/Contacto.css'
 
 function App() {
 
 
   return (
     <>
-     <h1>Prueba de la rama dev</h1>
     </>
   )
 }
