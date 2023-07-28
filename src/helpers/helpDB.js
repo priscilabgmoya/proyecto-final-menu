@@ -1,3 +1,4 @@
+
 import { v4 as uuidv4 } from 'uuid';
 const menuPrueba = [
     {
@@ -185,3 +186,4 @@ let pedidoInicial = {
 }
 
 export{pedidosPrueba, usuariosPrueba , menuPrueba,cabeceraTablaMenu, cabeceraTablaUsuario, cabeceraTablaPedido, staticFooter,pedidoInicial}; 
+export{pedidosPrueba, usuariosPrueba , menuPrueba,cabeceraTablaMenu, cabeceraTablaUsuario, cabeceraTablaPedido }; 

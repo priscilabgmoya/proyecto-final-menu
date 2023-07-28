@@ -1,14 +1,15 @@
+import TablaAdministracion from './components/TablaAdministracion/TablaAdministracion';
 import Login from './components/Login-Register/login'
 import Error404 from './Components/Error404/Error404';
-import {Outlet, Link, Route , Routes, useLocation } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
 import NavBars from './components/navbar/navbar.jsx';
 import Anosotros from './components/nosotros/nosotros.jsx';
 import Contacto from './components/contacto/Contacto.jsx';
 import './App.css';
-import {menuPrueba} from './helpers/helpDB'; 
 import { useState } from 'react';
 import swal from 'sweetalert';
+import {Route , Routes, useLocation } from 'react-router-dom';
+import { menuPrueba, pedidosPrueba , usuariosPrueba, menuPrueba ,cabeceraTablaMenu, cabeceraTablaUsuario, cabeceraTablaPedido } from './helpers/helpDB';
 
 function App() {
 
@@ -89,16 +90,10 @@ const modificarTotal = (precio, menu) => {
     </header>
     
     <Routes>
-      {
-        /**
-         *  
-        <Route  path='administracionMenu' element={ <TablaAdministracion cabecera={cabeceraTablaMenu} title={'Menú'} opcion='menu' informacion={menuPrueba}/>}/>
-        <Route  path='administracionUsuario' element={ <TablaAdministracion cabecera={cabeceraTablaUsuario} title={'Usuario'} opcion='usuario' informacion={usuariosPrueba}/>}/>
-        <Route  path='administracionPedido' element={ <TablaAdministracion cabecera={cabeceraTablaPedido} title={'Pedido'} opcion='pedido'  informacion={pedidosPrueba}/>}/>
-        * 
-        */
-      }
  <Route path='/'/>
+ <Route  path='administracionMenu' element={ <TablaAdministracion cabecera={cabeceraTablaMenu} title={'Menú'} opcion='menu' informacion={menuPrueba}/>}/>
+  <Route  path='administracionUsuario' element={ <TablaAdministracion cabecera={cabeceraTablaUsuario} title={'Usuario'} opcion='usuario' informacion={usuariosPrueba}/>}/>
+  <Route  path='administracionPedido' element={ <TablaAdministracion cabecera={cabeceraTablaPedido} title={'Pedido'} opcion='pedido'  informacion={pedidosPrueba}/>}/>
  <Route path='login' element={ <Login/>} />
  <Route path='contactanos'  element={<Contacto />}/>
  <Route path='quienesSomos' element ={<Anosotros/>} />
@@ -112,6 +107,7 @@ const modificarTotal = (precio, menu) => {
     || localizacion.pathname == '/login' 
     ? null :   <Footer />
    }
+
 
 
     </>

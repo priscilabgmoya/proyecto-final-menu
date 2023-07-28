@@ -1,0 +1,29 @@
+.contendor-btn-delete{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnConfirmar, .btnCancelar{
+    margin: 10px 20px;
+    padding:  10px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 25px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    border: none;
+}
+.btnConfirmar{
+    background-color: #157347;
+}
+.btnCancelar{
+    background-color: #bb2d3b;
+}
+.btnConfirmar:hover{
+    color: black;
+    background-color: lightgreen;;
+}
+.btnCancelar:hover{
+    color: black;
+    background-color: rgb(243, 86, 86);;
+}
