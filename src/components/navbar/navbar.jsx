@@ -2,8 +2,9 @@ import React from "react";
 import './navbar.css';
 import { Container, Navbar, Nav } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import Pedido from "../offCanvasPedido/Pedido";
 
-const NavBars = () => {
+const NavBars = ({pedidos,eliminarPedido,total,modificarTotal,totalPedido}) => {
    // function Mostrar (params) { faltaria ver si esto esta bien y agregar las rutas y css
       //if (user==true) {
        // document.getElementById('administracion','pedidos').style.display='flex'
@@ -24,6 +25,7 @@ const NavBars = () => {
               <Link className="nav-link" to="/contactanos">Contactanos</Link>                                                 
             </Nav>
             <Link className="nav-link log" to="/login">Login</Link>
+            <Pedido pedidos={pedidos} eliminarPedido={eliminarPedido} total={total} modificarTotal={modificarTotal} totalPedido={totalPedido}/>
           </Navbar.Collapse>
         </Container>
       </Navbar>

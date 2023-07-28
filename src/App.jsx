@@ -83,7 +83,7 @@ const modificarTotal = (precio, menu) => {
       {
         localizacion.pathname == '/error404' 
         || localizacion.pathname == '/login' 
-        ? null :   <NavBars />
+        ? null :   <NavBars  pedidos={pedidos} eliminarPedido={eliminarPedido} total={total} modificarTotal={modificarTotal} totalPedido={totalPedido}/>
       }
       
     </header>
