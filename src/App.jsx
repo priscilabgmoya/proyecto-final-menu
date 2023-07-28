@@ -1,14 +1,23 @@
+
 import './App.css'
-import Contacto from './contacto/contacto';
-import './contacto/Contacto.css'
+import NavBars from './components/navbar/navbar.jsx';
+import Anosotros from './components/nosotros/nosotros.jsx';
+
 
 function App() {
 
 
   return (
+    
+
     <>
+      <NavBars />
+   
+     
+
     </>
   )
 }
 
-export default App; 
+export default App;
+
