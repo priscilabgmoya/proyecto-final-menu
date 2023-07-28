@@ -1,0 +1,54 @@
+.padre{
+    color: #adb5bd;
+    background-color: aqua;
+    padding: 4px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.hijo{
+    background-color: #212429;
+    width: 500px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 3%;
+}
+
+.hijo1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mapa{
+    height: 50%;
+    width: 60%;
+    background-color: violet;
+}
+
+.prueba{
+    margin-top: 16px;
+    outline: none;
+    width: 90%;
+    height: 45px;
+    border-radius: 5px;
+    border: #495057 solid 1px;
+    padding: 6px 12px;
+    color: #adb5bd;
+}
+
+.selector{
+    margin-top: 16px;
+    height: 35px;
+    border-radius:1rem ;
+    border: #495057 solid 1px;
+    background-color: #181b1ed5;
+    color: #adb5bd;
+    padding: 6px 12px;
+}
+
+.btn{
+    font-size: larger !important;
+}
+

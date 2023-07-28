@@ -1,14 +1,23 @@
+
 import './App.css'
 import Error404 from './Components/Error404/Error404';
 import {Outlet, Link, Route , Routes } from 'react-router-dom';
 import Footer from './Components/Footer/Footer';
+import NavBars from './components/navbar/navbar.jsx';
+import Anosotros from './components/nosotros/nosotros.jsx';
+
 
 function App() {
 
 
   return (
+    
+
     <>
-    <header></header>
+
+    <header>
+        <NavBars />
+    </header>
     <main>
 
     </main>
@@ -26,8 +35,12 @@ function App() {
  <Route path='inicio' />
 </Routes>
       <Footer />
+
+  
+   
+
     </>
   )
 }
 
-export default App; 
+export default App;
