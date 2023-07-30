@@ -1,20 +1,19 @@
-import { useEffect } from "react"
-import { useState } from "react"
+import CategoriesList from './CategoriesList'
+import Products from './Products'
 
 const Home = () => {
-  const [menu, setMenu] = useState()
-
-  const getFood = () => {
-
-  }
-
-  useEffect(()  => {
-  }, [])
-  
-  
   return (
     <>
-      
+      <main className='container'>
+        <div className='row'>
+          <div className="col-12 col-lg-2"> 
+            <CategoriesList />
+          </div>
+          <div className="col-12 col-lg-10">
+            <Products />
+          </div>
+        </div>
+      </main>
     </>
   )
 }
