@@ -1,0 +1,67 @@
+
+.iconShop{
+    font-size: 30px !important; 
+    margin: 0px;
+    padding: 0px;
+    color: white;
+}
+.btnShop{
+    border-radius:25px !important ;
+    background-color: var(--amaranth-purple) !important;
+    width: 50px;
+    height: 50px;
+    border: none !important; 
+    position: relative !important;
+}
+.shopNum {
+    position: absolute !important;
+    top: 2px !important;
+    left: 62%;
+    background: orange;
+    width: 20px;
+    height: 20px;
+    border-radius: 20%;
+    text-align: center !important;
+    vertical-align: middle !important;
+    color: white;
+    padding: 2px !important;
+    font-size: 15px !important;
+}
+
+.scrollable-content{
+    overflow-y: auto;
+    height: 425px; /* Altura del div con scroll */
+}
+.content {
+    padding: 10px;
+}
+.contenedorBotones{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.btnInciarSesion, .btnIrAlCarrito {
+    width: 70%;
+    margin: 0.7px 0px;
+    padding: 5px 20px !important;
+    border-radius: 20px !important;
+    font-size: 20px !important;
+}
+.btnInciarSesion{
+    background-color: green !important;
+    border: green !important;
+  
+}
+
+.btnIrAlCarrito{
+    background-color: var(--ghost-white) !important;
+    border: var(--ghost-white) !important;
+    color: black !important;
+}
+.total{
+    font-size: 20px;
+}
+.totalFinal{
+    color: red;
+}

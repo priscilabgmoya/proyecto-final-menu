@@ -1,0 +1,31 @@
+.contenedor-img{
+    width: 200px ;
+    height: 200px;
+    margin: 10px 0px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px blue dashed;
+}
+.contenedor-img img{
+    width: 55%;
+    object-fit: cover;
+}
+.noFile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.iconFile{
+    font-size: 70px;
+    color: rgb(109, 109, 255);
+}
+.noFile p{
+    font-size: 20px;
+    color: rgb(109, 109, 255);
+}
+.form-check-input{
+    width:  60px !important;
+    height: 30px !important ;
+}

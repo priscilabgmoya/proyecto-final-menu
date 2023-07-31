@@ -1,0 +1,116 @@
+td{
+    text-align: center;
+    vertical-align: middle;
+}
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+.title h4{
+    text-align: center;
+    text-decoration: underline;
+    color: white;
+}
+.buttons{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.btnOcultar{
+    display: none;
+}
+.btnNuevoMenu, .btnNuevoCombo{
+    padding: 5px 10px;
+    border-radius: 20px ;
+    margin: 5px;
+  
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+.btnNuevoMenu{
+    background-color:lightgreen;
+}
+.btnNuevoCombo{
+    background-color: #a7eaec;
+}
+.iconsBtn{
+    font-size: 23px;
+    text-align: center;
+    margin: 0px 5px 3px 0px;
+}
+.iconsBtns{
+    font-size: 23px;
+    text-align: center;
+    margin: 0px 0px 3px 0px;
+}
+.btnModificar, .btnEliminar {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    margin: 10px;
+    font-size: 17px;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+}
+.btnModificar{
+    background-color: rgb(255, 238, 82);
+}
+.btnEliminar{
+    background-color:rgb(243, 86, 86);
+}
+
+.contenedor-operaciones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px !important;
+}
+.input-check{
+    text-align: center;
+    vertical-align: middle;
+}
+.input-check  input[type=checkbox] {
+    transform: scale(1.4);
+}
+.columnaImagen{
+    text-align: center;
+    vertical-align: middle;
+}
+table {
+    position: relative;
+    overflow: visible;
+  }
+.columnaImagen img{
+    width: 5rem !important;
+    object-fit: cover;
+}
+.zoomed {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+}
+.zoomed img {
+    max-width: 1000rem;
+    max-height: 300px;
+    object-fit: cover;
+  }
+.title-delete {
+font-size: 20px !important; 
+color: red !important;
+}
+.title-modal{
+    font-size: 20px  !important;
+}
+@media all   and (max-width: 	768px) {
+    .contenedor-operaciones {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}

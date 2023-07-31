@@ -1,0 +1,20 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+main {
+    flex-grow: 1 !important;
+  }
+:root{
+    --night: #000f08ff;
+    --paynes-gray: #5d737eff;
+    --amaranth-purple: #a5243dff;
+    --ghost-white: #fbfbffff;
+    --vanilla: #f6f5aeff;
+}
+*{
+   padding: 0px;
+   margin: 0px;
+    /*background-color: rgb(142, 150, 172);*/
+}
