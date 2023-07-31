@@ -1,12 +1,13 @@
-import Card from 'react-bootstrap/Card';
 import './nosotros.css'
-import { Container } from 'react-bootstrap';
+import { Container,Card ,Col, Row} from 'react-bootstrap';
 
 function Anosotros() {
     return (
 
         <Container className='Cont'>
-            <Card fluid border='danger' className='text-center'>
+<Row className='contendorCardsNosotros'>
+    <Col xs={3} md={3} sm={3} lg={3}>
+    <Card  border='danger' className='text-center'>
                 <Card.Img variant="top" src="./src/img/myAvatar_pri.png" />
                 <Card.Body>
                     <Card.Title>Priscila Garcia Moya</Card.Title>
@@ -16,7 +17,9 @@ function Anosotros() {
 
                 </Card.Body>
             </Card>
-            <Card fluid border='danger' className='text-center'>
+    </Col>
+    <Col xs={3} md={3} sm={3} lg={3}>
+            <Card  border='danger' className='text-center'>
                 <Card.Img variant="top" src="./src/img/JMAvatar.svg" />
                 <Card.Body>
                     <Card.Title>Juan Martin Raimondo</Card.Title>
@@ -26,7 +29,10 @@ function Anosotros() {
 
                 </Card.Body>
             </Card>
-            <Card fluid border='danger' className='text-center'>
+
+    </Col>
+    <Col xs={3} md={3} sm={3} lg={3}>
+            <Card  border='danger' className='text-center'>
                 <Card.Img variant="top" src="./src/img/myAvatar.png" />
                 <Card.Body>
                     <Card.Title>Emiliano Acosta</Card.Title>
@@ -36,7 +42,10 @@ function Anosotros() {
 
                 </Card.Body>
             </Card>
-            <Card fluid border='danger' className='text-center'>
+
+    </Col>
+    <Col xs={3} md={3} sm={3} lg={3}>
+            <Card  border='danger' className='text-center'>
                 <Card.Img variant="top" src='./src/img/myAvatar.png' />
                 <Card.Body>
                     <Card.Title>Martin Rey</Card.Title>
@@ -46,7 +55,9 @@ function Anosotros() {
 
                 </Card.Body>
             </Card>
-            <Card fluid border='danger' className='text-center'>
+    </Col>
+    <Col xs={3} md={3} sm={3} lg={3}>
+            <Card  border='danger' className='text-center'>
                 <Card.Img variant="top" src="./src/img/myAvatar.png" />
                 <Card.Body>
                     <Card.Title>Joaquin Navarro  </Card.Title>
@@ -56,6 +67,9 @@ function Anosotros() {
 
                 </Card.Body>
             </Card>
+    </Col>
+</Row>
+    
         </Container>
     );
 }
