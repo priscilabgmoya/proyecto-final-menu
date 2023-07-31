@@ -3,6 +3,7 @@ import Home from './components/home/Home'
 const App = () => {
   return (
     <>
+    <h1>preuba</h1>
       <Routes>
         <Route path="/" element={<Home />}></Route>
       </Routes> 
