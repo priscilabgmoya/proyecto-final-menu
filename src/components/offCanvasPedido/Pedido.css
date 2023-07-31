@@ -21,12 +21,11 @@
     width: 20px;
     height: 20px;
     border-radius: 20%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+    text-align: center !important;
+    vertical-align: middle !important;
     color: white;
-    padding: 2px;
-    font-size: 15px;
+    padding: 2px !important;
+    font-size: 15px !important;
 }
 
 .scrollable-content{

@@ -1,31 +1,41 @@
 .Cont {
-    display: flex;
+    display: flex ;
     flex-direction: column;
     height: fit-content;
-    width: 100%;
-    height: 100vh;
+    width: 100% !important;
+    height: 100% !important;
     margin: 15px 0px;
+    padding: 10px !important;
     background-color: bisque;
 }
-
+.contendorCardsNosotros{
+    display: flex;
+    justify-content: space-around;
+}
 .text-center {
     display: flex;
-    width: 100%;
+    width: 100% !important;
     margin-top: 10px;
 
 }
 
 @media (max-width : 426px) {
     .text-center {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+        width: 200px !important;
+        margin: 0px 0px 14px -55px;
+    }
+    .contendorCardsNosotros{
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        justify-content: space-evenly !important;
+        align-items: center !important;
     }
     .Cont {
         display: flex;
         flex-direction: column;
         height: fit-content;
-        width: 90%;
+        width:100% !important;
         margin: 10px 0px;
         background-color: bisque;
     }
@@ -36,7 +46,7 @@
     .text-center {
         display: flex;
         flex-direction: column;
-        width: 40%;
+        width: 100%;
     }
     .Cont {
         display: flex;
@@ -67,8 +77,8 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        margin-right: 15px;
-        height: 400px;
-        width: 60%;
+        margin-top: 10px !important;
+        height: 100% !important;
+        width: 100% !important;
     }
 }
