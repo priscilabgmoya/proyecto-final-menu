@@ -1,5 +1,6 @@
 import TablaAdministracion from './components/TablaAdministracion/TablaAdministracion';
-import Login from './components/Login/login'
+import Login from './components/Login/login';
+import Home from './components/home/Home';
 import Error404 from './components/Error404/Error404';
 import Footer from './components/Footer/Footer';
 import NavBars from './components/navbar/navbar.jsx';
@@ -10,6 +11,7 @@ import { useState } from 'react';
 import swal from 'sweetalert';
 import {Route , Routes, useLocation } from 'react-router-dom';
 import { pedidosPrueba , usuariosPrueba, menuPrueba ,cabeceraTablaMenu, cabeceraTablaUsuario, cabeceraTablaPedido } from './helpers/helpDB';
+
 
 function App() {
 
@@ -90,7 +92,8 @@ const modificarTotal = (precio, menu) => {
     </header>
     
     <Routes>
- <Route path='/'/>
+
+<Route path="/" element={<Home />} />
  <Route  path='administracionMenu' element={ <TablaAdministracion cabecera={cabeceraTablaMenu} title={'Menú'} opcion='menu' informacion={menuPrueba}/>}/>
   <Route  path='administracionUsuario' element={ <TablaAdministracion cabecera={cabeceraTablaUsuario} title={'Usuario'} opcion='usuario' informacion={usuariosPrueba}/>}/>
   <Route  path='administracionPedido' element={ <TablaAdministracion cabecera={cabeceraTablaPedido} title={'Pedido'} opcion='pedido'  informacion={pedidosPrueba}/>}/>
