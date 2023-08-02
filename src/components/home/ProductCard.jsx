@@ -2,7 +2,7 @@
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import { useEffect, useState } from 'react'
-
+import {CiCirclePlus,CiCircleMinus} from 'react-icons/ci'
 
 const ProductCard = props => {
   const [showModal, setShowModal] = useState(false)
@@ -39,23 +39,24 @@ const ProductCard = props => {
   return (
     <>
       <article 
-        className="col-12 col-md-6 col-lg-4 p-2 mb-3 border"
+        className="col-12 col-md-6 col-lg-4 p-2 mb-3 border card-producto-home"
         onClick={handleShow}
       >
-        <div className="card-body">
-          <div className="d-flex align-items-center justify-content-between"> 
-            <div className="text-truncate">
-              <h6 className="card-title">{menu.nombre}</h6>
-              <p className="card-text">
+        
+        <div className="card-body card-body-home">
+            <div className='contenedor-texto-producto'>
+              <h6 className="card-title ">{menu.nombre}</h6>
+              <p className="card-text card-text-producto-home">
                 <small className="text-body-secondary">{menu.detalle}</small>
-              </p>
-              <p className="card-text">
-                <b>${menu.precio}</b>
+                <br />
+                <b className='precio-card-home'>${menu.precio}</b>
               </p>
             </div>
+            <div className='card-img'>
             <img src={menu.img} alt={menu.nombre} className="img-fluid rounded" style={{ width: '96px', height: '96px' }} />
+            </div>
           </div>
-        </div>
+
       </article>
 
       <Modal show={showModal} onHide={handleClose}>
@@ -67,21 +68,21 @@ const ProductCard = props => {
             {menu.detalle}
           </div>
           <div className='d-flex justify-content-around my-4'>
-            <button className='btn btn-warning' onClick={() => handleQuantity('-')}><i className="bi bi-dash-circle"></i></button>
+            <button className='btn btn-warning btnMenu' onClick={() => handleQuantity('-')}><CiCircleMinus className='iconMenosMenu' /></button>
             <h5>{quantity}</h5>
-            <button className='btn btn-success' onClick={() => handleQuantity('+')}><i className="bi bi-plus-circle"></i></button>
+            <button className='btn btn-success btnMenu' onClick={() => handleQuantity('+')}><CiCirclePlus className='iconMasMenu' /></button>
           </div>
           </Modal.Body>
         <Modal.Footer className='d-flex justify-content-between'>
           <div>
-            <h4>$ {finalPrice}</h4>
+            <h3>Total:  $ {finalPrice}</h3>
           </div>
-          <div className='d-flex gap-3'>
-            <Button variant="secondary" onClick={handleClose}>
-              Cerrar
-            </Button>
-            <Button variant="primary" onClick={handleSubmit}>
+          <div className='d-flex '>
+            <Button className='btnConfirmar'  onClick={handleSubmit}>
               Agregar al Carrito
+            </Button>
+            <Button  className='btnCancelar' type='button' onClick={handleClose}>
+              Cerrar
             </Button>
           </div>
         </Modal.Footer>

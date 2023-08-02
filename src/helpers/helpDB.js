@@ -11,7 +11,7 @@ const menuPrueba = [
         publicado: true,
         combo: false,
         descuento: true,
-        montoDescuento: 20
+        porcentaje: 20
     },
     {
         codigo: uuidv4(),
@@ -23,7 +23,7 @@ const menuPrueba = [
         publicado: true,
         combo: false,
         descuento: false,
-        montoDescuento: 0
+        porcentaje: 0
     },
     {
         codigo: uuidv4(),
@@ -35,7 +35,7 @@ const menuPrueba = [
         publicado: true,
         combo: false,
         descuento: true,
-        montoDescuento: 15
+        porcentaje: 15
 
     },
     {
@@ -48,7 +48,7 @@ const menuPrueba = [
         publicado: true,
         combo: false,
         descuento: false,
-        montoDescuento: 0
+        porcentaje: 0
 
     },
     {
@@ -61,7 +61,7 @@ const menuPrueba = [
         publicado: true,
         combo: false,
         descuento: false,
-        montoDescuento: 0
+        porcentaje: 0
     }
 ]; 
 

@@ -5,7 +5,7 @@ const Home = () => {
   return (
     
     <>
-      <main className='container'>
+      <main className='container my-2'>
         <div className='row'>
           <div className="col-12 col-lg-2"> 
             <CategoriesList />

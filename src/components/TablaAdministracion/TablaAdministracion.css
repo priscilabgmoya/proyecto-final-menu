@@ -106,6 +106,10 @@ color: red !important;
 .title-modal{
     font-size: 20px  !important;
 }
+.body-Formulario{
+    max-height: calc(131vh - 300px);
+    overflow-y:  auto;
+}
 @media all   and (max-width: 	768px) {
     .contenedor-operaciones {
         display: flex;
