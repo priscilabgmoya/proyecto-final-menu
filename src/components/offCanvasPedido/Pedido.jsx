@@ -5,11 +5,11 @@ import {pedidoInicial} from '../../helpers/helpDB';
 import MiniCard from '../miniCardPedido/MiniCard';
 import './Pedido.css'
 function Pedido({pedidos,eliminarPedido , total , modificarTotal, totalPedido}){
-    const [show, setShow] = useState(false);
+    const [showPedidos, setShowPedidos] = useState(false);
     const [pedido, setPedidos] = useState(pedidos); 
     const [totalCompra, setTotalCompra] = useState(total);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const handleClosePedidos = () => setShowPedidos(false);
+    const handleShowPedidos = () => setShowPedidos(true);
     useEffect(()=>{
       setPedidos(pedidos);
       setTotalCompra(total);
@@ -29,12 +29,12 @@ function Pedido({pedidos,eliminarPedido , total , modificarTotal, totalPedido}){
     }
     return(
         <>
-    <Button variant="primary" onClick={handleShow} className=" btnShop">
+    <Button variant="primary" onClick={handleShowPedidos} className=" btnShop" >
     <span  className="badge rounded-circle shopNum">{pedido?.length}</span>
         <AiOutlineShoppingCart className='iconShop'/>
       </Button>
-      <Offcanvas show={show} onHide={handleClose} placement='end'>
-        <Offcanvas.Header closeButton>
+      <Offcanvas show={showPedidos} onHide={handleClosePedidos} placement='end' backdrop="static" name='end'>
+        <Offcanvas.Header closeButton onClick={handleClosePedidos}>
           <Offcanvas.Title>Pedidos</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>

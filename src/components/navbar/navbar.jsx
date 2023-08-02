@@ -12,7 +12,7 @@ const NavBars = ({pedidos,eliminarPedido,total,modificarTotal,totalPedido}) => {
   return (
     <>
    
-<Navbar expand="lg" className="header-nav">
+<Navbar expand="lg" className="header-nav navBarFriky" >
         <Container className="d-flex align-items-center">
           <Link className="logo-nav" to="/">Friky Sangucheria</Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav " />

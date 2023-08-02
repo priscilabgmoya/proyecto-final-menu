@@ -6,7 +6,7 @@ const CategorieslistItem = props => {
   return (
     <li className="nav-item border" key={index}>
       
-      <a className="nav-link " aria-current="page" href={`#${id}`}>{name}</a>
+      <a className="nav-link  link-categoria" aria-current="page" href={`#${id}`}>{name}</a>
     </li>
   )
 }

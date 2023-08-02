@@ -7,7 +7,7 @@ const ProductSection = (props) => {
   const { categoryName, menues } = props
   return (
     <section className="p-0">
-      <h3 className="text-uppercase ms-3 mb-4">{categoryName}</h3>
+      <h3 className="text-uppercase ms-3 mb-4 titulo-home" >{categoryName}</h3>
         {
         <div className="row ">
           {

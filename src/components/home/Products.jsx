@@ -9,13 +9,13 @@ const URL_DATA = 'http://localhost:3000/menu'
 const Products = () => {
   const { data } = useFetch(URL_DATA)
   if (!data) {
-    return <div>C A R G A N D O. . .</div>
+    return <div className='titulo-home'>C A R G A N D O. . .</div>
   }
   console.log(data)
   const menues = getMenuByCategory(data)
 
   if (!menues || typeof menues !== 'object') {
-    return <div>Invalid data</div>
+    return <div className='titulo-home' >Invalid data</div>
   }
   const productSections = Object.keys(menues).map((aCategory, index) => {
     return <ProductSection key={index} categoryName={aCategory} menues={menues[aCategory]} />

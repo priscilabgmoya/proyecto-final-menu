@@ -117,8 +117,8 @@ function TablaAdministracion({informacion, cabecera, title, opcion}){
                 <td  className='input-check' ><input type="checkbox" name="check-publicado" id="menu-publicado" checked={item.publicado} onChange={()=> {handlePublicadoChange(index)}}/></td>
                 <td  className='input-check' ><input type="checkbox" name="check-combo" id="menu-combo"  checked={item.combo}  value={item.codigo} onChange={()=>{handleComboChange(index,event)}} /></td>
                 <td  className='input-check' ><input type="checkbox" name="check-descuento" id="menu-descuento" checked={item.descuento} onChange={()=> {handlePublicadoChange(index)}}/></td>
-                <td>{item.montoDescuento}</td>
-                <td>{item.descuento? item.precio - ((item.precio * item.montoDescuento)/100) : item.precio}</td>
+                <td>{item.porcentaje}</td>
+                <td>{item.descuento? item.precio - ((item.precio * item.porcentaje)/100) : item.precio}</td>
                 <td className='contenedor-operaciones'>
                         <button className='btnModificar' onClick={()=> {handleShow('update', item.codigo)}} ><AiFillEdit  className='iconsBtns'/></button>
                         <button className='btnEliminar' onClick={()=> {handleShow('delete', item.codigo)}} ><AiFillDelete  className='iconsBtns'/></button>
@@ -154,7 +154,7 @@ function TablaAdministracion({informacion, cabecera, title, opcion}){
       </tbody>
     </Table>
             </Row>
-            <Modal show={show}  onHide={() => setShow(false)}>
+            <Modal show={show}  onHide={() => setShow(false)}  size={ opcion == 'menu' ? "lg" : null} >
         <Modal.Header closeButton>
           <Modal.Title className={isRemoving ? 'title-delete' : 'title-modal'}>{
             isEditing ? `Modificar ${title} Seleccionado`
@@ -162,7 +162,7 @@ function TablaAdministracion({informacion, cabecera, title, opcion}){
             : `Crear Nuevo ${title}`
             }</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body  className='body-Formulario'>
         {
          <Formulario 
          handleShow= {handleShow} 

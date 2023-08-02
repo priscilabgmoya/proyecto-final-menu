@@ -1,6 +1,38 @@
-
-
-
+.card-producto-home{
+  background-color:  var(--ghost-white);
+  margin: 5px;
+  border: black solid 5px !important;
+  border-radius: 20px;
+}
+.titulo-home{
+  color:  var(--ghost-white) !important;
+}
+.categorias-home{
+  background-color:  var(--ghost-white);
+}
+.card-body-home{
+  display: grid;
+  grid-template-columns: 4fr 2fr;
+  gap: 5px !important;
+  padding: 5px !important;
+  width: 100% !important;
+  justify-content: center !important;
+}
+.card-text-producto-home{
+  width:  100% !important;
+  height: 100% !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.contenedor-texto-producto{
+  width:  100% !important;
+  height: 100% !important;
+  display: grid;
+}
+.link-categoria{
+  color: black !important;
+}
 @media (max-width: 767.98px) {
   aside {
     position: fixed;
