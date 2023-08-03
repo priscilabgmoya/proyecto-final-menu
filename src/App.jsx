@@ -7,7 +7,7 @@ import NavBars from './components/navbar/navbar.jsx';
 import Anosotros from './components/nosotros/nosotros.jsx';
 import Contacto from './components/contacto/Contacto.jsx';
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import swal from 'sweetalert';
 import {Route , Routes, useLocation } from 'react-router-dom';
 import { pedidosPrueba , usuariosPrueba, menuPrueba ,cabeceraTablaMenu, cabeceraTablaUsuario, cabeceraTablaPedido } from './helpers/helpDB';
@@ -89,11 +89,13 @@ const modificarTotal = (cantidad,precio, menu) => {
      * va en el final del navBar
      *   <Pedido pedidos={pedidos} eliminarPedido={eliminarPedido} total={total} modificarTotal={modificarTotal} totalPedido={totalPedido}/>
      */
-    const [localizacion] = useState(useLocation())
+    const [localizacion, setLocalizacion ] = useState(useLocation())
+    useEffect(()=>{
+
+    }, [localizacion])
     return (
 
     <>
- 
     <header>
       {
         localizacion.pathname == '/error404' 
