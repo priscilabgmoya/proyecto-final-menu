@@ -1,17 +1,17 @@
 import CategoriesList from './CategoriesList'
 import Products from './Products'
 
-const Home = () => {
+const Home = ({agregarPedido}) => {
   return (
     
     <>
-      <main className='container my-2'>
+      <main className='container-fluid'>
         <div className='row'>
-          <div className="col-12 col-lg-2"> 
+          <div className="col-12 col-lg-2 columna-categoria"> 
             <CategoriesList />
           </div>
           <div className="col-12 col-lg-10">
-            <Products />
+            <Products  agregarPedido ={agregarPedido}/>
           </div>
         </div>
       </main>

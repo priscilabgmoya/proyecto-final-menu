@@ -4,16 +4,16 @@ import ProductCard from "./ProductCard"
 
 
 const ProductSection = (props) => {
-  const { categoryName, menues } = props
+  const { categoryName, menues ,agregarPedido} = props
   return (
-    <section className="p-0">
+    <section className="p-0 mx-4 my-1">
       <h3 className="text-uppercase ms-3 mb-4 titulo-home" >{categoryName}</h3>
         {
         <div className="row ">
           {
             menues.map((menu, index) => {
               return (
-                <ProductCard key={index} menu={menu} />
+                <ProductCard key={index} menu={menu}  agregarPedido ={agregarPedido}/>
               )
             }) 
           }

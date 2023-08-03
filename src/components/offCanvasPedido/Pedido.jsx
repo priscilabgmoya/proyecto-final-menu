@@ -1,7 +1,6 @@
 import { useState ,useEffect} from 'react';
 import {Offcanvas, Button}from 'react-bootstrap';
 import {AiOutlineShoppingCart } from "react-icons/ai";
-import {pedidoInicial} from '../../helpers/helpDB';
 import MiniCard from '../miniCardPedido/MiniCard';
 import './Pedido.css'
 function Pedido({pedidos,eliminarPedido , total , modificarTotal, totalPedido}){
@@ -47,9 +46,10 @@ function Pedido({pedidos,eliminarPedido , total , modificarTotal, totalPedido}){
               nombre={item.nombre} 
               precio={item.precio} 
               descuento={item.descuento} 
-              montoDescuento={item.montoDescuento}
+              montoDescuento={item.porcentaje}
               eliminarPedido={()=>{eliminarCardPedido(item.codigo)}}
               modificarTotal={modificarTotal}
+              pedidoHome={totalPedido}
               />
             })
              }
@@ -60,7 +60,6 @@ function Pedido({pedidos,eliminarPedido , total , modificarTotal, totalPedido}){
           </div> 
           <div className='contenedorBotones'>
             <Button className='btnInciarSesion' onClick={()=> {verPedido({"name": "priscila"}, totalPedido, totalCompra)}}>Iniciar Comprar</Button>
-            <Button className='btnIrAlCarrito'>Ir al Carrito</Button>
           </div>
         </Offcanvas.Body>
       </Offcanvas>

@@ -1,11 +1,10 @@
-
 import { v4 as uuidv4 } from 'uuid';
 const menuPrueba = [
     {
         codigo: uuidv4(),
         nombre: 'pizza comun', 
         urlImagen: 'https://images.deliveryhero.io/image/pedidosya/products/d03c4737-893b-40a4-8e61-750e02a20f5d.jpg?quality=90&width=1440&webp=1',
-        descripcion: 'pizza de muzzarella con salsa tricolor',
+        detalle: 'Salsa de tomate y muzzarella',
         precio: 500,
         categoria: 'pizza',
         publicado: true,
@@ -17,7 +16,7 @@ const menuPrueba = [
         codigo: uuidv4(),
         nombre: 'hambuerguesa casera', 
         urlImagen: 'https://images.deliveryhero.io/image/pedidosya/products/d03c4737-893b-40a4-8e61-750e02a20f5d.jpg?quality=90&width=1440&webp=1',
-        descripcion: 'hamburguesa con pan casero creada con carne 100% real no Fake',
+        detalle: 'Queso, jamón, huevo y papas fritas.',
         precio: 300,
         categoria: 'hambuerguesas',
         publicado: true,
@@ -29,7 +28,7 @@ const menuPrueba = [
         codigo: uuidv4(),
         nombre: 'Sandwich de Miga', 
         urlImagen: 'https://images.deliveryhero.io/image/pedidosya/products/a330544f-255b-4fe0-90c6-dc0e73e73933.jpg?quality=90&width=1440&webp=1',
-        descripcion: 'Los mejores Sandwich de tu vida, triples de Jamon y queso',
+        detalle: 'Queso, jamón, huevo y papas fritas.',
         precio: 600,
         categoria: 'Sandwich',
         publicado: true,
@@ -42,7 +41,7 @@ const menuPrueba = [
         codigo: uuidv4(),
         nombre: 'Sandwich de Milanesa', 
         urlImagen: 'https://images.deliveryhero.io/image/pedidosya/products/a330544f-255b-4fe0-90c6-dc0e73e73933.jpg?quality=90&width=1440&webp=1',
-        descripcion: 'El mejor Sandwich de milanesa que van a probar en su vida...',
+        detalle: 'Milanesa de carne, lechuga, tomate, mayonesa hellmans y savora',
         precio:700,
         categoria: 'Sandwich',
         publicado: true,
@@ -55,7 +54,7 @@ const menuPrueba = [
         codigo: uuidv4(),
         nombre: 'Lomito de Carne', 
         urlImagen: 'https://images.deliveryhero.io/image/pedidosya/products/10969185-2936bae2-bf10-4e4f-aa49-fc9062dd06d1.jpeg?quality=90&width=1440&webp=1',
-        descripcion: 'En el mundo siempre estan nuestras amigas, los Lomitos',
+        detalle: 'Lomo de carne con papas',
         precio: 500,
         categoria: 'Sandwich',
         publicado: true,

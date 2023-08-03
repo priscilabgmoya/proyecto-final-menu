@@ -3,34 +3,30 @@ import {CiCirclePlus,CiCircleMinus} from 'react-icons/ci';
 import {GrClose} from 'react-icons/gr';
 import './MiniCard.css'; 
 import { useEffect, useState } from 'react';
-function MiniCard({urlImagen,nombre, precio ,descuento,montoDescuento,eliminarPedido,modificarTotal ,obtenerCantidadTotal }){
-    const [cantidadMenu, setCantidadMenu] = useState(1) 
+function MiniCard({urlImagen,nombre, precio ,descuento,montoDescuento,eliminarPedido,modificarTotal  , pedidoHome}){
+    const [cantidadP, setCantidad] = useState(pedidoHome); 
     const [precioDescuento,setPrecioDescuento] = useState(descuento?  precio - ( (precio * montoDescuento)  /100): 0)
+
+
     const aumentarCantidad =() =>{
-        setCantidadMenu(cantidadMenu + 1); 
         if(descuento){
-           return  modificarTotal(precioDescuento, nombre)
+           return  modificarTotal(1,precioDescuento, nombre)
         }else{
-           return modificarTotal(precio, nombre)
+           return modificarTotal(1, precio, nombre)
         }
     }
     const disminuirCantidad =() => {
-        setCantidadMenu(cantidadMenu == 1 ? 1 : cantidadMenu - 1); 
-        if(descuento && cantidadMenu > 1){
-            console.log(precioDescuento);
-             return modificarTotal(-precioDescuento, nombre)
-        } 
-        if(!descuento && cantidadMenu > 1){
-            return modificarTotal(-precio, nombre)
+        if(descuento){
+             return modificarTotal(-1,-precioDescuento, nombre)
+        } else{
+            return modificarTotal(-1,-precio, nombre)
         }
     }
-    /*
+
     useEffect(()=>{
-        obtenerCantidadTotal(descripcion, cantidadMenu)
-    },[cantidadMenu, descripcion]);*/
-    useEffect(()=>{
+        setCantidad(pedidoHome)
         setPrecioDescuento(descuento?  precio - ( (precio * montoDescuento)  /100) : 0)
-    },[precioDescuento])
+    },[precioDescuento,pedidoHome])
     return(
         <Card className='my-2'>
             <Card.Header className='header-pedido'> <Button  className='btnMenu' onClick={eliminarPedido} ><GrClose  className='iconEliminarMenu'/> </Button></Card.Header>
@@ -39,6 +35,9 @@ function MiniCard({urlImagen,nombre, precio ,descuento,montoDescuento,eliminarPe
          <img  src= {urlImagen} />
            </div>
            <div className='texto-card'>
+            {
+                 
+            }
             {
                 `${nombre} `
             }
@@ -54,7 +53,13 @@ function MiniCard({urlImagen,nombre, precio ,descuento,montoDescuento,eliminarPe
            </div>
            <div className='contendorBtnMenu' >
             <Button className='btnMenu' onClick={()=>{disminuirCantidad()}}><CiCircleMinus className='iconMenosMenu'/>  </Button>
-            <span>{cantidadMenu}</span>
+           {  
+            cantidadP.map((pedido, index) => {
+                if(pedido.menu == nombre){
+                    return  <span key={index}>{pedido.cantidad }</span>
+                }
+            })
+            }
             <Button className='btnMenu'onClick={()=>{aumentarCantidad()}}> <CiCirclePlus className='iconMasMenu'/> </Button>
            </div>
             </Card.Body>
