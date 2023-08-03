@@ -47,9 +47,8 @@ function Input({texto,readOnly , isCreate }){
              <Form.Label column sm="3">{texto}: </Form.Label>
                 <Form.Select  required name={texto} >
                   <option value="" readOnly disabled selected >Seleccione una Opcion</option>
-                   <option value="1">One</option>
-                   <option value="2">Two</option>
-                   <option value="3">Three</option>
+                   <option value= {texto == 'Estado' ?  true : "usuario" }>{ texto == 'Estado' ?  "Activo" : "usuario" }</option>
+                   <option value= {texto == 'Estado' ?  false : "administrador" }>{ texto == 'Estado' ?  "Inactivo" : "administrador" }</option>
                  </Form.Select>
                  <Form.Control.Feedback type="invalid" > {`Ingrese una ${texto}`}</Form.Control.Feedback>
               </Form.Group>

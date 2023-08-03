@@ -3,12 +3,11 @@ import {Offcanvas, Button}from 'react-bootstrap';
 import {AiOutlineShoppingCart } from "react-icons/ai";
 import MiniCard from '../miniCardPedido/MiniCard';
 import './Pedido.css'
-function Pedido({pedidos,eliminarPedido , total , modificarTotal, totalPedido}){
-    const [showPedidos, setShowPedidos] = useState(false);
+function Pedido({pedidos,eliminarPedido , total , modificarTotal, totalPedido,handleClosePedidos,showPedidos}){
+
     const [pedido, setPedidos] = useState(pedidos); 
     const [totalCompra, setTotalCompra] = useState(total);
-    const handleClosePedidos = () => setShowPedidos(false);
-    const handleShowPedidos = () => setShowPedidos(true);
+
     useEffect(()=>{
       setPedidos(pedidos);
       setTotalCompra(total);
@@ -28,10 +27,7 @@ function Pedido({pedidos,eliminarPedido , total , modificarTotal, totalPedido}){
     }
     return(
         <>
-    <Button variant="primary" onClick={handleShowPedidos} className=" btnShop" >
-    <span  className="badge rounded-circle shopNum">{pedido?.length}</span>
-        <AiOutlineShoppingCart className='iconShop'/>
-      </Button>
+
       <Offcanvas show={showPedidos} onHide={handleClosePedidos} placement='end' backdrop="static" name='end'>
         <Offcanvas.Header closeButton onClick={handleClosePedidos}>
           <Offcanvas.Title>Pedidos</Offcanvas.Title>
