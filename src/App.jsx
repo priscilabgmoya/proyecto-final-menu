@@ -125,6 +125,7 @@ const modificarTotal = (cantidad,precio, menu) => {
 
 
 
+    
     </>
 
   )
