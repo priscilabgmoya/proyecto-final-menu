@@ -4,7 +4,7 @@ import { Container, Navbar, Nav } from 'react-bootstrap';
 import { Link ,Outlet} from "react-router-dom";
 import Pedido from "../offCanvasPedido/Pedido";
 
-const NavBars = ({pedidos,eliminarPedido,total,modificarTotal,totalPedido}) => {
+const NavBars = ({pedidos,eliminarPedido,total,modificarTotal,totalPedido , cantidadPedido}) => {
    // function Mostrar (params) { faltaria ver si esto esta bien y agregar las rutas y css
       //if (user==true) {
        // document.getElementById('administracion','pedidos').style.display='flex'
@@ -27,7 +27,14 @@ const NavBars = ({pedidos,eliminarPedido,total,modificarTotal,totalPedido}) => {
               <Outlet />                                             
             </Nav>
             <Link className="nav-link log" to="/login">Login</Link>
-            <Pedido pedidos={pedidos} eliminarPedido={eliminarPedido} total={total} modificarTotal={modificarTotal} totalPedido={totalPedido}/>
+            <Pedido 
+            pedidos={pedidos} 
+            eliminarPedido={eliminarPedido} 
+            total={total} 
+            modificarTotal={modificarTotal} 
+            totalPedido={totalPedido}
+            cantidadPedido={cantidadPedido}
+            />
           </Navbar.Collapse>
         </Container>
       </Navbar>

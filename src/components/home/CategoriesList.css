@@ -1,19 +1,33 @@
 .card-producto-home{
   background-color:  var(--ghost-white);
-  margin: 5px;
-  border: black solid 5px !important;
-  border-radius: 20px;
+  border: black solid 1px !important;
+  border-radius: 20px !important;
+  height: 100% !important;
+  padding: 0px 6px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; 
 }
+
 .titulo-home{
   color:  var(--ghost-white) !important;
 }
 .categorias-home{
   background-color:  var(--ghost-white);
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0px !important;
+
+}
+.categorias-home h5 , .categorias-home ul{
+  padding: 0px 5px !important;
+}
+.columna-categoria{
+  margin: 0px 0px 0px 0px  !important;
+  padding:  0% !important;
 }
 .card-body-home{
   display: grid;
-  grid-template-columns: 4fr 2fr;
-  gap: 5px !important;
+  grid-template-columns: 5fr 3fr;
+  height: 100% !important;
   padding: 5px !important;
   width: 100% !important;
   justify-content: center !important;
@@ -24,6 +38,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-weight: 600 !important;
+  font-size: 18px !important;
 }
 .contenedor-texto-producto{
   width:  100% !important;
@@ -32,6 +48,17 @@
 }
 .link-categoria{
   color: black !important;
+}
+.descuento-menu{
+  margin: 6px;
+  background-color: red;
+  color:  var(--ghost-white);
+  padding: 4px ;
+  width: 70px;
+  height: 30px;
+  border: red solid 1px;
+  border-radius: 20px;
+
 }
 @media (max-width: 767.98px) {
   aside {

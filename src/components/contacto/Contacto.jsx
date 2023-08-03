@@ -15,7 +15,6 @@ function Contacto() {
         event.preventDefault();
         event.stopPropagation();
       }
-  
       setValidated(true);
     };
   return (

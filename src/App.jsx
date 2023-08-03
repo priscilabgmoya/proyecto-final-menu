@@ -18,26 +18,26 @@ function App() {
   const [pedidos , setPedidos] = useState([]); 
   const [productos] = useState(menuPrueba);
   const [totalPedido, setTotalPedido] = useState([]); 
-  const [total, setTotal] = useState(0);
-  const agregarPedido =(id, nombre) =>{
+  const [cantidadPedido, setCantidadPedido] = useState(0);
+  const [totalMontoPedido, setTotal] = useState(0);
+  const agregarPedido =(nombre ,id, cantidad , total ) =>{
+    debugger
     const existePedido = pedidos.find(pedido => pedido.nombre == nombre); 
     if(existePedido) return swal({
       title: 'Adventencia!', 
-      text: 'El pedido se encuentra en el carrito de compras!',
+      text: 'El pedido Ya se encuentra en el carrito',
       icon: 'warning',
       buttons: 'Aceptar'
     })
     const nuevoPedido = productos.find(producto => producto.codigo == id); 
-    setPedidos([...pedidos,nuevoPedido])
+    setPedidos([...pedidos,nuevoPedido]);
+    setCantidadPedido(cantidad);
     let pedido = {
       "menu": nombre,
-      "cantidad": 1,
+      "cantidad": cantidad,
     }
       setTotalPedido([...totalPedido, pedido]);
-
-    let precio =  nuevoPedido.descuento ? nuevoPedido.precio - ((nuevoPedido.precio*nuevoPedido.montoDescuento)/100)
-    :nuevoPedido.precio
-    setTotal(total + precio)
+    setTotal( totalMontoPedido + total)
   }
 const eliminarPedido = (id) => {
   let totalNuevo =0 ; 
@@ -52,13 +52,25 @@ const eliminarPedido = (id) => {
     setTotal(totalNuevo);
   })
 }
-const modificarTotal = (precio, menu) => {
-
-  let totalNuevo = total + precio; 
+const modificarTotal = (cantidad,precio, menu) => {
+  debugger
+  const pedidoModificar = totalPedido.find(pedido => pedido.menu == menu); 
+  
+  if(cantidad == -1 && pedidoModificar.cantidad <= 1) return swal({
+    title: 'Adventencia!', 
+    text: 'Compra Minima 1(una) unidad de Menu',
+    icon: 'warning',
+    buttons: 'Aceptar'
+  })
+  setCantidadPedido(cantidadPedido + cantidad);
+  let totalNuevo = totalMontoPedido + precio; 
   setTotal(totalNuevo); 
+
+
+
   totalPedido.map(pedido =>{
     if(pedido.menu == menu){
-      pedido.cantidad = pedido.cantidad + 1; 
+      pedido.cantidad = pedido.cantidad + cantidad; 
     }
     return pedido;
   })
@@ -86,14 +98,14 @@ const modificarTotal = (precio, menu) => {
       {
         localizacion.pathname == '/error404' 
         || localizacion.pathname == '/login' 
-        ? null :   <NavBars  pedidos={pedidos} eliminarPedido={eliminarPedido} total={total} modificarTotal={modificarTotal} totalPedido={totalPedido}/>
+        ? null :   <NavBars  pedidos={pedidos} eliminarPedido={eliminarPedido} total={totalMontoPedido} modificarTotal={modificarTotal} totalPedido={totalPedido} cantidadPedido={cantidadPedido}/>
       }
       
     </header>
     
     <Routes>
 
-<Route path="/" element={<Home />} />
+<Route path="/" element={<Home  agregarPedido={agregarPedido} />} />
  <Route  path='administracionMenu' element={ <TablaAdministracion cabecera={cabeceraTablaMenu} title={'Menú'} opcion='menu' informacion={menuPrueba}/>}/>
   <Route  path='administracionUsuario' element={ <TablaAdministracion cabecera={cabeceraTablaUsuario} title={'Usuario'} opcion='usuario' informacion={usuariosPrueba}/>}/>
   <Route  path='administracionPedido' element={ <TablaAdministracion cabecera={cabeceraTablaPedido} title={'Pedido'} opcion='pedido'  informacion={pedidosPrueba}/>}/>
