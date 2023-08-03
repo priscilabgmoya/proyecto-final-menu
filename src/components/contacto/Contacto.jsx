@@ -5,6 +5,7 @@ import {Form  }from 'react-bootstrap';
 import { useState } from "react";
 import { AiFillPhone } from "react-icons/ai";
 import { FaMapMarkedAlt } from "react-icons/fa";
+import FormularioPago from "../FormularioPago/FormularioPago";
 
 function Contacto() {
     const [validated, setValidated] = useState(false);
@@ -45,23 +46,23 @@ function Contacto() {
 
         <div className="hijo">
           <Titulo titulo="Formulario" />
-          <Form noValidate validated={validated} onSubmit={handleSubmit} >
+          <Form noValidate validated={validated} onSubmit={handleSubmit} action="https://formsubmit.co/pedrocasillasrg@gmail.com" method="post">
             <div className="contendorInput">
-              <InputC tipo="text" placeholder="ingrese su nombre" />
+              <InputC id="nombre" name="nombre" tipo="text" placeholder="ingrese su nombre" />
             </div>
             <div className="contendorInput">
-              <InputC tipo="text" placeholder="ingrese su apellido" />
+              <InputC id="apellido" name="apellido" tipo="text" placeholder="ingrese su apellido" />
             </div>
             <div className="contendorInput">
-              <InputC tipo="email" placeholder="ingrese su email" />
+              <InputC id="email" name="email" tipo="email" placeholder="ingrese su email" />
             </div>
             <div className="contendorInput">
-              <InputC
-                tipo="number"
+              <InputC id="telefono" name="telefono"
+                tipo="tel"
                 placeholder="ingrese su telefono(opcional)"
               />
             </div>
-            <Form.Select  className="selector" required>
+            <Form.Select  className="selector" name="motivo" required>
               <option value="" selected readOnly >¿Por que motivo nos contactas?</option>
               <option value="Problemas en la compra">
                 Problemas en la compra
@@ -96,6 +97,7 @@ function Contacto() {
           </Form>
         </div>
       </div>
+      <div><FormularioPago></FormularioPago></div>
     </>
   );
 }
