@@ -12,6 +12,8 @@
     text-align: center;
     padding: 5px;
     border-radius: 3%;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .hijo1{
@@ -39,7 +41,6 @@
 .prueba{
     margin-top: 16px !important;
     outline: none !important;
-    width: 90% !important;
     height: 45px !important;
     border-radius: 5px !important;
     border: #495057 solid 1px !important;
