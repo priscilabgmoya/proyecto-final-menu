@@ -36,21 +36,21 @@ const FormularioPago = () => {
             <form>
                 <div className="form-group">
                     <label htmlFor="number"> Numero de la tarjeta</label>
-                    <input onFocus={handleInputFocus} onChange={handleInputChange} tipo="text" name="number" id="number" className="form-control"></input>
+                    <input onFocus={handleInputFocus} onChange={handleInputChange} type="text" name="number" id="number" className="form-control"></input>
                 </div> <br />
                 <div className="form-group">
                     <label htmlFor="name"> Nombre del titular</label>
-                    <input onFocus={handleInputFocus} onChange={handleInputChange} tipo="text" name="name" id="name" className="form-control"></input>
+                    <input onFocus={handleInputFocus} onChange={handleInputChange} type="text" name="name" id="name" className="form-control"></input>
                 </div>
-                <div className="form-row">
+                <div className="mt-3 d-flex">
 
-                <div className="form-group col-md-6">
+                <div className="form-group col-6">
                     <label htmlFor="expiry">Vencimiento</label>
-                    <input onFocus={handleInputFocus} onChange={handleInputChange} tipo="text" name="expiry" id="expiry" className="form-control"></input>
+                    <input onFocus={handleInputFocus} onChange={handleInputChange} type="text" name="expiry" id="expiry" className="form-control"></input>
                 </div>
-                <div className="form-group col-md-6">
+                <div className="form-group col-6">
                     <label htmlFor="cvc">CVC</label>
-                    <input onFocus={handleInputFocus} onChange={handleInputChange} tipo="text" name="cvc" id="cvc" className="form-control"></input>
+                    <input onFocus={handleInputFocus} onChange={handleInputChange} type="text" name="cvc" id="cvc" className="form-control"></input>
                 </div>
 
                 </div>

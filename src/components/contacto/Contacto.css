@@ -62,3 +62,10 @@
     font-size: larger !important;
 }
 
+.card{
+    width: 22rem !important;
+}
+
+#cvc{
+    margin-left: 5px !important;
+}
