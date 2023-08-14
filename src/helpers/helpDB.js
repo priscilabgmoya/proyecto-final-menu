@@ -176,12 +176,31 @@ const staticFooter = [
         }
     }
 ]; 
-const cabeceraTablaMenu = ['Imagen','Nombre', 'Precio','Categoria', 'Publicado', 'Combo','Descuento', 'Porcentaje','Precio Final', 'Operaciones']; 
+const cabeceraTablaMenu = ['Imagen','Nombre', 'Precio','Categoria', 'Publicado','Descuento', 'Porcentaje','Precio Final', 'Operaciones']; 
 const cabeceraTablaUsuario = ['Nombre','Email', 'Estado','Rol', 'Operaciones'];
 const cabeceraTablaPedido = ['Fecha','Usuario','Menú','Estado','Operaciones']; 
 let pedidoInicial = {
     menu: "",
     cantidad: 0
 }
+let usuarioInicial = {
+    nombre: "",
+    correo: "",
+    contraseña: "",
+    rol: "", 
+    estado: ""
+}
 
-export{pedidosPrueba, usuariosPrueba , menuPrueba,cabeceraTablaMenu, cabeceraTablaUsuario, cabeceraTablaPedido, staticFooter,pedidoInicial}; 
+let menuInicial = {
+    codigo: "",
+    nombre: "", 
+    urlImagen: "",
+    detalle: "",
+    precio: 0,
+    categoria:"",
+    publicado: false,
+    combo: false,
+    descuento: false,
+    porcentaje: 0
+}
+export{pedidosPrueba, usuariosPrueba , menuPrueba,cabeceraTablaMenu, cabeceraTablaUsuario, cabeceraTablaPedido, staticFooter,pedidoInicial,usuarioInicial ,menuInicial}; 

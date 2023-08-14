@@ -1,42 +1,36 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './login.css'
-import Register from './register'
+import { Form , Button, Col, Row} from 'react-bootstrap';
+import { loginUsuario } from '../../api/login';
+import { useLogin } from '../../context/LoginContext';
 
 
-const Login = ({ setUser }) => {
-
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [error, setError] = useState(false)
+const Login = () => {
+    const {login , user, isAuthenticated } = useLogin();
+    const [validated, setValidated] = useState(false);
     const [values, setValues] = useState({
         email: "",
-        password: ""
-
+        contraseña: ""
     })
+    const navigate = useNavigate();
+    useEffect(()=>{
+        if (isAuthenticated && user.usuario.rol["rol"] == "usuario")navigate('/')
+        if (isAuthenticated && user.usuario.rol["rol"] == "administrador")  navigate('/administracionMenu'); 
+        if (isAuthenticated && user.usuario.rol["rol"] == "superAdmin") console.log("adios");
+    },[isAuthenticated])
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        if (email == '' || password == '') {
-            setError(true)
-            return
+    const iniciarSesion = async (e) => {
+        const form = e.currentTarget;
+        if (form.checkValidity() === false) {
+          e.preventDefault();
+          e.stopPropagation();
+          setValidated(true);
+        }else {
+            e.preventDefault();
+            login(form, values)
         }
-
-        setError(false)
-        setUser([user])
-    }
-
-    const crearCuenta = (e) => {
-        e.preventDefault();
-
-        if (users == '' || password == '') {
-            setError(true)
-            return
-        }
-        setError(false)
-        setUser([users])
-    }
-
+}
     const handleChange = (e) => {
         e.preventDefault();
         setValues({
@@ -44,147 +38,46 @@ const Login = ({ setUser }) => {
         })
     }
 
-    //Cambiar entre Login y Register
-
-    const [register, setRegister] = useState('')
-    const [login, setLogin] = useState(
-
-        <div className="conteinerLogin">
-            <form>
-
-                <h2>Iniciar Sesion</h2>
-                <input type="text" name="users" id="users" placeholder='Usuario' />
-                <input type="password" name="password" id="password" placeholder='Contraseña' />
-                <button type='submit' className='btn'> Entrar</button>
-                {error && <p> <b> Todos los Campos son Obligatorios </b> </p>}
-
-            </form>
-        </div>
-    )
-
-    //Funcion para Cambiar a register
-    const cambiarRegister = (e) => {
-        e.preventDefault();
-
-        setRegister(
-            <Register />
-        )
-        setLogin('')
-        setNewPassword('')
-        setError(false)
-
-    }
-
-    //Funcion para cambiar a Login
-    const cambiarLogin = (e) => {
-        e.preventDefault();
-        setLogin(
-            <Login />
-        )
-        setRegister('')
-        setError(false)
-    }
-
-    //funion para cambiar contraseña
-    const [newPassword, setNewPassword] = useState()
-    const cambiarContraseña = () => {
-        setNewPassword(
-
-            <div className="conteinerTrasero2">
-
-                <div className='conteinerLogin'>
-                    <form className='formForgotPassword' >
-
-                        <h2>Modificar Contraseña</h2>
-                        <input type="text" name="email" id="email" placeholder='Correo Electronico' />
-                        <span>  Enviaremos un correo electrónico para restablecer su contraseña. </span>
-                        <button type='submit' className='btn'> Cambiar Contraseña</button>
-                    </form>
-                </div>
-
-                <div className="conteinerRegister">
-                    <form className='cuentaCreada' onSubmit={cambiarRegister}>
-                        <h2>¿Aun no tienes una cuenta?</h2>
-                        <p>Registrate, obtene descuentos y muchas cosas mas!</p>
-                        <button type='submit' className='btn'>Registrarse</button>
-                    </form>
-                </div>
-            </div>
-        )
-
-        setLogin('')
-
-    }
     return (<>
 
         <main className='mainLoginRegister'>
             <div className='conteinerTodo'>
-
                 <div className='conteinerTrasero'>
-
-                    {login &&
-                        <div className='conteinerDiv'>
-                            <div className="conteinerLogin">
-                                <form onSubmit={handleSubmit} >
-
-                                    <h2>Iniciar Sesion</h2>
-                                    {error && <p> <b> Todos los Campos son Obligatorios </b> </p>}
-                                    <input type="email" name="email" id="email" placeholder='Correo Electronico' onChange={e => setEmail(e.target.value)} />
-                                    <input type="password" name="password" id="password" placeholder='Contraseña' onChange={e => setPassword(e.target.value)} />
-                                    <button type='submit' className='btn'> Entrar</button>
-
-                                </form>
-                            </div>
+                <div className='conteinerDiv'>
+                <div className="conteinerLogin">
+                <Form  noValidate validated={validated}  onSubmit={iniciarSesion}>
+                <p className='h2'>Iniciar Sesion</p>
+                <Row className="mb-1 ">
+                <Form.Group  as={Col}  md="12"  className='py-1'>
+                <Form.Control type="email" name="email" id="users" placeholder='Correo' onChange={handleChange}  required minLength={1} maxLength={50} min={1} max={50} />
+                <Form.Control.Feedback type='invalid'>Ingrese un correo </Form.Control.Feedback>
+                </Form.Group>
+                <Form.Group  as={Col}  md="12"  className='py-1'>
+                <Form.Control type="password" name="contraseña" id="password" placeholder='Contraseña' onChange={handleChange}  required min={1} max={10} minLength={6} maxLength={10} />
+                <Form.Control.Feedback type='invalid'>Ingrese una contraseña</Form.Control.Feedback>
+                </Form.Group>
+                </Row>
+                <Button type='submit' className='btn'> Ingresar</Button>
+                </Form>
+                </div>
 
                             <div className='conteinerForgotPassword'>
-                                <form className='formForgotPassword' onSubmit={cambiarContraseña}>
-                                    <button type='submit' className='forgotPassword'> ¿Olvidaste tu Contraseña?</button>
-                                </form>
+                                <div className='formForgotPassword'>
+                                    <Link  className='forgotPassword'  to={'/recuperarContrasena'}>  ¿Olvidaste tu Contraseña?</Link>
+                                </div>
                             </div>
                         </div>
-                    }
-                    {newPassword}
-
-                    {login &&
+            
                         <div className="conteinerRegister">
-                            <form className='cuentaCreada' onSubmit={cambiarRegister}>
+                            <div className='cuentaCreada'>
                                 <h2>¿Aun no tienes una cuenta?</h2>
                                 <p>Registrate, obtene descuentos y muchas cosas mas!</p>
-                                <button type='submit' className='btn'>Registrarse</button>
-                            </form>
+                                <Link  className='btn btn-danger btnRegistrase' to={'/registarse'}>Registrarse</Link>
+                            </div>
                         </div>
 
-                    }
-                    {register &&
-                        <div className='conteinerTrasero2' >
-
-                            <div className='conteinerLogin'>
-                                <form onSubmit={crearCuenta}>
-                                    <h2>Registrarse</h2>
-                                    {/* {error && <p> <b> Todos los Campos son Obligatorios </b> </p>} */}
-                                    <input type="text" name="name" id="name" placeholder='Nombre y Apellido' />
-                                    <input type="text" name="email" id="email" placeholder='Correo Electronico' />
-                                    <input type="text" name='users' id='users' placeholder='Usuario' />
-                                    <input type="password" name="password" id="password" placeholder='Contraseña' />
-                                    <input type="password" name="new-password" id="new-password" placeholder='Confirmar Contraseña' />
-                                    <input type="number" name="" id="cel" placeholder='Celular' />
-
-                                    <button type='submit' className='btn'> Crear Cuenta</button>
-                                    
-
-                                </form>
-
-                            </div>
-
-                            <div className="conteinerRegister">
-
-                                <form className='cuentaCreada' onSubmit={cambiarLogin}>
-                                    <h2>¿Ya tienes cuenta?</h2>
-                                    <p>Inicia Sesion y disfruta de nuestros servicios</p>
-                                    <button type='submit' className='btn'>Iniciar Sesion</button>
-                                </form>
-                            </div>
-                        </div>}
+           
+              
                 </div>
 
             </div>

@@ -6,15 +6,20 @@ import Footer from './components/Footer/Footer';
 import NavBars from './components/navbar/navbar.jsx';
 import Anosotros from './components/nosotros/nosotros.jsx';
 import Contacto from './components/contacto/Contacto.jsx';
-import './App.css';
-import { useEffect, useState } from 'react';
+import Register from './components/Login/register';
+import RecuperarContraseña from './components/Login/RecuperarContraseña';
+import ProtegerRutas from './protegerRutas';
 import swal from 'sweetalert';
+import { useEffect, useState } from 'react';
 import {Route , Routes, useLocation } from 'react-router-dom';
-import { pedidosPrueba , usuariosPrueba, menuPrueba ,cabeceraTablaMenu, cabeceraTablaUsuario, cabeceraTablaPedido } from './helpers/helpDB';
+import { menuPrueba ,cabeceraTablaMenu, cabeceraTablaUsuario, cabeceraTablaPedido } from './helpers/helpDB';
+import './App.css';
+import PerfilUsuario from './components/PerfilUsuario/PerfilUsuario';
 
 
 function App() {
-
+  const URL_GET_USUARIO = 'http://localhost:3000/api/V1/obtenerUsuarios'; 
+  const URL_GET_MENU = 'http://localhost:3000/api/V1/productos/'
   const [pedidos , setPedidos] = useState([]); 
   const [productos] = useState(menuPrueba);
   const [totalPedido, setTotalPedido] = useState([]); 
@@ -77,29 +82,22 @@ const modificarTotal = (cantidad,precio, menu) => {
 }
 
     
-    // function Mostrar (params) { faltaria ver si esto esta bien y agregar las rutas y css
-      //if (user==true) {
-       // document.getElementById('administracion','pedidos').style.display='flex'
-      //}
-      
-    /**
-     *  <NavBars pedidos={pedidos} eliminarPedido={eliminarPedido} total={total} modificarTotal={modificarTotal} totalPedido={totalPedido}/>
-     * va en el boton de la card 
-     *  <Button  variant="primary" onClick={()=>{agregarPedido(producto.codigo, producto.nombre)}}>Agregar al carrito </Button> 
-     * va en el final del navBar
-     *   <Pedido pedidos={pedidos} eliminarPedido={eliminarPedido} total={total} modificarTotal={modificarTotal} totalPedido={totalPedido}/>
-     */
-    const [localizacion, setLocalizacion ] = useState(useLocation())
-    useEffect(()=>{
+  
 
-    }, [localizacion])
+    const localizacion  = useLocation(); 
+    const [currentPath, setCurrentPath] = useState('');
+useEffect(()=>{
+  setCurrentPath(localizacion.pathname);
+}, [localizacion])
     return (
-
+      
     <>
     <header>
       {
-        localizacion.pathname == '/error404' 
-        || localizacion.pathname == '/login' 
+        currentPath == '/error404' 
+        || currentPath == '/login' 
+        || currentPath == '/registarse' 
+        || currentPath == '/recuperarContrasena' 
         ? null :   <NavBars  pedidos={pedidos} eliminarPedido={eliminarPedido} total={totalMontoPedido} modificarTotal={modificarTotal} totalPedido={totalPedido} cantidadPedido={cantidadPedido}/>
       }
       
@@ -108,20 +106,27 @@ const modificarTotal = (cantidad,precio, menu) => {
     <Routes>
 
 <Route path="/" element={<Home  agregarPedido={agregarPedido} />} />
- <Route  path='administracionMenu' element={ <TablaAdministracion cabecera={cabeceraTablaMenu} title={'Menú'} opcion='menu' informacion={menuPrueba}/>}/>
-  <Route  path='administracionUsuario' element={ <TablaAdministracion cabecera={cabeceraTablaUsuario} title={'Usuario'} opcion='usuario' informacion={usuariosPrueba}/>}/>
-  <Route  path='administracionPedido' element={ <TablaAdministracion cabecera={cabeceraTablaPedido} title={'Pedido'} opcion='pedido'  informacion={pedidosPrueba}/>}/>
- <Route path='login' element={ <Login/>} />
- <Route path='contactanos'  element={<Contacto />}/>
- <Route path='quienesSomos' element ={<Anosotros/>} />
- <Route  path='error404' element={<Error404/>}/>
+<Route element={<ProtegerRutas/>}>
+ <Route  path='/administracionMenu' element={ <TablaAdministracion cabecera={cabeceraTablaMenu} title={'Menú'} opcion='menu' URL_API={null}/>}/>
+  <Route  path='/administracionUsuario' element={ <TablaAdministracion cabecera={cabeceraTablaUsuario} title={'Usuario'} opcion='usuario' URL_API={URL_GET_USUARIO}/>}/>
+  <Route  path='/administracionPedido' element={ <TablaAdministracion cabecera={cabeceraTablaPedido} title={'Pedido'} opcion='pedido'  URL_API={null}/>}/>
+  <Route  path='/perfilUsuario'  element={<PerfilUsuario />}/>
+</Route>
+ <Route path='/login' element={ <Login/>} />
+ <Route path='/contactanos'  element={<Contacto />}/>
+ <Route path='/quienesSomos' element ={<Anosotros/>} />
+ <Route  path='/error404' element={<Error404/>}/>
+ <Route  path='/registarse' element={<Register/>}/>
+ <Route  path='/recuperarContrasena' element={<RecuperarContraseña />}/>
 </Routes>
 
 
   
    {
-    localizacion.pathname == '/error404' 
-    || localizacion.pathname == '/login' 
+    currentPath == '/error404' 
+    || currentPath == '/login' 
+    || currentPath == '/registarse' 
+    || currentPath == '/recuperarContrasena' 
     ? null :   <Footer />
    }
 

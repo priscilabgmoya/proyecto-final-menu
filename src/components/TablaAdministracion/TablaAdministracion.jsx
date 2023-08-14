@@ -1,20 +1,24 @@
-import {Table , Modal , Row , Col}from 'react-bootstrap';
+import {Table , Modal , Row , Col, Pagination,Form}from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import { AiOutlinePlusCircle ,AiFillEdit ,AiFillDelete} from 'react-icons/ai';
 import Formulario from '../Formulario/Formulario';
 import './TablaAdministracion.css'; 
-function TablaAdministracion({informacion, cabecera, title, opcion}){
-
+import { obtenerUsuarios } from '../../api/adminUsuario';
+import FormularioEditar from '../Formulario/FormularioEditar';
+import FormularioEliminar from '../Formulario/FormularioEliminar';
+import TbodyMenu from './TbodyMenu';
+function TablaAdministracion({URL_API, cabecera, title, opcion}){
+  const CANT_HOJA = 6;
   const [show, setShow] = useState(false);
   const [isEditing, setEditing] = useState(false); 
   const [isRemoving, setRemoving] = useState(false); 
-  const [arrayInformacion, setArrayInformacion ] = useState(informacion)
+  const [arrayInformacion, setArrayInformacion ] = useState([])
   const [idItem , setIdItem] = useState(null);
-  const [imageZoomStates, setImageZoomStates] = useState({});
-  const [combo, setCombo] = useState([]);
-  const [showButton, setShowButton] = useState(false);
-
-
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState('');
+  const lastIndex = currentPage * CANT_HOJA ;
+  const firstIndex = lastIndex - CANT_HOJA; 
+  
   const handleShow = (state, idItem) => {
     switch(state){
       case 'create': 
@@ -39,34 +43,40 @@ function TablaAdministracion({informacion, cabecera, title, opcion}){
       break; 
     }
   }
-  useEffect(()=> {
-   console.log('se esta escuchando');
-    }, [arrayInformacion])
+  const [totalPages ,setTotalPage]= useState(0) 
 
-  const handlePublicadoChange = (index) => {
-    const updatedArray = [...arrayInformacion];
-    updatedArray[index].publicado = !updatedArray[index].publicado;
-    setArrayInformacion(updatedArray);
-  };
-
-  const handleComboChange = (index,e) => {
-    const {value, checked} = e.target;
-
-    const updatedArray = [...arrayInformacion];
-    updatedArray[index].combo = !updatedArray[index].combo;
-    setArrayInformacion(updatedArray);
-
-    if(checked){
-      setCombo([...combo,value])
-      if(combo.length == 0)  setShowButton(true) ;
-    }else{
-      setCombo(combo.filter(combo => {combo !== value}))
-      if(combo.length == 0)  setShowButton(false) ;
-    }
-  };
-  const addItem = (item) => {
-    setArrayInformacion([...arrayInformacion, item])
+  const calcularTotalPaginas = (array) => {
+    const total = array.length
+   setTotalPage(Math.ceil(total/CANT_HOJA))
   }
+
+  async function usarGet (opciones){
+    if(opciones == 'usuario'){
+      const data =  await obtenerUsuarios(URL_API); 
+      return  setArrayInformacion(data)
+    }
+  }
+  const buscar = () =>{
+    if(searchTerm.length == 0) return usarGet(opcion);
+    const filteredResults = arrayInformacion.filter(item =>
+      item.nombre.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setArrayInformacion(filteredResults);
+    setCurrentPage(1); 
+  }
+
+  useEffect(()=> {
+buscar()
+ }, [searchTerm])
+
+
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
     return(
         <div className="container">
             <Row >
@@ -74,22 +84,36 @@ function TablaAdministracion({informacion, cabecera, title, opcion}){
                 {
                   opcion !='pedido' ? 
                   <>
-                  <Col xs={8} className='title'>
+                  <Col xs={4}>
+                  <Form.Group className='buscador-tabla'>
+                  <Form.Label>Buscar:</Form.Label>
+                 <Form.Control type="text" value={searchTerm} onChange={handleSearchChange} />
+                  </Form.Group>
+                  </Col>
+                  <Col xs={6} className='title'>
                 <h4>{`Administración de ${title}s `}</h4>
                 </Col>
-                <Col xs={4} className='buttons'> 
-                <button className={ showButton ?'btnNuevoCombo': 'btnOcultar' } ><AiOutlinePlusCircle className='iconsBtn'/>{`Nuevo Combo`}</button>
+                <Col xs={2} className='buttons'> 
                 <button className='btnNuevoMenu'onClick={()=> {handleShow('create')}} ><AiOutlinePlusCircle className='iconsBtn'/>{`Nuevo ${title}`}</button>
                 </Col>
                   </>
-                  :  <Col xs={12} className='title'>
+                  :
+                  <>
+                  <Col xs={8} className='title'>
                   <h4>{`Administración de ${title}s `}</h4>
                   </Col>
+                        <Col xs={4} className='my-2'>
+                  <Form.Group className='buscador-tabla'>
+                  <Form.Label>Buscar:</Form.Label>
+                 <Form.Control type="text" value={searchTerm} onChange={handleSearchChange} />
+                  </Form.Group>
+                  </Col>
+                  </>  
                 }
             </Row>
             <Row>
             <Table striped responsive>
-      <thead>
+      <thead >
         <tr>
           {
             cabecera  == null  ?  <th> No se encontro ningún titulo </th> : 
@@ -98,61 +122,62 @@ function TablaAdministracion({informacion, cabecera, title, opcion}){
             })
           }
         </tr>
+     
       </thead>
       <tbody>
         {
-          arrayInformacion == null || arrayInformacion.length == 0 ?     
-          <tr>
-            <td colSpan={cabecera?.length}>{`Momentaneamente no se pudo cargar ningun ${title}! `}</td>
-          </tr>
-          : opcion == 'menu' &&  arrayInformacion !== null ? 
-           arrayInformacion.map((item, index) => {
-           return <tr key={item.codigo}>
-                <td className={imageZoomStates[index] ? 'zoomed' :'columnaImagen'}> 
-                <img src={`${item.urlImagen}`} alt={`imagen-de-${item.nombre}`}  onClick={() =>setImageZoomStates((prevState) => ({ ...prevState,[index]: !prevState[index]}))}/>
-                </td>
-                <td>{item.nombre}</td>
-                <td>{item.precio}</td>
-                <td>{item.categoria}</td>
-                <td  className='input-check' ><input type="checkbox" name="check-publicado" id="menu-publicado" checked={item.publicado} onChange={()=> {handlePublicadoChange(index)}}/></td>
-                <td  className='input-check' ><input type="checkbox" name="check-combo" id="menu-combo"  checked={item.combo}  value={item.codigo} onChange={()=>{handleComboChange(index,event)}} /></td>
-                <td  className='input-check' ><input type="checkbox" name="check-descuento" id="menu-descuento" checked={item.descuento} onChange={()=> {handlePublicadoChange(index)}}/></td>
-                <td>{item.porcentaje}</td>
-                <td>{item.descuento? item.precio - ((item.precio * item.porcentaje)/100) : item.precio}</td>
-                <td className='contenedor-operaciones'>
-                        <button className='btnModificar' onClick={()=> {handleShow('update', item.codigo)}} ><AiFillEdit  className='iconsBtns'/></button>
-                        <button className='btnEliminar' onClick={()=> {handleShow('delete', item.codigo)}} ><AiFillDelete  className='iconsBtns'/></button>
-                </td>
-            </tr>
-          })
-          : opcion == 'usuario' &&  arrayInformacion !== null ? arrayInformacion.map(item => {
-           return <tr key={item.codigo}>
-                <td>{item.nombre}</td>
-                <td>{item.email}</td>
-                <td>{item.estado}</td>
-                <td>{item.rol}</td>
-                <td className='contenedor-operaciones'>
-                <button className='btnModificar' onClick={()=> {handleShow('update', item.codigo)}} ><AiFillEdit  className='iconsBtns'/></button>
-                        <button className='btnEliminar' onClick={()=> {handleShow('delete', item.codigo)}}><AiFillDelete  className='iconsBtns'/></button>
-                </td>
-            </tr>
-          })
-          : arrayInformacion.map(item => {
-              return <tr key={item.codigo}>
-                  <td>{item.fecha}</td>
-                  <td>{item.usuario}</td>
-                  <td>{item.menu}</td>
-                  <td>{item.estado}</td>
-                  <td className='contenedor-operaciones'>
-                          <button className='btnModificar' onClick={()=> {handleShow('update' , item.codigo)}} ><AiFillEdit  className='iconsBtns'/></button>
-                          <button className='btnEliminar' onClick={()=> {handleShow('delete', item.codigo)}}><AiFillDelete  className='iconsBtns'/></button>
-                  </td>
-              </tr>
-            })
-        }
+
+          opcion == 'menu' ? 
+          <TbodyMenu  total ={calcularTotalPaginas} lastIndex={lastIndex} firstIndex={firstIndex} handleShow={handleShow}/>
     
+          : opcion == 'usuario' &&  arrayInformacion !== null ?
+    arrayInformacion.slice(firstIndex, lastIndex).map(item => {
+     return <tr key={item.uid}>
+          <td>{item.nombre}</td>
+          <td>{item.email}</td>
+          <td key={item.estado._id}>{item.estado.nombre}</td>
+          <td key={item.rol._id}>{item.rol.rol}</td>
+          <td className='contenedor-operaciones'>
+          <button className='btnModificar' onClick={()=> {handleShow('update', item)}} ><AiFillEdit  className='iconsBtns'/></button>
+          <button className='btnEliminar' onClick={()=> {handleShow('delete', item.uid)}}><AiFillDelete  className='iconsBtns'/></button>
+          </td>
+      </tr>
+    })
+          : 
+          console.log(arrayInformacion)  
+          /*arrayInformacion.slice(firstIndex, lastIndex).map(item => {
+                return <tr key={item.codigo}>
+                    <td>{item.fecha}</td>
+                    <td>{item.usuario}</td>
+                    <td>{item.menu}</td>
+                    <td>{item.estado}</td>
+                    <td className='contenedor-operaciones'>
+                            <button className='btnModificar' onClick={()=> {handleShow('update' , item)}} ><AiFillEdit  className='iconsBtns'/></button>
+                            <button className='btnEliminar' onClick={()=> {handleShow('delete', item.codigo)}}><AiFillDelete  className='iconsBtns'/></button>
+                    </td>
+                </tr>
+              })*/
+            }
+        <th key={new Date()}colSpan={cabecera?.length} className='contenedor-paginacion'>
+    <Pagination>
+
+        {Array.from({ length: totalPages }).map((_, index) => (
+          <Pagination.Item
+            key={index}
+            active={index + 1 === currentPage}
+            onClick={() => handlePageChange(index + 1)}
+          >
+            {index + 1}
+          </Pagination.Item>
+        ))}
+      </Pagination>
+        </th>
       </tbody>
+      <tfoot  colSpan={cabecera?.length} >
+      </tfoot>
     </Table>
+    <Col xs={8}>
+    </Col>
             </Row>
             <Modal show={show}  onHide={() => setShow(false)}  size={ opcion == 'menu' ? "lg" : null} >
         <Modal.Header closeButton>
@@ -164,13 +189,20 @@ function TablaAdministracion({informacion, cabecera, title, opcion}){
         </Modal.Header>
         <Modal.Body  className='body-Formulario'>
         {
-         <Formulario 
+        isEditing ? 
+        <FormularioEditar 
+        handleShow= {handleShow} 
+        opcion={opcion}
+        />
+        : isRemoving? 
+        <FormularioEliminar 
+        handleShow= {handleShow} 
+        opcion={opcion}
+        />
+        :
+        <Formulario 
          handleShow= {handleShow} 
-         idItem = {idItem} 
-         isRemoving={isRemoving} 
-         isEditing={isEditing} 
          opcion={opcion}
-         addItem={addItem}
          />
         }
         </Modal.Body>
