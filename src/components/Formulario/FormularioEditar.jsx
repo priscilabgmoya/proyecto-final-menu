@@ -1,29 +1,27 @@
 import { useEffect } from "react";
+import Input from "../Input/Input";
 import './Formulario.css'; 
 import { useState } from "react";
-import { Form, Row, Col } from "react-bootstrap";
-import { obtenerEstadoUsuarios } from "../../api/estadoUsuario";
 import { MdCloudUpload } from "react-icons/md";
-import { obtenerRolUsuarios } from "../../api/rolUsuario";
+import { Form, Row, Col } from "react-bootstrap";
+import { menuInicial, usuarioInicial } from "../../helpers/helpDB";
 
-function Formulario({handleShow, idItem , isRemoving, isEditing , opcion ,addItem}){ 
+function FormularioEditar({handleShow, idItem , isRemoving, isEditing , opcion ,addItem}){ 
     const [validated, setValidated] = useState(false);
     const [isCreate, setIsCreate ] = useState(false);
-    const [objeto , setObjeto] = useState({});
     const [selectedImage, setSelectedImage] = useState(null);
-  const [responseEstados, setResponseEstados] = useState([]);
-  const [responseRoles, setResponseRoles] = useState([]);
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setSelectedImage(imageUrl);
-    }
-  };
+    const [objeto , setObjeto] = useState({});
     const handleChange =(event) => {
         setObjeto({...objeto, [event.target.name]: event.target.value});
     }
+    const handleImageChange = (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const imageUrl = URL.createObjectURL(file);
+        setSelectedImage(imageUrl);
+      }
+    };
     const Agregar = (event)=>{
         const form = event.currentTarget;
         console.log(form);
@@ -46,35 +44,25 @@ function Formulario({handleShow, idItem , isRemoving, isEditing , opcion ,addIte
         }
  
     }
-    const ObtenerEstados = async () => {
-      const res = await obtenerEstadoUsuarios();
-      setResponseEstados(res);
-    };
-    const ObtenerRoles = async () => {
-      const res = await obtenerRolUsuarios();
-      setResponseRoles(res);
-    };
-    useEffect(() => {
-      ObtenerEstados();
-      ObtenerRoles();
-    }, []);
+
 return(
     <Form  noValidate validated={validated}  onSubmit={Agregar}>
           <Row className="mb-2 ">
            { 
            opcion == 'menu' ? 
            <>
-            <Form.Group as={ Col } md="12" className="py-2">
-              <div
-                className={"contenedor-img"}
-              >
+            <Form.Group as={Col} md="12" className="py-2">
+            <div className={"contendor-update"}>
+              <div className={"contenedor-img-update"}>
+                <img src={''} alt="Imagen seleccionada" />
+              </div>
+              <div className={"contenedor-img-update"} >
                 {selectedImage && !isCreate ? (
                   <img src={selectedImage} alt="Imagen seleccionada" />
                 ) : (
-                  <div className="noFile">
-                    <MdCloudUpload className="iconFile" />
-                  </div>
+                  <div className="noFile"> <MdCloudUpload className="iconFile" /> </div>
                 )}
+              </div>
               </div>
             <Form.Label htmlFor='urlImagen'>{'Imagen'}:{" "}</Form.Label>
             <Form.Control
@@ -86,7 +74,7 @@ return(
             <Form.Control.Feedback type="invalid">{`Ingrese una imagen`} </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group as={Col} md="6" className="py-2">
+           <Form.Group as={Col} md="6" className="py-2">
             <Form.Label htmlFor={'nombre'}> {'Nombre'}:{" "} </Form.Label>
             <Form.Control
               type="text"
@@ -128,78 +116,34 @@ return(
             ></Form.Control>{" "}
             <Form.Control.Feedback type="invalid">{`Ingrese un detalle`} </Form.Control.Feedback>
           </Form.Group>
-
+    
            </>
-           :  
+           :  opcion == 'usuario' ?
            <>
-            <Form.Group as={Col} md="6" className="py-2">
-            <Form.Label htmlFor={'nombre'}> {'Nombre'}:{" "} </Form.Label>
-            <Form.Control
-              type="text" placeholder={`Ingrese un nombre`}
-              onChange={handleChange}
-              min={2} max={200} minLength={2} maxLength={200}
-              required name={'nombre'} id={'nombre'} />
-            <Form.Control.Feedback type="invalid"> {`Ingrese un nombre`} </Form.Control.Feedback>
-          </Form.Group>  
+           <Input texto="Nombre" readOnly={isEditing ? true : false}  values={isEditing ? informacion.nombre : null}  changeEvent={(e)=> {handleChange(e)} }/>
+          <Input texto="Email" readOnly={isEditing ? true : false}  values={isEditing ? informacion.email : null} />
+          <Input texto="Contraseña" readOnly={isEditing ? true : false}  values={isEditing ?' idItem.contraseña' : null} changeEvent={(e)=> {handleChange(e)} } />
+          <Input texto="Estado"  values={isEditing ? informacion.estado : null}  changeEvent={(e)=> {handleChange(e)} }/>
+          <Input texto="Rol" values={isEditing ? informacion.rol : null}   changeEvent={(e)=> {handleChange(e)} }/>
 
-          <Form.Group as={Col} md="6" className="py-2">
-            <Form.Label htmlFor={'email'}> {'Email'}: </Form.Label>
-            <Form.Control
-              type="email" placeholder={`Ingrese un email`}
-              onChange={handleChange}
-              min={2} max={200} minLength={2} maxLength={200}
-              required name={'email'} id={'email'} />
-            <Form.Control.Feedback type="invalid"> {`Ingrese un email `} </Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group as={Col} md="6" className="py-2">
-            <Form.Label htmlFor={'contraseña'}>{'Contraseña'}: </Form.Label>
-            <Form.Control
-              type="password" placeholder={`Ingrese una contraseña`}
-              onChange={handleChange}
-              min={2} max={10} minLength={2} maxLength={10}
-              required name={'contraseña'} id={'contraseña'}
-            />
-            <Form.Control.Feedback type="invalid">{`Ingrese una contraseña `}</Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group as={Col} md="6" className="py-2">
-            <Form.Label htmlFor={'estado'}>{'Estado'}:{" "} </Form.Label>
-            <Form.Select
-              required name={'estado'} id={'estado'}
-              onChange={handleChange}  >
-              <option value="" readOnly disabled selected > Seleccione una Opcion </option>
-              {
-               responseEstados.map((res) => {
-                    return  <option key={res._id} value={res._id}> {res.nombre} </option>
-                    })
-              }
-            </Form.Select>
-            <Form.Control.Feedback type="invalid"> {`seleccione un estado`} </Form.Control.Feedback>
-          </Form.Group>
-
-          <Form.Group as={Col} md="6" className="py-2">
-            <Form.Label htmlFor={'rol'}>{'Rol'}:{" "} </Form.Label>
-            <Form.Select
-              required name={'rol'} id={'rol'}
-              onChange={handleChange}  >
-              <option value="" readOnly disabled selected> Seleccione una Opcion </option>
-                {
-                 responseRoles.map((res) => {
-                    return <option key={res._id} value={res._id}>{res.rol}</option>
-                })
-              }
-            </Form.Select>
-            <Form.Control.Feedback type="invalid"> {`Seleccione un rol`} </Form.Control.Feedback>
-          </Form.Group>
          </>
+           : opcion == 'pedido'?
+           <>
+          <Input texto="Fecha" readOnly={isEditing ? true : false}   values={isEditing ? informacion.fecha : null}  changeEvent={(e)=> {handleChange(e)} }/>
+          <Input texto="Usuario" readOnly={isEditing ? true : false} values={isEditing ? informacion.usuario : null}  changeEvent={(e)=> {handleChange(e)} }/>
+          <Input texto="Menu" readOnly={isEditing ? true : false}    values={isEditing ? informacion.menu : null}  changeEvent={(e)=> {handleChange(e)} }/>
+          <Input texto="Estado" readOnly={isEditing ? true : false}  values={isEditing ? informacion.estado : null}  changeEvent={(e)=> {handleChange(e)} } />
+           </>
+           : null
            }
             <div className="contendor-btn">
             <button className='btnConfirmar' type="Submit">Guardar Menú</button>
              <button type="button" className='btnCancelar'onClick={handleShow } > Cancelar </button>
             </div>
+
+        
         </Row>
     </Form>
 );
 }
-export default Formulario; 
+export default FormularioEditar; 

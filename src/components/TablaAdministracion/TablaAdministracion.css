@@ -1,6 +1,6 @@
-td{
-    text-align: center;
-    vertical-align: middle;
+td, th{
+    text-align: center !important;
+    vertical-align: middle !important;
 }
 .title{
     display: flex;
@@ -8,7 +8,7 @@ td{
     align-items: center; 
 }
 .title h4{
-    text-align: center;
+    text-align: center !important;
     text-decoration: underline;
     color: white;
 }
@@ -32,6 +32,7 @@ td{
 }
 .btnNuevoMenu{
     background-color:lightgreen;
+    border: 1px solid lightgreen;
 }
 .btnNuevoCombo{
     background-color: #a7eaec;
@@ -57,16 +58,18 @@ td{
 }
 .btnModificar{
     background-color: rgb(255, 238, 82);
+    border: 1px solid rgb(255, 238, 82);
 }
 .btnEliminar{
     background-color:rgb(243, 86, 86);
+    border: 1px solid rgb(243, 86, 86);
 }
 
 .contenedor-operaciones {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 30px !important;
+    width: 100%;
 }
 .input-check{
     text-align: center;
@@ -84,9 +87,10 @@ table {
     overflow: visible;
   }
 .columnaImagen img{
-    width: 5rem !important;
+    width: 3rem !important;
     object-fit: cover;
 }
+
 .zoomed {
     position: absolute;
     top: 50%;
@@ -110,6 +114,34 @@ color: red !important;
     max-height: calc(131vh - 300px);
     overflow-y:  auto;
 }
+.buscador-tabla label{
+    color: var(--ghost-white); 
+    margin:  5px 10px;
+    font-size: 18px;
+}
+.buscador-tabla{
+    display: flex;
+    margin-top: 10px;
+}
+tfoot{
+    background-color: var(--ghost-white) !important;
+}
+
+.pagination{
+    width:  100% !important;
+    height: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center !important;
+}
+.pagination .page-link{
+    background-color:  var(--ghost-white);
+    color: var(--night); 
+}
+.pagination .page-item.active .page-link {
+    background-color: var(--amaranth-purple);
+    border-color:var(--amaranth-purple);
+  }
 @media all   and (max-width: 	768px) {
     .contenedor-operaciones {
         display: flex;

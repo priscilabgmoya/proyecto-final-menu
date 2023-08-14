@@ -9,7 +9,7 @@ function Error404(){
             </Row>
             <Row className="contenedor-btn">
                 <Col xxl={2} sm={2} md={2} lg={2} xl={2}> 
-                <Link type="button"  className="btn btn-danger" to={'/inicio'}>Ir al Inicio</Link>
+                <Link type="button"  className="btn btn-danger" to={'/'}>Ir al Inicio</Link>
                 </Col>
             </Row>
         </Container>

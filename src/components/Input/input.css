@@ -38,3 +38,21 @@
 .mensaje-oculto{
     display: none;
 }
+.contenedor-img-update{
+    width: 50% ;
+    height: 200px;
+    margin: 10px 0px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px blue dashed;
+}
+.contenedor-img-update img{
+    width: 300px;
+    height: 180px;
+    object-fit:contain;
+}
+.contendor-update{
+    display: flex;
+    gap: 7px;
+}

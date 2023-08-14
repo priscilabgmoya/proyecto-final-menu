@@ -15,12 +15,9 @@ main {
     --ghost-white: #fbfbffff;
     --vanilla: #f6f5aeff;
 }
-.swal-overlay{
-  top: -500px;
-}
+
 *{
    padding: 0px;
    margin: 0px;
    font-family: 'Mukta', sans-serif !important;
-    /*background-color: rgb(142, 150, 172);*/
 }
