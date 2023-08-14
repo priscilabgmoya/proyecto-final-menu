@@ -73,7 +73,6 @@ function Contacto() {
               <option value="Problemas en recuperacion de cuenta">
                 Problemas en recuperacion de cuenta
               </option>
-              <option value="4">Otro...</option>
             </Form.Select>{" "}
             <Form.Control.Feedback type="invalid"> Seleccione Un motivo de contacto</Form.Control.Feedback>
             <br /> <br />
@@ -95,9 +94,11 @@ function Contacto() {
               </button>
             </div>
           </Form>
-        </div>
+        </div> 
+        
       </div>
-      <div><FormularioPago></FormularioPago></div>
+      
+      <FormularioPago></FormularioPago>
     </>
   );
 }
