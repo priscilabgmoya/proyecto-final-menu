@@ -5,7 +5,8 @@ import {Form  }from 'react-bootstrap';
 import { useState } from "react";
 import { AiFillPhone } from "react-icons/ai";
 import { FaMapMarkedAlt } from "react-icons/fa";
-import FormularioPago from "../FormularioPago/FormularioPago";
+
+
 
 function Contacto() {
     const [validated, setValidated] = useState(false);
@@ -95,10 +96,11 @@ function Contacto() {
             </div>
           </Form>
         </div> 
+
         
       </div>
       
-      <FormularioPago></FormularioPago>
+      
     </>
   );
 }

@@ -6,6 +6,7 @@
 .content {
     padding: 10px;
 }
+
 .contenedorBotones{
     display: flex;
     flex-direction: column;
@@ -35,4 +36,11 @@
 }
 .totalFinal{
     color: red;
+}
+
+.modal-detalle{
+    max-height: fit-content !important;
+    background-color: linear-gradient(80deg,rgb(255, 160, 122, 0.7) , #ffa07a , #e5b39f ,white) !important;
+    border-radius: 10px !important;
+
 }

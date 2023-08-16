@@ -3,7 +3,14 @@ import {Offcanvas, Button}from 'react-bootstrap';
 import {AiOutlineShoppingCart } from "react-icons/ai";
 import MiniCard from '../miniCardPedido/MiniCard';
 import './Pedido.css'
+import Modal from "react-bootstrap/Modal"
+import Resumen from "../FormularioPago/Resumen"
+
 function Pedido({pedidos,eliminarPedido , total , modificarTotal, totalPedido,handleClosePedidos,showPedidos}){
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
     const [pedido, setPedidos] = useState(pedidos); 
     const [totalCompra, setTotalCompra] = useState(total);
@@ -55,8 +62,11 @@ function Pedido({pedidos,eliminarPedido , total , modificarTotal, totalPedido,ha
             <p className='total'><strong>Total:</strong> <span className='totalFinal'>$ {total}</span> </p>
           </div> 
           <div className='contenedorBotones'>
-            <Button className='btnInciarSesion' onClick={()=> {verPedido({"name": "priscila"}, totalPedido, totalCompra)}}>Iniciar Comprar</Button>
+            <Button onClick={handleShow} className='btnInciarSesion' >Iniciar Comprar</Button>
           </div>
+        <Modal className='modal-detalle' show={show} onHide={handleClose}>
+        <Resumen/>
+        </Modal>
         </Offcanvas.Body>
       </Offcanvas>
         </>

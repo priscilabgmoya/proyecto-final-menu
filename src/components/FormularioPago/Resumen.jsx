@@ -1,46 +1,21 @@
 import React, { useState } from 'react';
-import InputC from '../Input/InputC';
 import { Card } from 'react-bootstrap';
-import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
+import "./Resumen.css"
+import PagoTarjeta from './PagoTarjeta';
+
 // import axios from 'axios'
 
 
 
 const FormularioPago = () => {
- 
-const [preferenceId,setPreferenceId] = useState(null);
 
-initMercadoPago('TEST-5565acfa-f491-44e7-a3e0-2acb33862b90');
 
-    // TODO empieza por el minuto 35 aprox, te dejo comentado todo xd, xq sino salta 40 errores
-    // mercado pago functions
-    const createPreference = async () => {
-        try{
-            const response = await axios.post("http://localhost:8080/create_preference",{
-                description: "total a pagar",
-                price: '1200',
-                quantity : 1,
-            });
 
-            const { id} = response.data;
-            return id;
-        } catch (error){
-            console.log(error);
-        }
-    };
-
-    const handleBuy = async () => {
-    const id = await createPreference();
-    if (id) {
-    setPreferenceId(id);
-    }  
-}
-// SIGUE LA PARTE DEL BOTON AL FINAL DEL COSO
 
     return (
         <>
-            <div className='card'>
-                <div className='resumen'>
+            <div className=' card contenedor-resumen '>
+                <div className='resumen '>
                     <h1 className="encabezado">Resumen del pedido</h1>
                     <ul className='lista'>
                         <li className='lista-item mt-3'>
@@ -63,13 +38,13 @@ initMercadoPago('TEST-5565acfa-f491-44e7-a3e0-2acb33862b90');
                             <h3 className='precio '><strong>$300</strong></h3>
                         </li> 
                     </ul>
-                </div>
-                <div>
-                    <button className='boton-pagar' onClick={handleBuy}>paga</button>
-                    {preferenceId && <Wallet initialization={{ preferenceId }} />
-}
-                </div>
 
+                </div>
+                
+
+                <PagoTarjeta ></PagoTarjeta>
+
+                
             </div>
         </>
     );
