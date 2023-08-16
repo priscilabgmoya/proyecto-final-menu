@@ -6,6 +6,8 @@ import { useState } from "react";
 import { AiFillPhone } from "react-icons/ai";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import FormularioPago from "../FormularioPago/FormularioPago";
+import PerfilUsuario from "../PerfilUsuario/PerfilUsuario";
+
 
 function Contacto() {
     const [validated, setValidated] = useState(false);
@@ -20,6 +22,8 @@ function Contacto() {
     };
   return (
     <>
+          <PerfilUsuario></PerfilUsuario>
+
       <div className="padre">
         <div className=" hijo hijo1">
           <Titulo titulo="Localizacion" />
