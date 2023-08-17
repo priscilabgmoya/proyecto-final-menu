@@ -1,5 +1,5 @@
 .padre{
-    color: #adb5bd;
+    color: black !important;
     padding: 4px;
     display: flex;
     flex-wrap: wrap;
@@ -7,7 +7,7 @@
 }
 
 .hijo{
-    background-color: #5e5f63;
+    background: linear-gradient(80deg,rgb(255, 160, 122, 0.7) , #ffa07a , #e5b39f ,white) !important;
     width: 500px;
     text-align: center;
     padding: 5px;
@@ -42,10 +42,11 @@
     margin-top: 16px !important;
     outline: none !important;
     height: 45px !important;
-    border-radius: 5px !important;
+    border-radius: 10px !important;
     border: #495057 solid 1px !important;
     padding: 6px 12px !important;
-    color: #adb5bd !important;
+    color: black!important;
+    background-color: white !important;
 }
 
 .selector{
@@ -53,14 +54,21 @@
     height: 35px !important;
     border-radius:  1rem !important; ;
     border: #495057 solid 1px !important; 
-    background-color: #181b1ed5 !important;
-    color: #adb5bd !important;
+    background-color: white !important;
+    color: black !important;
     padding: 6px 12px ;
+}
+
+.prueba::placeholder{
+    color: black !important;
 }
 
 .btn{
     font-size: larger !important;
+    background-color: #fa6222 !important;
+    color: black !important;
 }
+
 
 /* .card{
     padding: 5px;
@@ -81,11 +89,9 @@ span{
     display: block !important;
 }
 
-
-.clear{
-    clear: both;
+btn:hover{
+    cursor: pointer !important;
 }
-
 .precio{
     float: right;
 }
@@ -105,4 +111,6 @@ span{
 .encabezado{
     margin-bottom: 25px;
 }
+
+
 

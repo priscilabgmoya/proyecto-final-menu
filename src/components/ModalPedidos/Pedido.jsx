@@ -4,7 +4,12 @@ import { Modal, Button } from 'react-bootstrap';
 import MiniCard from '../miniCardPedido/MiniCard';
 import './Pedido.css'
 import React from 'react';
+import Resumen from "../FormularioPago/Resumen"
 function Pedido({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, handleClosePedidos, showPedidos }) {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const [pedido, setPedidos] = useState(pedidos);
   const [totalCompra, setTotalCompra] = useState(total);
@@ -38,6 +43,7 @@ function Pedido({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, h
           <Modal.Body className="contenedorPerfil">
             <div className="scrollable-content"  >
           <div className='content'>
+            <Button className='btnInciarSesion' onClick={handleShow}>Ir a Pagar</Button>
             {
             pedido.map((item, index) => {
               return  <MiniCard key={index} 
@@ -60,9 +66,11 @@ function Pedido({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, h
           </Modal.Body>
           <Modal.Footer className='contenedorFooter'>
             <div className='contenedorBotones'>
-              <Button className='btnInciarSesion' onClick={() => { verPedido({ "name": "priscila" }, totalPedido, totalCompra) }}>Ir a Pagar</Button>
             </div>
           </Modal.Footer>  
+        </Modal>
+          <Modal className='modal-detalle' show={show} onHide={handleClose}>
+        <Resumen/>
         </Modal>
       </>
     );
