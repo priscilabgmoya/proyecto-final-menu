@@ -93,7 +93,7 @@ async function nuevoPedido(values){
           const data =   await res.json().then(data => {return data}); 
            return swal({
            title: 'Error!', 
-           text: `${data.msg}`,
+           text: `${data.mensaje}`,
            icon: 'error',
            buttons: 'Aceptar'
          })
