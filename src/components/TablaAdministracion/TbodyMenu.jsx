@@ -9,13 +9,15 @@ function TbodyMenu ({total,firstIndex,lastIndex, handleShow}){
      const cargarMenu = async () => {
         const data = await obtenerMenu();
         setInformacion(data); 
-        return  total(informacion);
+        return  ;
     }
+    total(informacion)
     useEffect(()=>{
         cargarMenu();  
    },[])
     const handlePublicadoChange = (index, publicado) => {
         debugger
+        
         if(publicado){
             swal({
                 title: "¿Desea ocultar el  Menú?",
