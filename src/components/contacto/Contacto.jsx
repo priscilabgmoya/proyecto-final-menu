@@ -5,7 +5,6 @@ import {Form  }from 'react-bootstrap';
 import { useState } from "react";
 import { AiFillPhone } from "react-icons/ai";
 import { FaMapMarkedAlt } from "react-icons/fa";
-import PerfilUsuario from "../PerfilUsuario/PerfilUsuario";
 import Cards from "react-credit-cards-2"
 
 
@@ -31,7 +30,7 @@ function Contacto() {
     };
   return (
     <>
-          <PerfilUsuario></PerfilUsuario>
+      
 
       <div className="padre">
         <div className=" hijo hijo1">
