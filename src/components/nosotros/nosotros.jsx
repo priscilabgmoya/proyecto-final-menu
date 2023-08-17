@@ -2,6 +2,10 @@ import './nosotros.css'
 import { Container, Card, Col, Row } from 'react-bootstrap';
 import { AiFillLinkedin, AiFillFacebook, AiFillGithub } from "react-icons/ai";
 import { Link } from 'react-router-dom';
+import avatarP from "../nosotros/myAvatar_pri.png"
+import avatarJM from "../nosotros/JMAvatar.svg"
+import avatarE from "../nosotros/myAvatarEmiliano.png"
+import avatarM from "../nosotros/myAvatar.png"
 
 function Anosotros() {
     return (
@@ -21,7 +25,7 @@ function Anosotros() {
                 </Card>
                 <Col xs={3} md={3} sm={3} lg={3}>
                     <Card  className='text-center'>
-                        <Card.Img variant="top" src="./src/img/myAvatar_pri.png" />
+                        <Card.Img variant="top" alt='avatar de priscila'  src={avatarP}/>
                         <Card.Body>
                             <Card.Title>Priscila Garcia Moya</Card.Title>
                             <Card.Text>
@@ -38,7 +42,7 @@ function Anosotros() {
                 </Col>
                 <Col xs={3} md={3} sm={3} lg={3}>
                     <Card  className='text-center'>
-                        <Card.Img variant="top" src="./src/img/JMAvatar.svg" />
+                        <Card.Img variant="top" alt='avatar de juan martin'  src={avatarJM}/>
                         <Card.Body>
                             <Card.Title>Juan Martin Raimondo</Card.Title>
                             <Card.Text>
@@ -57,7 +61,7 @@ function Anosotros() {
                 </Col>
                 <Col xs={3} md={3} sm={3} lg={3}>
                     <Card  className='text-center'>
-                        <Card.Img variant="top" src="./src/img/myAvatarEmiliano.png" />
+                        <Card.Img variant="top" alt='avatar de emiliano'  src={avatarE} />
                         <Card.Body>
                             <Card.Title>Emiliano Acosta</Card.Title>
                             <Card.Text>
@@ -75,7 +79,7 @@ function Anosotros() {
                 </Col>
                 <Col xs={3} md={3} sm={3} lg={3}>
                     <Card  className='text-center'>
-                        <Card.Img variant="top" src='./src/img/myAvatar.png' />
+                        <Card.Img variant="top" alt='avatar de martin' src={avatarM}/>
                         <Card.Body>
                             <Card.Title>Martin Rey</Card.Title>
                             <Card.Text>
@@ -92,7 +96,7 @@ function Anosotros() {
                 </Col>
                 <Col xs={3} md={3} sm={3} lg={3}>
                     <Card  className='text-center'>
-                        <Card.Img variant="top" src="./src/img/myAvatar.png" />
+                        <Card.Img variant="top" alt='avatar de joaquin'  src={avatarE}/>
                         <Card.Body>
                             <Card.Title>Joaquin Navarro  </Card.Title>
                             <Card.Text>
