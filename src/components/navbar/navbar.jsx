@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import './navbar.css';
-import { Container, Navbar, Nav, Button, ToastContainer, Toast, Dropdown } from 'react-bootstrap';
+import { Container, Navbar, Nav, Button, ToastContainer, Toast } from 'react-bootstrap';
 import { Link, Outlet } from "react-router-dom";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import Pedido from "../offCanvasPedido/Pedido";
+import Pedido from "../ModalPedidos/Pedido";
 import { GrLogin, GrLogout, GrEdit } from 'react-icons/gr';
 import { HiUserCircle } from 'react-icons/hi';
 import { useLogin } from '../../context/LoginContext';
@@ -36,7 +36,7 @@ const NavBars = ({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, 
 
               <Link className="nav-link" to="/quienesSomos">Sobre Nosotros</Link>
               <Link className="nav-link" to="/contactanos">Contactanos</Link>
-              
+
               <Outlet />
             </Nav>
             {
@@ -49,21 +49,24 @@ const NavBars = ({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, 
               <span className="badge rounded-circle shopNum">{totalPedido?.length}</span>
               <AiOutlineShoppingCart className='iconShop' />
             </Button>
+
           </Navbar.Collapse>
         </Container>
       </Navbar>
 
 
-      <Pedido
-        pedidos={pedidos}
-        eliminarPedido={eliminarPedido}
-        total={total}
-        modificarTotal={modificarTotal}
-        totalPedido={totalPedido}
-        cantidadPedido={cantidadPedido}
-        handleClosePedidos={() => { handleClosePedidos() }}
-        showPedidos={showPedidos}
-      />
+
+      <Pedido 
+            pedidos={pedidos} 
+            eliminarPedido={eliminarPedido} 
+            total={total} 
+            modificarTotal={modificarTotal} 
+            totalPedido={totalPedido}
+            cantidadPedido={cantidadPedido}
+            handleClosePedidos = {()=>{handleClosePedidos()}}
+            showPedidos={showPedidos}
+            />
+
 
       <Toast show={showA} onClose={toggleShowA} className="configuracionToast" >
         <Toast.Header></Toast.Header>
