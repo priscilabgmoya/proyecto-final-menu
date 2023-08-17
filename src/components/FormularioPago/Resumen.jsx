@@ -1,4 +1,7 @@
-
+import React, { useState } from 'react';
+import { Card } from 'react-bootstrap';
+import "./Resumen.css"
+import PagoTarjeta from './PagoTarjeta';
 
 
 
@@ -32,12 +35,7 @@ const FormularioPago = () => {
                         </li> 
                     </ul>
                 </div>
-                {/* <div>
-                    <button className='boton-pagar' onClick={handleBuy}></button>
-                    {preferenceId && <Wallet initialization={{ preferenceId }} />
-}
-                </div> */}
-
+                <PagoTarjeta ></PagoTarjeta>
             </div>
         </>
     );

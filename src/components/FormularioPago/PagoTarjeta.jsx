@@ -23,7 +23,7 @@ const PagoTarjeta = () => {
     }
 
     return (
-        <div className='card contenedor '>
+        <div className='card contenedor'>
             <Cards
                 number={state.number}
                 expiry={state.expiry}
@@ -99,5 +99,4 @@ const PagoTarjeta = () => {
         </div>
     );
 }
-
 export default PagoTarjeta;
