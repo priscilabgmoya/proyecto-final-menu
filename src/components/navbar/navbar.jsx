@@ -36,6 +36,7 @@ const NavBars = ({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, 
 
               <Link className="nav-link" to="/quienesSomos">Sobre Nosotros</Link>
               <Link className="nav-link" to="/contactanos">Contactanos</Link>
+
               <Outlet />
             </Nav>
             {
@@ -52,6 +53,7 @@ const NavBars = ({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, 
           </Navbar.Collapse>
         </Container>
       </Navbar>
+
 
 
       <Pedido 
