@@ -60,6 +60,7 @@
 .iconPerfil{
     font-size: 40px ;
 }
+
 .btnLogOut, .btnEditarPerfil{
     background-color: var(--ghost-white) !important;
     color: black !important;
@@ -78,7 +79,12 @@
     align-items: center;
     flex-direction: column;
 }
-
+.textoModificacion{
+    color: var(--ghost-white);
+    font-size: 20px;
+    font-weight: 500;
+    margin: 5px;
+}
 .configuracionToast{
     position: fixed !important;
     top: 66px  !important;

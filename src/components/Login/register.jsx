@@ -11,8 +11,8 @@ const Register = () => {
        nombre: "", 
         email: "",
         contraseña: "",
-        rol: "usuario", 
-        estado: "activo"
+        rol: "64cbba69610ffdd35dafa457", 
+        estado: "64cd7db92a13bbf308f05c84"
     })
     const {user, isAuthenticated } = useLogin();
     const handleChange = (e) => {
@@ -32,7 +32,7 @@ const Register = () => {
           setValidated(true);
         }else {
             e.preventDefault();
-            debugger
+            
           await crearNuevoUsuario(form, values); 
         }
     }

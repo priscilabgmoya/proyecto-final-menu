@@ -21,3 +21,6 @@ main {
    margin: 0px;
    font-family: 'Mukta', sans-serif !important;
 }
+.container{
+  flex-grow: 1;
+}

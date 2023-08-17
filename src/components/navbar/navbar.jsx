@@ -7,14 +7,20 @@ import Pedido from "../offCanvasPedido/Pedido";
 import {GrLogin ,GrLogout , GrEdit} from 'react-icons/gr';
 import {HiUserCircle} from 'react-icons/hi';
 import { useLogin } from '../../context/LoginContext';
+
 const NavBars = ({pedidos,eliminarPedido,total,modificarTotal,totalPedido , cantidadPedido}) => {
+
   const [showPedidos, setShowPedidos] = useState(false);
   const handleClosePedidos = () => setShowPedidos(false);
   const handleShowPedidos = () => setShowPedidos(!showPedidos);
   const [showA, setShowA] = useState(false);
   const toggleShowA = () => setShowA(!showA);
-  const {login , user, isAuthenticated } = useLogin();
+  const {user, isAuthenticated ,logout } = useLogin();
 
+const cerrarSesion = () => {
+  toggleShowA();
+  logout()
+}
   return (
     <>
    
@@ -40,9 +46,11 @@ const NavBars = ({pedidos,eliminarPedido,total,modificarTotal,totalPedido , cant
             </Nav>
             {
               isAuthenticated ?   
- 
-                <Link className="nav-link log"onClick={toggleShowA} > <HiUserCircle className="iconPerfil"/></Link>
-              :  <Link className="nav-link log" to="/login"> <GrLogin />Login</Link>
+              <div>
+              <Link className="nav-link log"onClick={toggleShowA} > <HiUserCircle className="iconPerfil"/></Link>
+            
+              </div>
+              :  <Link className="nav-link log" to="/login"> Login</Link>
             }
           <Button variant="primary" onClick={handleShowPedidos} className=" btnShop" >
       <span  className="badge rounded-circle shopNum">{totalPedido?.length}</span>
@@ -67,8 +75,9 @@ const NavBars = ({pedidos,eliminarPedido,total,modificarTotal,totalPedido , cant
 <Toast show={showA} onClose={toggleShowA}    className="configuracionToast" >
           <Toast.Header></Toast.Header>
           <Toast.Body className="contenedorPerfil">
+          <span className="textoModificacion">{`Hola ${user?.usuario.nombre}`}</span>
             <Link  to="/perfilUsuario" className="btnEditarPerfil" > <GrEdit/> Editar Perfil </Link>
-            <Button className="btnLogOut"><GrLogout/> Cerrar Sesion </Button>
+            <Button className="btnLogOut"onClick={cerrarSesion} ><GrLogout/> Cerrar Sesion </Button>
             </Toast.Body>
   </Toast>
 

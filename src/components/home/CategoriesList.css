@@ -50,15 +50,14 @@
   color: black !important;
 }
 .descuento-menu{
-  margin: 6px;
+  margin: 3px;
   background-color: red;
-  color:  var(--ghost-white);
-  padding: 4px ;
-  width: 70px;
+  color: var(--ghost-white) !important;
+  padding:  0px 5px;
+  width: 84px;
   height: 30px;
   border: red solid 1px;
-  border-radius: 20px;
-
+  border-radius: 20px
 }
 @media (max-width: 767.98px) {
   aside {
