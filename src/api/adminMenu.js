@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 const cookies = Cookies.get();
-import { URL_GET_MENU, URL_GET_MENUES_ADMIN, URL_POST_MENU, URL_PUT_MENU } from "../config";
+import { URL_DELETE_MENU, URL_GET_MENU, URL_GET_MENUES_ADMIN, URL_POST_MENU, URL_PUT_MENU } from "../config";
 import { validarMenuNuevo } from "../helpers/ValidarExpresionesRegulares";
 function obtenerMenu(){
     const res =  fetch(`${URL_GET_MENUES_ADMIN}`,{
