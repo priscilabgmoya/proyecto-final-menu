@@ -36,28 +36,27 @@ function Pedido({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, h
 
     return (
       <>
-        <Modal show={showPedidos} onHide={handleClosePedidos}>
+        <Modal show={showPedidos} onHide={handleClosePedidos} className="contenedorPerfil">
             <Modal.Header closeButton onClick={handleClosePedidos}>
             <Modal.Title className='tituloPedidos' > Pedidos</Modal.Title>
           </Modal.Header>
-          <Modal.Body className="contenedorPerfil">
+          <Modal.Body >
             <div className="scrollable-content"  >
           <div className='content'>
-            <Button className='btnInciarSesion' onClick={handleShow}>Ir a Pagar</Button>
             {
-            pedido.map((item, index) => {
-              return  <MiniCard key={index} 
-              urlImagen={item.urlImagen} 
-              nombre={item.nombre} 
-              precio={item.precio} 
-              descuento={item.descuento} 
-              montoDescuento={item.porcentaje}
-              eliminarPedido={()=>{eliminarCardPedido(item.codigo)}}
-              modificarTotal={modificarTotal}
-              pedidoHome={totalPedido}
-              />
-            })
-              }
+              pedido.map((item, index) => {
+                return  <MiniCard key={index} 
+                urlImagen={item.urlImagen} 
+                nombre={item.nombre} 
+                precio={item.precio} 
+                descuento={item.descuento} 
+                montoDescuento={item.porcentaje}
+                eliminarPedido={()=>{eliminarCardPedido(item.codigo)}}
+                modificarTotal={modificarTotal}
+                pedidoHome={totalPedido}
+                />
+              })
+            }
               </div>
             </div>
             <div className='contendorTotal'>
@@ -65,10 +64,10 @@ function Pedido({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, h
             </div>
           </Modal.Body>
           <Modal.Footer className='contenedorFooter'>
-            <div className='contenedorBotones'>
-            </div>
+            <Button className='btnInciarSesion' onClick={handleShow}>Ir a Pagar</Button>
           </Modal.Footer>  
         </Modal>
+        
           <Modal className='modal-detalle' show={show} onHide={handleClose}>
         <Resumen/>
         </Modal>
