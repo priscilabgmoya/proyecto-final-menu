@@ -3,15 +3,19 @@ import { Card } from 'react-bootstrap';
 import "./Resumen.css"
 import PagoTarjeta from './PagoTarjeta';
 
+// import axios from 'axios'
+
 
 
 const FormularioPago = () => {
- 
+
+
+
 
     return (
         <>
-            <div className='card'>
-                <div className='resumen'>
+            <div className=' card contenedor-resumen '>
+                <div className='resumen '>
                     <h1 className="encabezado">Resumen del pedido</h1>
                     <ul className='lista'>
                         <li className='lista-item mt-3'>
@@ -34,8 +38,13 @@ const FormularioPago = () => {
                             <h3 className='precio '><strong>$300</strong></h3>
                         </li> 
                     </ul>
+
                 </div>
+                
+
                 <PagoTarjeta ></PagoTarjeta>
+
+                
             </div>
         </>
     );

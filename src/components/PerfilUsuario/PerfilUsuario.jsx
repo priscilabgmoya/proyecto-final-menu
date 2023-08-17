@@ -15,17 +15,19 @@ function PerfilUsuario() {
                 Launch static backdrop modal
             </Button>
 
-            <Modal
+
+<Modal
                 show={show}
                 onHide={handleClose}
                 backdrop="static"
                 keyboard={false}
-                className='modal-color'
+                
             >
+                <div className='modal-color' >
                 <Modal.Header closeButton>
                     <Modal.Title>Modificacion de usuario</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>
+                <Modal.Body >
                     <div className='mt-3'> 
                         <label htmlFor="correo">correo electronico</label> <br />
                         <input className='input-usuario' type="email"  id='correo' />
@@ -45,7 +47,10 @@ function PerfilUsuario() {
                     </Button>
                     <Button variant="primary">guardar cambios</Button>
                 </Modal.Footer>
+                </div>
             </Modal>
+            
+                
         </>
     );
 }

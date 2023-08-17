@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Cards from 'react-credit-cards-2';
 import "./PagoTarjeta.css"
 import { Card } from 'react-bootstrap';
+import 'react-credit-cards-2/dist/es/styles-compiled.css';
 
 const PagoTarjeta = () => {
     const [state, setState] = useState({
@@ -23,7 +24,9 @@ const PagoTarjeta = () => {
     }
 
     return (
-        <div className='card contenedor'>
+        <>
+        <div className='card contenedor '>
+            <div className='tarjeta'>
             <Cards
                 number={state.number}
                 expiry={state.expiry}
@@ -31,6 +34,7 @@ const PagoTarjeta = () => {
                 name={state.name}
                 focused={state.focus}
             />
+            </div>
             <form>
                 <div className='form-group mt-4'>
 
@@ -97,6 +101,8 @@ const PagoTarjeta = () => {
 
             </form>
         </div>
-    );
+        </>);
+    
 }
+
 export default PagoTarjeta;

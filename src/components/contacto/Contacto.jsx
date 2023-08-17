@@ -5,13 +5,21 @@ import {Form  }from 'react-bootstrap';
 import { useState } from "react";
 import { AiFillPhone } from "react-icons/ai";
 import { FaMapMarkedAlt } from "react-icons/fa";
-import FormularioPago from "../FormularioPago/FormularioPago";
 import PerfilUsuario from "../PerfilUsuario/PerfilUsuario";
+import Cards from "react-credit-cards-2"
 
 
 
 function Contacto() {
     const [validated, setValidated] = useState(false);
+
+    const [state, setState] = useState({
+      number: '',
+      expiry: '',
+      cvc: '',
+      name: '',
+      focus: '',
+  });
 
     const handleSubmit = (event) => {
       const form = event.currentTarget;
@@ -101,10 +109,16 @@ function Contacto() {
           </Form>
         </div> 
 
-        
+
       </div>
-      
-      
+      <div className="card">       <Cards
+                number={state.number}
+                expiry={state.expiry}
+                cvc={state.cvc}
+                name={state.name}
+                focused={state.focus}
+            /></div>
+
     </>
   );
 }
