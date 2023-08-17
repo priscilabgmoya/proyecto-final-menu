@@ -5,9 +5,11 @@ import MiniCard from '../miniCardPedido/MiniCard';
 import './Pedido.css'
 import React from 'react';
 import Resumen from "../FormularioPago/Resumen"
+import { useLogin } from '../../context/LoginContext';
+import { nuevoPedido } from '../../api/adminPedidos';
 function Pedido({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, handleClosePedidos, showPedidos }) {
   const [show, setShow] = useState(false);
-
+  const {user} = useLogin()
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -22,14 +24,18 @@ function Pedido({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, h
   const eliminarCardPedido = (id) => {
     eliminarPedido(id);
   }
-
-  const verPedido = (usuario, pedido, total) => {
-    console.log({
-      "usuario": usuario,
-      "pedido": pedido,
-      "total": total,
-      "estado": "pendiente"
-    });
+const agregarNuevoPedido = async (pedido) =>{
+  await nuevoPedido(pedido)
+}
+  const verPedido = () => {
+    handleShow()
+    let nuevoPedido = {
+      "usuario": user.usuario.id,
+      "menu": totalPedido,
+      "precio": "" + total ,
+      "estado": "64d96e3ae9674438c0579d08"
+    }
+    agregarNuevoPedido(nuevoPedido)
   }
 
   {
@@ -51,7 +57,7 @@ function Pedido({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, h
                 precio={item.precio} 
                 descuento={item.descuento} 
                 montoDescuento={item.porcentaje}
-                eliminarPedido={()=>{eliminarCardPedido(item.codigo)}}
+                eliminarPedido={()=>{eliminarCardPedido(item._id)}}
                 modificarTotal={modificarTotal}
                 pedidoHome={totalPedido}
                 />
@@ -60,16 +66,16 @@ function Pedido({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, h
               </div>
             </div>
             <div className='contendorTotal'>
-              <p className='total'><strong>Total:</strong> <span className='totalFinal'>$ {total}</span> </p>
+              <p className='total'><strong>Total:</strong> <span className='totalFinal'>$ {totalCompra}</span> </p>
             </div>
           </Modal.Body>
           <Modal.Footer className='contenedorFooter'>
-            <Button className='btnInciarSesion' onClick={handleShow}>Ir a Pagar</Button>
+            <Button className='btn-resumen' onClick={verPedido} disabled={totalPedido.length !== 0 ? false : true }>Ir a Pagar</Button>
           </Modal.Footer>  
         </Modal>
-        
-          <Modal className='modal-detalle' show={show} onHide={handleClose}>
-        <Resumen/>
+
+          <Modal className='modal-detalle' show={show} onHide={handleClose} >
+        <Resumen pedidos={totalPedido} total ={totalCompra} />
         </Modal>
       </>
     );

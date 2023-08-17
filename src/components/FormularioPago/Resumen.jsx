@@ -7,9 +7,9 @@ import PagoTarjeta from './PagoTarjeta';
 
 
 
-const FormularioPago = () => {
 
-
+const FormularioPago = ({total, pedidos}) => {
+ 
 
 
     return (
@@ -18,24 +18,18 @@ const FormularioPago = () => {
                 <div className='resumen '>
                     <h1 className="encabezado">Resumen del pedido</h1>
                     <ul className='lista'>
-                        <li className='lista-item mt-3'>
-                            <span className='descripcion clear'> hola</span>
-                            <span className='precio '>$200</span>
-                        </li> b
-                        
-                        <li className='lista-item mt-3'>
-                            <span className='descripcion clear' >hola2</span>
-                            <span className='precio ' >$300</span>
-                        </li> a
-                        
-                        <li className='lista-item mt-3'>
-                            <span className='descripcion clear' >hola2</span>
-                            <span className='precio ' >$300</span>
-                        </li> b
-
+                        {
+                            pedidos?.map((ped, index) => {
+                                return   <li key={index} className='lista-item mt-3'>
+                                <span className='descripcion clear'>{`${ped.menu} X ${ped.cantidad}`}</span>
+                                <span className='precio '>{``}</span>
+                            </li> 
+                            })
+                        }
+                
                         <li className='lista-item mt-3'> 
-                            <h3 className='descripcion clear'><strong>h2ola</strong></h3>
-                            <h3 className='precio '><strong>$300</strong></h3>
+                            <h3 className='descripcion clear'><strong>Total</strong></h3>
+                            <h3 className='precio '><strong>{`$ ${total}`}</strong></h3>
                         </li> 
                     </ul>
 

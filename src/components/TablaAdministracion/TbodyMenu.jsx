@@ -1,22 +1,15 @@
 import { useEffect, useState } from 'react';
 import './TablaAdministracion.css'; 
-import { modificarMenu, obtenerMenu } from '../../api/adminMenu';
+import { modificarMenu } from '../../api/adminMenu';
 import {AiFillEdit ,AiFillDelete} from 'react-icons/ai';
-function TbodyMenu ({total,firstIndex,lastIndex, handleShow , change }){
-
-    const [informacion , setInformacion] = useState([]);
-
-     const cargarMenu = async () => {
-        const data = await obtenerMenu();
-        setInformacion(data); 
-        return  ;
-    }
-    total(informacion)
+import { useLogin } from '../../context/LoginContext';
+function TbodyMenu ({total,firstIndex,lastIndex, handleShow }){
+  const {menues , cargarMenu} = useLogin()
     useEffect(()=>{
         cargarMenu();  
    },[])
    
-   total(informacion);
+   total(menues);
     const handlePublicadoChange = (index, publicado) => {
         if(publicado){
             swal({
@@ -119,7 +112,7 @@ function TbodyMenu ({total,firstIndex,lastIndex, handleShow , change }){
         <>
         {
 
-        informacion?.slice(firstIndex, lastIndex).map((item, index) => {
+menues?.slice(firstIndex, lastIndex).map((item, index) => {
         return <tr key={item._id}>
              <td className={'columnaImagen'}> 
              <img src={`${item.urlImagen}`} alt={`imagen-de-${item.nombre}`}/>

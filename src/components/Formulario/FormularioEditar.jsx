@@ -7,8 +7,9 @@ import { ObtenerEstados, ObtenerEstadosPedidos, ObtenerRoles } from "../../helpe
 import { buscarMenuAdmin, modificarMenu } from "../../api/adminMenu";
 import { buscarUsuarioAdmin, modificarUsuario } from "../../api/adminUsuario";
 import { buscarPedidoAdmin, modificarPedido } from "../../api/adminPedidos";
-
+import { useLogin } from '../../context/LoginContext';
 function FormularioEditar({handleShow, idItem , opcion }){ 
+  const {cargarMenu ,cargarUsuarios , cargarPedidos} = useLogin();
     const [validated, setValidated] = useState(false);
     const [isCreate, setIsCreate ] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null);
@@ -57,6 +58,7 @@ function FormularioEditar({handleShow, idItem , opcion }){
            await modificarMenu(id,informacion);
            setIsCreate(true)
            handleShow();
+           cargarMenu();
           break;
           case 'usuario':
             const { estado, rol, ...objetocopia} = informacion; 
@@ -67,6 +69,7 @@ function FormularioEditar({handleShow, idItem , opcion }){
             }
             await modificarUsuario(usuarioModificado); 
             handleShow();
+            cargarUsuarios();
           break;
           case 'pedido':
             const estadoPedido = informacion.estado;
@@ -77,6 +80,7 @@ function FormularioEditar({handleShow, idItem , opcion }){
             }
           await modificarPedido(pedidoModificado);
          handleShow();
+         cargarPedidos();
           break;
       }
       }
@@ -263,7 +267,7 @@ return(
            </>
            }
             <div className="contendor-btn">
-            <button className='btnConfirmar' type="Submit">Guardar Menú</button>
+            <button className='btnConfirmar' type="Submit">{opcion == 'menu' ? "Guardar Menú" : opcion == 'usuario' ? "Guardar Usuario" : "Guardar Pedido"}</button>
              <button type="button" className='btnCancelar'onClick={handleShow } > Cancelar </button>
             </div>
 

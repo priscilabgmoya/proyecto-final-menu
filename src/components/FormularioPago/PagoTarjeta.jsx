@@ -91,7 +91,7 @@ const PagoTarjeta = () => {
                         /></div>
                 </div>
                 <div className='d-flex contenedor-boton'>
-              <button className="btn w-50 mt-4" type="submit">
+              <button className="btn-resumen w-50 mt-4" type="submit">
                 {" "}
                 <strong>Pagar</strong>{" "}
               </button>

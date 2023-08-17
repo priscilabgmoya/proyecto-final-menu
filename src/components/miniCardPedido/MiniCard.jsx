@@ -36,9 +36,6 @@ function MiniCard({urlImagen,nombre, precio ,descuento,montoDescuento,eliminarPe
            </div>
            <div className='texto-card'>
             {
-                 
-            }
-            {
                 `${nombre} `
             }
             <br />

@@ -8,6 +8,7 @@ import { GrLogin, GrLogout, GrEdit } from 'react-icons/gr';
 import { HiUserCircle } from 'react-icons/hi';
 import { useLogin } from '../../context/LoginContext';
 
+
 const NavBars = ({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, cantidadPedido }) => {
 
   const [showPedidos, setShowPedidos] = useState(false);
@@ -15,6 +16,7 @@ const NavBars = ({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, 
   const handleShowPedidos = () => setShowPedidos(!showPedidos);
   const [showA, setShowA] = useState(false);
   const toggleShowA = () => setShowA(!showA);
+
 
   const {user, isAuthenticated ,logout } = useLogin();
 
@@ -56,7 +58,7 @@ const cerrarSesion = () => {
               :  <Link className="nav-link log" to="/login"> Login</Link>
 
             }
-            <Button variant="primary" onClick={handleShowPedidos} className=" btnShop" >
+            <Button variant="primary" onClick={handleShowPedidos} className="btnShop" >
               <span className="badge rounded-circle shopNum">{totalPedido?.length}</span>
               <AiOutlineShoppingCart className='iconShop' />
             </Button>
@@ -83,12 +85,9 @@ const cerrarSesion = () => {
           <Toast.Header></Toast.Header>
           <Toast.Body className="contenedorPerfil">
           <span className="textoModificacion">{`Hola ${user?.usuario.nombre}`}</span>
-            <Link  to="/perfilUsuario" className="btnEditarPerfil" > <GrEdit/> Editar Perfil </Link>
             <Button className="btnLogOut"onClick={cerrarSesion} ><GrLogout/> Cerrar Sesion </Button>
             </Toast.Body>
   </Toast>
-
-
     </>
   )
 }

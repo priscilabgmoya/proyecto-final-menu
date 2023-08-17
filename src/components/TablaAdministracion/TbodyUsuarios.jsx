@@ -1,25 +1,20 @@
 import './TablaAdministracion.css'; 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {AiFillEdit ,AiFillDelete} from 'react-icons/ai';
-import { obtenerUsuarios } from '../../api/adminUsuario';
+import { useLogin } from '../../context/LoginContext';
 
-function TbodyUsuario ({total,firstIndex,lastIndex, handleShow , change }){
-    const [informacion , setInformacion] = useState([]);
+function TbodyUsuario ({total,firstIndex,lastIndex, handleShow  }){
+    const {usuarios, cargarUsuarios} = useLogin();
 
-    const cargarUsuarios = async () => {
-       const data = await obtenerUsuarios();
-       setInformacion(data); 
-       return  ;
-   }
    useEffect(()=>{
     cargarUsuarios();  
   },[])
   
-  total(informacion);
+  total(usuarios);
     return(
         <>
         {
-                informacion?.slice(firstIndex, lastIndex).map(item => {
+                usuarios?.slice(firstIndex, lastIndex).map(item => {
                     return <tr key={item.uid}>
                          <td>{item.nombre}</td>
                          <td>{item.email}</td>
