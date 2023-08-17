@@ -2,20 +2,22 @@ import { useEffect, useState } from 'react';
 import './TablaAdministracion.css'; 
 import { modificarMenu, obtenerMenu } from '../../api/adminMenu';
 import {AiFillEdit ,AiFillDelete} from 'react-icons/ai';
-function TbodyMenu ({total,firstIndex,lastIndex, handleShow}){
+function TbodyMenu ({total,firstIndex,lastIndex, handleShow , change }){
 
     const [informacion , setInformacion] = useState([]);
 
      const cargarMenu = async () => {
         const data = await obtenerMenu();
         setInformacion(data); 
-        return  total(informacion);
+        return  ;
     }
+    total(informacion)
     useEffect(()=>{
         cargarMenu();  
    },[])
+   
+   total(informacion);
     const handlePublicadoChange = (index, publicado) => {
-        debugger
         if(publicado){
             swal({
                 title: "¿Desea ocultar el  Menú?",
@@ -116,8 +118,8 @@ function TbodyMenu ({total,firstIndex,lastIndex, handleShow}){
     return(
         <>
         {
-        informacion !== null ? 
-        informacion.slice(firstIndex, lastIndex).map((item, index) => {
+
+        informacion?.slice(firstIndex, lastIndex).map((item, index) => {
         return <tr key={item._id}>
              <td className={'columnaImagen'}> 
              <img src={`${item.urlImagen}`} alt={`imagen-de-${item.nombre}`}/>
@@ -135,7 +137,6 @@ function TbodyMenu ({total,firstIndex,lastIndex, handleShow}){
              </td>
          </tr>
        })
-       : <div className='titulo-home'>C A R G A N D O. . .</div>
     }
         </>
     ); 
