@@ -6,23 +6,29 @@
 .content {
     padding: 10px;
 }
+.tituloPedidos{
+    font-size:25px !important;
+}
 .contenedorBotones{
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 .btnInciarSesion, .btnIrAlCarrito {
-    width: 70%;
-    margin: 0.7px 0px;
-    padding: 5px 20px !important;
+    
+    margin: 10px !important;
     border-radius: 20px !important;
     font-size: 20px !important;
 }
 .btnInciarSesion{
-    background-color: green !important;
+    background-color: rgb(73, 170, 73) !important;
     border: green !important;
-  
+    
+}
+.btnInciarSesion:hover{
+    background-color: rgb(117, 183, 117) !important;
+    border: green !important;
 }
 
 .btnIrAlCarrito{
@@ -34,5 +40,6 @@
     font-size: 20px;
 }
 .totalFinal{
-    color: red;
+    color: rgb(223, 58, 58);
 }
+

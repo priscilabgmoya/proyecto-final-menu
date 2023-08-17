@@ -10,13 +10,20 @@
     position: fixed ;
     top: 0;
     width: 100%;
-    background-color: var(--amaranth-purple);
+    background-color: rgb(255, 160, 122, 0.5);
     color: var(--ghost-white);
     
 }
 
 .navBarFriky .nav-link{
     color: var(--ghost-white) !important;
+    padding: 10px;
+}
+
+.navBarFriky .nav-link:hover{
+    transition: 300ms all;
+    color: rgb(34, 32, 32) !important;
+    font-size: 20px;
 }
 
 .logo-nav{
@@ -37,7 +44,7 @@
 }
 .btnShop{
     border-radius:25px !important ;
-    background-color: var(--amaranth-purple) !important;
+    background-color: transparent !important;
     width: 50px;
     height: 50px;
     border: none !important; 
@@ -47,7 +54,7 @@
     position: absolute !important;
     top: 2px !important;
     left: 62%;
-    background: orange;
+    background: rgb(38, 34, 34, 0.8);
     width: 20px;
     height: 20px;
     border-radius: 20%;

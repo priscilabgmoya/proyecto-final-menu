@@ -11,6 +11,7 @@ function TbodyMenu ({total,firstIndex,lastIndex, handleShow , change }){
         setInformacion(data); 
         return  ;
     }
+    total(informacion)
     useEffect(()=>{
         cargarMenu();  
    },[])
