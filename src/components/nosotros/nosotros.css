@@ -6,17 +6,44 @@
     height: 100% !important;
     margin: 5px 0px;
     padding: 10px !important;
-    background-color: bisque;
 }
 .contendorCardsNosotros{
     display: flex;
     justify-content: space-around;
     gap: 10px;
     padding: 10px 0px;
+    border: none !;
+}
+
+.contenedorFrase{
+    background-color: transparent !important;
+    color: white;
+    border: none !important;
+    font-size: 18px;
+    text-align: justify;
+    padding: 10px;
+}
+
+.tituloSobreNosotros{
+    color: white !important;
+    text-align: center;
+    font-size:50px !important;
 }
 .text-center {
     display: flex;
     width: 100% !important;
+}
+
+.iconLinkedin , .iconFacebook , .iconGithub{
+    font-size: 25px;
+    margin: 5px;
+    color: rgb(34, 32, 32);
+}
+
+.iconLinkedin:hover , .iconFacebook:hover , .iconGithub:hover{
+    font-size: 25px;
+    margin: 5px;
+    color: rgba(161, 64, 26, 0.5);
 }
 
 @media (max-width : 426px) {
@@ -37,7 +64,7 @@
         height: fit-content;
         width:100% !important;
         margin: 10px 0px;
-        background-color: bisque;
+        
     }
     
 }
@@ -57,7 +84,7 @@
         width: 100%;
         margin: 10px 0px;
         padding: 5px;
-        background-color: bisque;
+        
     }
     
 }
