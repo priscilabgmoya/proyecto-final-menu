@@ -1,0 +1,137 @@
+:root{
+    --night: #000f08ff;
+    --paynes-gray: #5d737eff;
+    --amaranth-purple: #a5243dff;
+    --ghost-white: #fbfbffff;
+    --vanilla: #f6f5aeff;
+}
+
+.header-nav{
+    position: fixed ;
+    top: 0;
+    width: 100%;
+    background-color: rgb(255, 160, 122, 0.5);
+    color: var(--ghost-white);
+    
+}
+
+.navBarFriky .nav-link{
+    color: var(--ghost-white) !important;
+    padding: 10px;
+}
+
+.navBarFriky .nav-link:hover{
+    transition: 300ms all;
+    color: rgb(34, 32, 32) !important;
+    font-size: 20px;
+}
+
+.logo-nav{
+    font-size: 1.3rem;
+    color: var(--ghost-white);
+    text-decoration: none;
+}
+
+.reg{
+    padding-left: 2rem !important;
+}
+
+.iconShop{
+    font-size: 30px !important; 
+    margin: -6px;
+    padding: 0px;
+    color: white;
+}
+.btnShop{
+    border-radius:25px !important ;
+    background-color: transparent !important;
+    width: 50px;
+    height: 50px;
+    border: none !important; 
+    position: relative !important;
+}
+.shopNum {
+    position: absolute !important;
+    top: 2px !important;
+    left: 62%;
+    background: rgb(38, 34, 34, 0.8);
+    width: 20px;
+    height: 20px;
+    border-radius: 20%;
+    text-align: center !important;
+    vertical-align: middle !important;
+    color: white;
+    padding: 2px !important;
+    font-size: 15px !important;
+}
+.iconPerfil{
+    font-size: 40px ;
+}
+
+.btnLogOut, .btnEditarPerfil{
+    background-color: var(--ghost-white) !important;
+    color: black !important;
+    border: none !important;
+    margin: 10px 15px;
+    padding: 8px 20px ;
+    border-radius: 20px !important;
+    font-size: 16px ;
+    text-align: center;
+    text-decoration: none !important;
+    vertical-align: middle;
+}
+.contenedorPerfil{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    flex-direction: column;
+}
+.textoModificacion{
+    color: var(--ghost-white);
+    font-size: 20px;
+    font-weight: 500;
+    margin: 5px;
+}
+.configuracionToast{
+    position: fixed !important;
+    top: 66px  !important;
+    z-index: 1 !important;
+    left: 953px;
+    background-color: rgb(255, 160, 122) !important;
+}
+@media screen and (max-width: 631px) {
+    .reg{
+        padding-left: 0 !important;
+        padding-top: 1rem !important;
+    }
+
+    .log{
+        padding-top: 0.5rem !important;
+    }
+    .configuracionToast{
+        z-index: 1 !important;
+        top: 30px  !important;
+        left: 0px;
+        width: 100% !important;
+    }
+}
+@media screen and (min-width: 632px) and (max-width: 820px ) {
+    .configuracionToast{
+        z-index: 1 !important;
+        top: 250px  !important;
+        left: 250px;
+    }
+}
+@media screen and (min-width: 821px) and (max-width: 1280px ) {
+    .configuracionToast{
+        z-index: 1 !important;
+        top: 65px  !important;
+        left: 672px;
+    }
+}
+
+
+
+
+
+
