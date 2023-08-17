@@ -7,7 +7,9 @@
 main {
     flex-grow: 1 !important;
   }
-
+body{
+  padding: 1px;
+}
 :root{
     --night: #000f08ff;
     --paynes-gray: #5d737eff;

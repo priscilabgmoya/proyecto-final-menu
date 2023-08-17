@@ -101,7 +101,7 @@ function Contacto() {
             <br />
             <Form.Control.Feedback type="invalid"> Ingrese un comentario </Form.Control.Feedback>
             <div>
-              <button className="btn  w-50" type="submit">
+              <button className="btn-contacto  w-50" type="submit">
                 {" "}
                 <strong>Enviar</strong>{" "}
               </button>

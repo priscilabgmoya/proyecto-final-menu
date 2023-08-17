@@ -3,9 +3,10 @@ import './Formulario.css';
 import { useState } from "react";
 import { Form, Row, Col ,InputGroup} from "react-bootstrap";
 import { MdCloudUpload } from "react-icons/md";
-import { ObtenerEstados, ObtenerRoles, postApi } from "../../helpers/helpApi";
-
+import { ObtenerEstados, ObtenerRoles } from "../../helpers/helpApi";
+import { useLogin } from '../../context/LoginContext';
 function Formulario({handleShow, opcion }){ 
+  const {cargarMenu, cargarUsuarios , cargarPedidos} = useLogin();
     const [validated, setValidated] = useState(false);
     const [isCreate, setIsCreate ] = useState(false);
     const [objeto , setObjeto] = useState({});
@@ -19,6 +20,20 @@ function Formulario({handleShow, opcion }){
   };
     const handleChange =(event) => {
         setObjeto({...objeto, [event.target.name]: event.target.value});
+    }
+
+    const postApi = async (opciones, objetos , setIsCreate) =>{
+      switch(opciones){
+        case 'menu':
+       const dataMenu = await crearNuevoMenu(objetos);
+       setIsCreate(true)
+       cargarMenu(); 
+        break;
+        case 'usuario':
+       const dataUsuario = await crearNuevoUsuario(objetos); 
+       cargarUsuarios()
+        break;
+        }
     }
 
     const Agregar = async (event)=>{
@@ -183,7 +198,7 @@ return(
          </>
            }
             <div className="contendor-btn">
-            <button className='btnConfirmar' type="Submit">Guardar Menú</button>
+            <button className='btnConfirmar' type="Submit">{opcion == 'menu' ? "Guardar Menú" : "Guardar Usuario" }</button>
              <button type="button" className='btnCancelar'onClick={handleShow } > Cancelar </button>
             </div>
         </Row>

@@ -1,6 +1,6 @@
 import swal from 'sweetalert';
 import Cookies from 'js-cookie';
-import { URL_DELETE_PEDIDO, URL_GET_PEDIDO, URL_GET_PEDIDOS, URL_PUT_PEDIDO } from '../config';
+import { URL_DELETE_PEDIDO, URL_GET_PEDIDO, URL_GET_PEDIDOS, URL_POST_PEDIDO, URL_PUT_PEDIDO } from '../config';
 const cookies = Cookies.get();
 
 function obtenerPedidos(){
@@ -53,6 +53,38 @@ async function eliminarPedido(values){
  .catch((error) => console.log(error));
  if(res) return res; 
   }
+
+async function nuevoPedido(values){
+  debugger
+    const res =  fetch(`${URL_POST_PEDIDO}`,
+    {
+      method: 'POST',
+      headers: { "Content-Type": "application/json", "x-token" : cookies.jwToken  },
+      credentials: 'same-origin',
+      body: JSON.stringify(values)
+   
+    }).then(async (res) => {
+      debugger
+      if (res.status == 404 || res.status == 401 ) {
+          const data =   await res.json().then(data => {return data}); 
+           return swal({
+           title: 'Error!', 
+           text: `${data.msg}`,
+           icon: 'error',
+           buttons: 'Aceptar'
+         })
+       }
+       const data =   await res.json().then(data => {return data}); 
+       return swal({
+        title: `${data.msg}`, 
+        icon: 'success',
+        buttons: 'Aceptar'
+      }) 
+   }
+  )
+   .catch((error) => console.log(error));
+   if(res) return res; 
+    }
   async function buscarPedidoAdmin(id){
     
     const res =  fetch(`${URL_GET_PEDIDO}/${id}`).then(async (res) => {
@@ -113,5 +145,6 @@ export {
     obtenerPedidos,
     eliminarPedido,
     buscarPedidoAdmin,
-    modificarPedido
+    modificarPedido,
+    nuevoPedido
 }

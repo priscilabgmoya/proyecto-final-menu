@@ -23,7 +23,7 @@ URL_PUT_MENU ='https://frikysangucheria.vercel.app/api/V1/productos/',
 URL_GET_PEDIDOS = 'https://frikysangucheria.vercel.app/api/V1/mostrarPedidos',
 URL_GET_PEDIDO ='https://frikysangucheria.vercel.app/api/V1/mostrarPedido',
 URL_DELETE_PEDIDO = 'https://frikysangucheria.vercel.app/api/V1/eliminarPedido',
-URL_POST_PEDIDO ='https://frikysangucheria.vercel.app/api/V1/',
+URL_POST_PEDIDO ='https://frikysangucheria.vercel.app/api/V1/pedidos',
 URL_PUT_PEDIDO ='https://frikysangucheria.vercel.app/api/V1/pedidoNuevo',
 //! URLs ESTADOS - ROLES - CATEGORIAS
 URL_GET_ESTADOS_PEDIDOS = 'https://frikysangucheria.vercel.app/api/V1/estadoPedidos',

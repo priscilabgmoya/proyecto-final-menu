@@ -9,6 +9,7 @@ import FormularioEliminar from '../Formulario/FormularioEliminar';
 import TbodyMenu from './TbodyMenu';
 import TbodyUsuario from './TbodyUsuarios';
 import TbodyPedido from './TbodyPedidos';
+import { useLogin } from '../../context/LoginContext';
 function TablaAdministracion({cabecera, title, opcion}){
 
   const CANT_HOJA = 6;
@@ -16,7 +17,6 @@ function TablaAdministracion({cabecera, title, opcion}){
   const [show, setShow] = useState(false);
   const [isEditing, setEditing] = useState(false);
   const [isRemoving, setRemoving] = useState(false);
-  const [arrayInformacion, setArrayInformacion] = useState([])
   const [idItem, setIdItem] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
@@ -58,19 +58,24 @@ function TablaAdministracion({cabecera, title, opcion}){
 const changeEvent  = () =>{
   return setChange(!change);
 } 
+const{ buscarMenu,buscarUsuario, buscarPedido } = useLogin()
+const buscar =(opciones, termino,state) =>{
+  switch(opciones){
+    case 'menu':
+      buscarMenu(termino,state);
+    break;
+    case 'usuario':
+      buscarUsuario(termino,state);
+    break;
+    case 'pedido':
+      buscarPedido(termino,state);
+    break;
+}
+}
 
-
-  const buscar = () =>{
-   /*if(searchTerm.length == 0) return usarGet(opcion);*/
-    const filteredResults = arrayInformacion.filter(item =>
-      item.nombre.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setArrayInformacion(filteredResults);
-    setCurrentPage(1);
-  }
 
   useEffect(() => {
-    buscar()
+    buscar(opcion,searchTerm, setCurrentPage)
   }, [searchTerm])
 
   
