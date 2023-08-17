@@ -1,12 +1,11 @@
 import { useEffect } from "react";
 import './Formulario.css'; 
 import { useState } from "react";
-import { Form, Row, Col } from "react-bootstrap";
-import { obtenerEstadoUsuarios } from "../../api/estadoUsuario";
+import { Form, Row, Col ,InputGroup} from "react-bootstrap";
 import { MdCloudUpload } from "react-icons/md";
-import { obtenerRolUsuarios } from "../../api/rolUsuario";
+import { ObtenerEstados, ObtenerRoles, postApi } from "../../helpers/helpApi";
 
-function Formulario({handleShow, idItem , isRemoving, isEditing , opcion ,addItem}){ 
+function Formulario({handleShow, opcion }){ 
     const [validated, setValidated] = useState(false);
     const [isCreate, setIsCreate ] = useState(false);
     const [objeto , setObjeto] = useState({});
@@ -15,18 +14,15 @@ function Formulario({handleShow, idItem , isRemoving, isEditing , opcion ,addIte
   const [responseRoles, setResponseRoles] = useState([]);
 
   const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      setSelectedImage(imageUrl);
-    }
+      setSelectedImage(event.target.value);
+      setObjeto({...objeto, [event.target.name]: event.target.value });
   };
     const handleChange =(event) => {
         setObjeto({...objeto, [event.target.name]: event.target.value});
     }
-    const Agregar = (event)=>{
+
+    const Agregar = async (event)=>{
         const form = event.currentTarget;
-        console.log(form);
         console.log(form.checkValidity());
         if (form.checkValidity() === false) {
           event.preventDefault();
@@ -34,29 +30,16 @@ function Formulario({handleShow, idItem , isRemoving, isEditing , opcion ,addIte
           setValidated(true);
         }else{
             event.preventDefault();
-            let form = event.target; 
-            let data = { }; 
-           /*
-            addItem(data);
-            setIsCreate(true)
-            alert(isEditing ? `${opcion} Modificado` : `${opcion} Creado`);
-            console.log(data);*/
-            console.log(objeto)
-           // form.reset();
+            postApi(opcion, objeto, setIsCreate);
+           form.reset();
+           handleShow();
         }
  
     }
-    const ObtenerEstados = async () => {
-      const res = await obtenerEstadoUsuarios();
-      setResponseEstados(res);
-    };
-    const ObtenerRoles = async () => {
-      const res = await obtenerRolUsuarios();
-      setResponseRoles(res);
-    };
+
     useEffect(() => {
-      ObtenerEstados();
-      ObtenerRoles();
+      ObtenerEstados(setResponseEstados);
+      ObtenerRoles(setResponseRoles);
     }, []);
 return(
     <Form  noValidate validated={validated}  onSubmit={Agregar}>
@@ -76,13 +59,18 @@ return(
                   </div>
                 )}
               </div>
-            <Form.Label htmlFor='urlImagen'>{'Imagen'}:{" "}</Form.Label>
-            <Form.Control
-              type="file" placeholder={`Ingrese una imagen`}
-              onChange={handleImageChange}
-              min={2}  max={200}
-              minLength={2} maxLength={200}
-              required  name='urlImagen' id='urlImagen' />
+
+              <Form.Label htmlFor='urlImagen'>{'Imagen'}:{" "}</Form.Label>
+             <InputGroup className="mb-3">
+               <InputGroup.Text id="basic-addon3"> https://example.com/users/ </InputGroup.Text>
+             <Form.Control  aria-describedby="basic-addon3"
+                  placeholder={`Ingrese un url de  imagen`}
+                   onChange={handleImageChange}
+                   min={2}  max={200}
+                   minLength={2} maxLength={200}
+                   required  name='urlImagen' id='urlImagen' 
+               />
+             </InputGroup>
             <Form.Control.Feedback type="invalid">{`Ingrese una imagen`} </Form.Control.Feedback>
           </Form.Group>
 

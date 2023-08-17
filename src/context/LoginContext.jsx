@@ -12,7 +12,6 @@ export const LoginProvider = ({children}) =>{
     const [isAuthenticated , setIsAuthenticated] = useState(false)
     const login = async (form, values)=>{
         try {
-            debugger
             const res =  await loginUsuario(form, values); 
             if(res.token) {
                 setUser(res); 
@@ -23,7 +22,11 @@ export const LoginProvider = ({children}) =>{
         }
 
     }
-
+    const logout = () => {
+        Cookies.remove('jwToken'); 
+        setIsAuthenticated(false);
+        setUser(null);
+    }
     const validarLogin = async () => {
         const cookies = Cookies.get(); 
         try {
@@ -45,6 +48,7 @@ export const LoginProvider = ({children}) =>{
     return(
         <LoginContext.Provider value={{
             login,
+            logout,
             user,
             isAuthenticated
         }}>

@@ -15,8 +15,8 @@ function Contacto() {
       if (form.checkValidity() === false) {
         event.preventDefault();
         event.stopPropagation();
+        setValidated(true);
       }
-      setValidated(true);
     };
   return (
     <>

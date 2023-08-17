@@ -26,7 +26,7 @@ function App() {
   const [cantidadPedido, setCantidadPedido] = useState(0);
   const [totalMontoPedido, setTotal] = useState(0);
   const agregarPedido =(nombre ,id, cantidad , total ) =>{
-    debugger
+    
     const existePedido = pedidos.find(pedido => pedido.nombre == nombre); 
     if(existePedido) return swal({
       title: 'Adventencia!', 
@@ -58,7 +58,7 @@ const eliminarPedido = (id) => {
   })
 }
 const modificarTotal = (cantidad,precio, menu) => {
-  debugger
+  
   const pedidoModificar = totalPedido.find(pedido => pedido.menu == menu); 
   
   if(cantidad == -1 && pedidoModificar.cantidad <= 1) return swal({
