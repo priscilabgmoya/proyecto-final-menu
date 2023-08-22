@@ -7,13 +7,14 @@
 .texto-card{
     text-align: center;
 }
-.card-img{
+.card-img-pedido{
     width: 100% !important;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.card-img img{
+
+.card-img-pedido img{
     width: 100% !important;
     object-fit: cover;
 }

@@ -31,13 +31,10 @@ function MiniCard({urlImagen,nombre, precio ,descuento,montoDescuento,eliminarPe
         <Card className='my-2'>
             <Card.Header className='header-pedido'> <Button  className='btnMenu' onClick={eliminarPedido} ><GrClose  className='iconEliminarMenu'/> </Button></Card.Header>
         <Card.Body className='card-body-pedido'>
-            <div className='card-img'>
+            <div className='card-img-pedido'>
          <img  src= {urlImagen} />
            </div>
            <div className='texto-card'>
-            {
-                 
-            }
             {
                 `${nombre} `
             }

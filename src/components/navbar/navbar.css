@@ -10,13 +10,20 @@
     position: fixed ;
     top: 0;
     width: 100%;
-    background-color: var(--amaranth-purple);
+    background-color: rgb(255, 160, 122, 0.5);
     color: var(--ghost-white);
     
 }
 
 .navBarFriky .nav-link{
     color: var(--ghost-white) !important;
+    padding: 10px;
+}
+
+.navBarFriky .nav-link:hover{
+    transition: 300ms all;
+    color: rgb(34, 32, 32) !important;
+    font-size: 20px;
 }
 
 .logo-nav{
@@ -31,13 +38,13 @@
 
 .iconShop{
     font-size: 30px !important; 
-    margin: 0px;
+    margin: -6px;
     padding: 0px;
     color: white;
 }
 .btnShop{
     border-radius:25px !important ;
-    background-color: var(--amaranth-purple) !important;
+    background-color: transparent !important;
     width: 50px;
     height: 50px;
     border: none !important; 
@@ -47,7 +54,7 @@
     position: absolute !important;
     top: 2px !important;
     left: 62%;
-    background: orange;
+    background: rgb(38, 34, 34, 0.8);
     width: 20px;
     height: 20px;
     border-radius: 20%;
@@ -60,6 +67,7 @@
 .iconPerfil{
     font-size: 40px ;
 }
+
 .btnLogOut, .btnEditarPerfil{
     background-color: var(--ghost-white) !important;
     color: black !important;
@@ -78,13 +86,18 @@
     align-items: center;
     flex-direction: column;
 }
-
+.textoModificacion{
+    color: var(--ghost-white);
+    font-size: 20px;
+    font-weight: 500;
+    margin: 5px;
+}
 .configuracionToast{
     position: fixed !important;
     top: 66px  !important;
     z-index: 1 !important;
     left: 953px;
-    background-color: #cf4763 !important;
+    background-color: rgb(255, 160, 122) !important;
 }
 @media screen and (max-width: 631px) {
     .reg{
@@ -109,7 +122,7 @@
         left: 250px;
     }
 }
-@media screen and (min-width: 821px) and (max-width: 1200px ) {
+@media screen and (min-width: 821px) and (max-width: 1280px ) {
     .configuracionToast{
         z-index: 1 !important;
         top: 65px  !important;

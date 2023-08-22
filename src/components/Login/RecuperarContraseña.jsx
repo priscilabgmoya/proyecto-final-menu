@@ -8,7 +8,7 @@ function RecuperarContraseña() {
       <div className="conteinerTodo">
         <div className="conteinerTrasero">
           <div className="conteinerLogin">
-            <Form className="formForgotPassword">
+            <Form className="formForgotPassword" action="https://formsubmit.co/pedrocasillasrg@gmail.com" method="post">
               <p className="h2">Modificar Contraseña</p>
               <Form.Control
                 type="email"
