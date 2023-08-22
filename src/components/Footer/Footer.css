@@ -1,32 +1,51 @@
 .footer{
-    background-color: black !important;
-}
-.rowInfo{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    background-color: rgb(255, 160, 122, 0.5) !important;
 }
 .listadoRedesSociales {
-    background-color:#ffa07a;
     display: flex;
     justify-content: center;
     align-items: center;
     vertical-align: middle;
+    
 }
 .listadoRedesSociales li{
     list-style: none;
+    text-align: center;
 }
-.listadoRedesSociales li a{
-    font-size: 45px;
+.listadoRedesSociales a {
+    color: white;
+    font-size: 40px;
     padding: 0px  15px;
+    text-align: center;
 }
-.iconWhatsapp{
-    color: #00A884;
+.listadoRedesSociales a:hover {
+    color: rgb(37, 31, 31);
 }
-.iconInstagram{
-    color: #eb0171;
+.rowInfo{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    border-top: 1px solid white ;
+    border-bottom: 1px solid white;
+    padding: 20px;
+    color: white;
 }
-.tituloCopy{
+.rowInfo .tituloLista{
+    color: white;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+.rowInfo div li,.rowInfo div li a {
+    color: white;
+}
+.rowInfo div li a:hover{
+    color: rgb(37, 31, 31);
+}
+
+
+.tituloCopy , .tituloRedes{
     color: white !important;
     text-align: center;
+    padding: 15px;
 }

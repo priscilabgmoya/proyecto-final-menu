@@ -28,6 +28,8 @@
   color:  var(--ghost-white) !important;
 }
 .categorias-home{
+  background-color:  var(--ghost-white);
+  width: 100% !important;
   margin: 0px !important;
   
 }
@@ -40,7 +42,7 @@
 }
 .card-body-home{
   display: grid;
-  grid-template-columns: 5fr 3fr;
+  grid-template-columns: 5fr 1fr;
   height: 100% !important;
   padding: 10px !important;
   width: 100% !important;

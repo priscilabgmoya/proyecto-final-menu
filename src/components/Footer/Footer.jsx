@@ -20,7 +20,7 @@ function Footer(){
                     <ListaFooter staticFooter={staticFooter} />
                 </Row>
                 <Row>
-                    <p className='h6 tituloCopy'>&copy;Todos los Derechos Reservados - Friky Sangucheria</p>
+                    <p className='h6 tituloCopy'><b>&copy;Todos los Derechos Reservados - Friky Sangucheria</b> </p>
                 </Row>
             </Container>
         </footer>
