@@ -55,7 +55,7 @@ async function eliminarPedido(values){
   }
 
 async function nuevoPedido(values){
-  debugger
+  
     const res =  fetch(`${URL_POST_PEDIDO}`,
     {
       method: 'POST',
@@ -64,7 +64,7 @@ async function nuevoPedido(values){
       body: JSON.stringify(values)
    
     }).then(async (res) => {
-      debugger
+      
       if (res.status == 404 || res.status == 401 ) {
           const data =   await res.json().then(data => {return data}); 
            return swal({
@@ -75,11 +75,7 @@ async function nuevoPedido(values){
          })
        }
        const data =   await res.json().then(data => {return data}); 
-       return swal({
-        title: `${data.msg}`, 
-        icon: 'success',
-        buttons: 'Aceptar'
-      }) 
+       return data; 
    }
   )
    .catch((error) => console.log(error));
@@ -107,14 +103,14 @@ async function nuevoPedido(values){
    if(res) return res; 
   }
   async function modificarPedido (pedido) {
-    debugger
+    
     const res = fetch(`${URL_PUT_PEDIDO}` ,  {
       method: 'PUT',
       headers: { "Content-Type": "application/json" ,  "x-token" : cookies.jwToken  },
       credentials: 'same-origin',
       body: JSON.stringify(pedido)
    }).then(async (res) => {
-    debugger
+    
     if(res.status == 401 || res.status == 404 || res.status == 500 || res.status == 409 || res.status == 400){
       const data =   await res.json().then(data => {return data}); 
        swal({

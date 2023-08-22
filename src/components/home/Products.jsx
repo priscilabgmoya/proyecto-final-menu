@@ -24,7 +24,6 @@ const Products =  ({agregarPedido}) => {
   }
   
   const menues = getMenuByCategory(data)
-  console.log(menues);
   let totalPages = Math.ceil(Object.keys(menues).length/CANT_HOJA)
   
   if (!menues || typeof menues !== 'object') {

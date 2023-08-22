@@ -25,14 +25,14 @@ function obtenerMenu(){
      if(res) return res; 
 }
 function modificarMenu(id,menuModificado){
-  debugger
+  
   const cookies = Cookies.get();
   const res =  fetch(`${URL_PUT_MENU}${id}` ,  {
     method: 'PUT',
     headers: { "Content-Type": "application/json", "x-token" : cookies.jwToken },
     body: JSON.stringify(menuModificado)
  }).then(async (res) => {
-  debugger
+  
   if(res.status == 500 || res.status == 404){
     const data = await res.json().then(data => {return data});
     return  swal({
@@ -90,7 +90,7 @@ async function crearNuevoMenu (menu) {
   menu.publicado = false;
   menu.descuento = false; 
   menu.porcentaje = 0; 
-  console.log(menu);
+
   
   const res = fetch(`${URL_POST_MENU}` ,  {
     method: 'POST',

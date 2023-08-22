@@ -26,7 +26,6 @@ async function crearNuevoUsuario(form, values){
      .then(async (res) => {
         if (res.status == 500 || res.status == 409  ||  res.status == 400 ) {
            const data =   await res.json().then(data => {return data}); 
-           console.log(data);
             return swal({
             title: 'Error!', 
             text: `${data.msg}`,

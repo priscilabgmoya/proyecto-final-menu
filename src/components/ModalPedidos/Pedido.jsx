@@ -7,18 +7,25 @@ import React from 'react';
 import Resumen from "../FormularioPago/Resumen"
 import { useLogin } from '../../context/LoginContext';
 import { nuevoPedido } from '../../api/adminPedidos';
+import { createPreference } from '../../api/mercadoPago';
+import {initMercadoPago} from '@mercadopago/sdk-react'
+
 function Pedido({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, handleClosePedidos, showPedidos }) {
   const [show, setShow] = useState(false);
-  const {user} = useLogin()
+  const {user , isAuthenticated} = useLogin()
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const [cantidadPedidos, setCantidadPedido]  = useState(0)
+  const [preferenceId , setPreferenceId] = useState(null); 
   const [pedido, setPedidos] = useState(pedidos);
   const [totalCompra, setTotalCompra] = useState(total);
+
+  initMercadoPago("TEST-84f78fb2-a07d-40a7-9074-8b180c1cf9cb");
 
   useEffect(() => {
     setPedidos(pedidos);
     setTotalCompra(total);
+    calcularCantidad(); 
   }, [pedidos, total])
 
   const eliminarCardPedido = (id) => {
@@ -27,15 +34,35 @@ function Pedido({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, h
 const agregarNuevoPedido = async (pedido) =>{
   await nuevoPedido(pedido)
 }
-  const verPedido = () => {
-    handleShow()
+const enviarMercadoPago = async (pedidoMp)  => {
+  const data = await createPreference(pedidoMp); 
+  return data; 
+}
+const calcularCantidad = () => {
+  totalPedido.map(pedido => {
+   return setCantidadPedido( cantidadPedidos + pedido.cantidad)
+  })
+}
+  const verPedido = async () => {
     let nuevoPedido = {
       "usuario": user.usuario.id,
       "menu": totalPedido,
-      "precio": "" + total ,
+      "precio": "" + (total).toFixed(2) ,
       "estado": "64d96e3ae9674438c0579d08"
     }
-    agregarNuevoPedido(nuevoPedido)
+   agregarNuevoPedido(nuevoPedido)
+
+    const pedidoMP = {
+      description: 'Pedidos Friky Sangucheria' , 
+      price : totalCompra.toFixed(2), 
+      quantity: cantidadPedidos,
+      currency_id: "ARS"  
+    }
+    const res = await enviarMercadoPago(pedidoMP); 
+    if(res){
+      setPreferenceId(res); 
+      handleShow(); 
+    }
   }
 
   {
@@ -70,12 +97,16 @@ const agregarNuevoPedido = async (pedido) =>{
             </div>
           </Modal.Body>
           <Modal.Footer className='contenedorFooter'>
-            <Button className='btn-resumen' onClick={verPedido} disabled={totalPedido.length !== 0 ? false : true }>Ir a Pagar</Button>
+            {
+              isAuthenticated ?  <Button className='btn-resumen' onClick={verPedido} disabled={totalPedido.length !== 0 ? false : true }>Ir a Pagar</Button> :
+              <div className='mensaje-error'> Para Realizar la compra, debe estar logeado </div>
+            }
+           
           </Modal.Footer>  
         </Modal>
 
           <Modal className='modal-detalle' show={show} onHide={handleClose} >
-        <Resumen pedidos={totalPedido} total ={totalCompra} />
+        <Resumen pedidos={totalPedido} total ={totalCompra} preferenceId={preferenceId} />
         </Modal>
       </>
     );

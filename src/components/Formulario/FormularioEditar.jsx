@@ -73,7 +73,6 @@ function FormularioEditar({handleShow, idItem , opcion }){
           break;
           case 'pedido':
             const estadoPedido = informacion.estado;
-            console.log(estadoPedido);
             let pedidoModificado ={
               id : id,
               estado: estadoPedido._id ? estadoPedido._id : estadoPedido 

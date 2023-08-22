@@ -19,7 +19,6 @@ function TbodyPedido ({total,firstIndex,lastIndex, handleShow }){
                         <td>{item.fecha.toString().substring(0,10)}</td>
                         <td>{item.usuario.nombre}</td>
                         <td>{item.menu.map((m, index)=>{
-                            console.log(m)
                             let menuSeparado ="";
                             if(index == 0){
                                 menuSeparado = m.menu; 

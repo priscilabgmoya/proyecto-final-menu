@@ -1,17 +1,11 @@
 import React, { useState } from 'react';
-import { Card } from 'react-bootstrap';
 import "./Resumen.css"
-import PagoTarjeta from './PagoTarjeta';
-
-// import axios from 'axios'
+import { Wallet } from '@mercadopago/sdk-react';
 
 
 
 
-const FormularioPago = ({total, pedidos}) => {
- 
-
-
+const FormularioPago = ({total, pedidos, preferenceId}) => {
     return (
         <>
             <div className=' card contenedor-resumen '>
@@ -21,7 +15,7 @@ const FormularioPago = ({total, pedidos}) => {
                         {
                             pedidos?.map((ped, index) => {
                                 return   <li key={index} className='lista-item mt-3'>
-                                <span className='descripcion clear'>{`${ped.menu} X ${ped.cantidad}`}</span>
+                                <span className='descripcion clear'>{`${ped.menu} X ${ped.cantidad} Unidades`}</span>
                                 <span className='precio '>{``}</span>
                             </li> 
                             })
@@ -29,15 +23,14 @@ const FormularioPago = ({total, pedidos}) => {
                 
                         <li className='lista-item mt-3'> 
                             <h3 className='descripcion clear'><strong>Total</strong></h3>
-                            <h3 className='precio '><strong>{`$ ${total}`}</strong></h3>
+                            <h3 className='precio '><strong>{`$ ${total.toFixed(2)}`}</strong></h3>
                         </li> 
                     </ul>
 
                 </div>
-                
-
-                <PagoTarjeta ></PagoTarjeta>
-
+                {
+                    preferenceId && <Wallet initialization={{ preferenceId: preferenceId }} />
+                }
                 
             </div>
         </>

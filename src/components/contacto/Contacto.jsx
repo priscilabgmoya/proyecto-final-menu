@@ -12,13 +12,6 @@ import Cards from "react-credit-cards-2"
 function Contacto() {
     const [validated, setValidated] = useState(false);
 
-    const [state, setState] = useState({
-      number: '',
-      expiry: '',
-      cvc: '',
-      name: '',
-      focus: '',
-  });
 
     const handleSubmit = (event) => {
       const form = event.currentTarget;
@@ -58,7 +51,7 @@ function Contacto() {
 
         <div className="hijo">
           <Titulo titulo="Contactanos!!" />
-          <Form noValidate validated={validated} onSubmit={handleSubmit} action="https://formsubmit.co/pedrocasillasrg@gmail.com" method="post">
+          <Form noValidate validated={validated} onSubmit={handleSubmit} action="https://formsubmit.co/martinnrey03@gmail.com" method="post">
             <div className="contendorInput">
               <InputC id="nombre" name="nombre" tipo="text" placeholder="ingrese su nombre" />
             </div>
@@ -110,14 +103,6 @@ function Contacto() {
 
 
       </div>
-      <div className="card">       <Cards
-                number={state.number}
-                expiry={state.expiry}
-                cvc={state.cvc}
-                name={state.name}
-                focused={state.focus}
-            /></div>
-
     </>
   );
 }
