@@ -23,7 +23,7 @@ const ProductCard = props => {
     /**EN ESTE CODIGO SE CREA EL PEDIDO Y SE ENVIA AL BACKEND */
     /**LUEGO SE SETEA EL ESTADO QUANTITY A 0 Y FINALPRICE A 0 */
     agregarPedido(nombre, codigo, quantity, finalPrice)
-    
+    handleClose();
   }
   
   const handleQuantity = operation => {
@@ -63,8 +63,8 @@ const ProductCard = props => {
                 }
               </p>
             </div>
-            <div className='card-img'>
-            <img src={menu.urlImagen} alt={menu.nombre} className="img-fluid rounded" style={{ width: '96px', height: '96px' }} />
+            <div className='card-img cardImg-Menu'>
+            <img src={menu.urlImagen} alt={menu.nombre} className="rounded" style={{ width: '96px', height: '96px' }} />
             </div>
           </div>
           </div>
@@ -89,7 +89,7 @@ const ProductCard = props => {
             <h3>Total:  $ {finalPrice}</h3>
           </div>
           <div className='d-flex '>
-            <Button className='btnConfirmar'  onClick={()=>{handleSubmit(menu.codigo,menu.nombre)}} disabled ={quantity == 0 ? true : false} >
+            <Button className='btnConfirmar'  onClick={()=>{handleSubmit(menu._id,menu.nombre)}} disabled ={quantity == 0 ? true : false} >
               Agregar al Carrito
             </Button>
             <Button  className='btnCancelar' type='button' onClick={handleClose}>

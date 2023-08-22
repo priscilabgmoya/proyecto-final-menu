@@ -5,24 +5,36 @@ import {Form  }from 'react-bootstrap';
 import { useState } from "react";
 import { AiFillPhone } from "react-icons/ai";
 import { FaMapMarkedAlt } from "react-icons/fa";
-import FormularioPago from "../FormularioPago/FormularioPago";
+import Cards from "react-credit-cards-2"
+
+
 
 function Contacto() {
     const [validated, setValidated] = useState(false);
+
+    const [state, setState] = useState({
+      number: '',
+      expiry: '',
+      cvc: '',
+      name: '',
+      focus: '',
+  });
 
     const handleSubmit = (event) => {
       const form = event.currentTarget;
       if (form.checkValidity() === false) {
         event.preventDefault();
         event.stopPropagation();
+        setValidated(true);
       }
-      setValidated(true);
     };
   return (
     <>
+      
+
       <div className="padre">
         <div className=" hijo hijo1">
-          <Titulo titulo="Localizacion" />
+          <Titulo titulo="Nuestra ubicacion" />
           <div className="contenedorMapa">
           <iframe
         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3560.1023706675196!2d-65.2097767!3d-26.8366961!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94225d3ad7f30f1d%3A0xf8606cd659b8e3e4!2sRollingCode%20School!5e0!3m2!1ses-419!2sar!4v1690822926413!5m2!1ses-419!2sar"
@@ -45,7 +57,7 @@ function Contacto() {
         </div>
 
         <div className="hijo">
-          <Titulo titulo="Formulario" />
+          <Titulo titulo="Contactanos!!" />
           <Form noValidate validated={validated} onSubmit={handleSubmit} action="https://formsubmit.co/pedrocasillasrg@gmail.com" method="post">
             <div className="contendorInput">
               <InputC id="nombre" name="nombre" tipo="text" placeholder="ingrese su nombre" />
@@ -59,7 +71,7 @@ function Contacto() {
             <div className="contendorInput">
               <InputC id="telefono" name="telefono"
                 tipo="tel"
-                placeholder="ingrese su telefono(opcional)"
+                placeholder="ingrese su telefono (opcional)"
               />
             </div>
             <Form.Select  className="selector" name="motivo" required>
@@ -88,17 +100,24 @@ function Contacto() {
             <br />
             <Form.Control.Feedback type="invalid"> Ingrese un comentario </Form.Control.Feedback>
             <div>
-              <button className="btn btn-success w-50" type="submit">
+              <button className="btn-contacto  w-50" type="submit">
                 {" "}
-                Enviar{" "}
+                <strong>Enviar</strong>{" "}
               </button>
             </div>
           </Form>
         </div> 
-        
+
+
       </div>
-      
-      <FormularioPago></FormularioPago>
+      <div className="card">       <Cards
+                number={state.number}
+                expiry={state.expiry}
+                cvc={state.cvc}
+                name={state.name}
+                focused={state.focus}
+            /></div>
+
     </>
   );
 }

@@ -38,7 +38,7 @@
 
 .iconShop{
     font-size: 30px !important; 
-    margin: 0px;
+    margin: -6px;
     padding: 0px;
     color: white;
 }
@@ -67,6 +67,7 @@
 .iconPerfil{
     font-size: 40px ;
 }
+
 .btnLogOut, .btnEditarPerfil{
     background-color: var(--ghost-white) !important;
     color: black !important;
@@ -85,13 +86,18 @@
     align-items: center;
     flex-direction: column;
 }
-
+.textoModificacion{
+    color: var(--ghost-white);
+    font-size: 20px;
+    font-weight: 500;
+    margin: 5px;
+}
 .configuracionToast{
     position: fixed !important;
     top: 66px  !important;
     z-index: 1 !important;
     left: 953px;
-    background-color: #cf4763 !important;
+    background-color: rgb(255, 160, 122) !important;
 }
 @media screen and (max-width: 631px) {
     .reg{
@@ -116,7 +122,7 @@
         left: 250px;
     }
 }
-@media screen and (min-width: 821px) and (max-width: 1200px ) {
+@media screen and (min-width: 821px) and (max-width: 1280px ) {
     .configuracionToast{
         z-index: 1 !important;
         top: 65px  !important;

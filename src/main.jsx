@@ -4,7 +4,8 @@ import App from './App.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import {BrowserRouter} from 'react-router-dom'; 
-import 'react-credit-cards-2/dist/es/styles-compiled.css'
+
+
 
 import { LoginProvider } from './context/LoginContext.jsx';
 ReactDOM.createRoot(document.getElementById('root')).render(
