@@ -50,7 +50,7 @@ const calcularCantidad = () => {
       "precio": "" + (total).toFixed(2) ,
       "estado": "64d96e3ae9674438c0579d08"
     }
-   /*agregarNuevoPedido(nuevoPedido)
+   agregarNuevoPedido(nuevoPedido)
 
     const pedidoMP = {
       description: 'Pedidos Friky Sangucheria' , 
@@ -62,7 +62,7 @@ const calcularCantidad = () => {
     if(res){
       setPreferenceId(res); 
       handleShow(); 
-    }*/
+    }
     console.log(nuevoPedido);
   }
 
