@@ -41,6 +41,7 @@ const cerrarSesion = () => {
                     <Link className="nav-link" to="/administracionMenu">Menú</Link>
                     <Link className="nav-link" to="/administracionPedido">Pedidos</Link>
                     <Link className="nav-link" to="/administracionUsuario">Usuarios</Link>
+                    <Link className="nav-link" to="/estadisticas">Estadisticas</Link>
                   </> : null
               }
 
@@ -59,7 +60,7 @@ const cerrarSesion = () => {
 
             }
             <Button variant="primary" onClick={handleShowPedidos} className="btnShop" >
-              <span className="badge rounded-circle shopNum">{totalPedido?.length}</span>
+              <span className="badge rounded-circle shopNum">{pedidos?.length}</span>
               <AiOutlineShoppingCart className='iconShop' />
             </Button>
 

@@ -1,8 +1,5 @@
-import { crearNuevoMenu,eliminarMenu } from "../api/adminMenu";
-import { crearNuevoUsuario ,eliminarUsuario} from "../api/adminUsuario";
 import { obtenerEstadoUsuarios } from "../api/estadoUsuario";
 import { obtenerRolUsuarios } from "../api/rolUsuario";
-import { eliminarPedido } from '../api/adminPedidos';
 import { obtenerEstadoPedido } from "../api/estadosPedidos";
 
 

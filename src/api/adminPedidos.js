@@ -1,6 +1,8 @@
 import swal from 'sweetalert';
 import Cookies from 'js-cookie';
 import { URL_DELETE_PEDIDO, URL_GET_PEDIDO, URL_GET_PEDIDOS, URL_POST_PEDIDO, URL_PUT_PEDIDO } from '../config';
+import { getMenuByCategory } from '../helpers/helpProducts';
+import { useState } from 'react';
 const cookies = Cookies.get();
 
 function obtenerPedidos(){
@@ -15,7 +17,6 @@ function obtenerPedidos(){
            })
          }
          const data =   await res.json().then(data => {return data}); 
-        
        return  data.data; 
      }
     )

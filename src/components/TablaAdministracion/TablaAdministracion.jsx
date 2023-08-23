@@ -93,27 +93,27 @@ const buscar =(opciones, termino,state) =>{
         {
           opcion != 'pedido' ?
             <>
-              <Col xs={4}>
+              <Col xs={12} md={4} sm={4} lg={3} >
                 <Form.Group className='buscador-tabla'>
                   <Form.Label>Buscar:</Form.Label>
                  <Form.Control type="text" value={searchTerm} onChange={handleSearchChange}  change = {change}/>
                   </Form.Group>
                   </Col>
-                  <Col xs={6} className='title'>
+                  <Col xs={12} md={4} sm={6} lg={6} className='title'>
                 <h4>{`Administración de ${title}s `}</h4>
               </Col>
-              <Col xs={2} className='buttons'>
+              <Col xs={12} md={4} sm={4} lg={3} className='buttons my-2'>
                 <button className='btnNuevoMenu' onClick={() => { handleShow('create') }} ><AiOutlinePlusCircle className='iconsBtn' />{`Nuevo ${title}`}</button>
               </Col>
             </>
             :
             <>
-              <Col xs={8} className='title'>
+              <Col xs={12} md={7} sm={6} lg={8} className='title'>
                 <h4>{`Administración de ${title}s `}</h4>
               </Col>
-              <Col xs={4} className='my-2'>
+              <Col xs={12} md={5} sm={6} lg={4}  className='my-2'>
                 <Form.Group className='buscador-tabla'>
-                  <Form.Label>Buscar:</Form.Label>
+                  <Form.Label className='buscarPedido'>Buscar:</Form.Label>
                  <Form.Control type="text" value={searchTerm} onChange={handleSearchChange} />
                   </Form.Group>
                   </Col>

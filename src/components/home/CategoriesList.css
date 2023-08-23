@@ -15,7 +15,7 @@
 }
 .cardImg-Menu img{
   width: 100% !important;
-  height: 50%  !important;
+  height: 60%  !important;
   object-fit: cover;
 }
 .titulo-home{
@@ -43,9 +43,59 @@
   width: 100% !important;
   justify-content: center !important;
 }
+.comprarProducto{
+  display: flex;
+  justify-content: end;
+  align-items: center;
 
-
-
+}
+.agregarProductos{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  flex-direction: column-reverse;
+}
+.iconMenuAgregar , .iconMenuQuitar{
+  font-size: 30px ;
+  margin: 1px !important;
+  font-weight: 600;
+}
+.iconMenuAgregar {
+color: green;
+}
+.iconMenuQuitar{
+color: red ;
+}
+.cantidadMenu{
+  text-align: center !important;
+  margin-top: 10px;
+  font-size: 30px !important;
+  padding: 10px !important;
+  border-radius: 8px !important;
+  border: solid black  1px !important ;
+  box-shadow: 3px 3px rgba(84, 82, 82, 0.2) !important; 
+}
+.btnBloqueoCompra, .btnHabilitarCompra{
+  margin: 10px 11px ;
+  padding:  10px 20px !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  border-radius: 25px !important;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  border: none !important;
+}
+.btnBloqueoCompra{
+  background-color: darkgrey !important;
+}
+.btnHabilitarCompra{
+  background-color: #157347 !important;
+}
+.btnHabilitarCompra:hover{
+  color: black !important;
+  background-color: lightgreen !important;
+}
 .card-text-producto-home{
   width:  100% !important;
   height: 100% !important;
@@ -104,10 +154,10 @@
   }
 }
 
-/* @media (max-width: 767.98px) { ... }
-
-@media (max-width: 991.98px) { ... }
-
-@media (max-width: 1199.98px) { ... }
-
-@media (max-width: 1399.98px) { ... } */
+@media (max-width: 991.98px) {
+  .cardImg-Menu img{
+    width: 100% !important;
+    height: 90%  !important;
+    object-fit: cover;
+  }
+ }

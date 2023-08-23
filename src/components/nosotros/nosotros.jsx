@@ -23,7 +23,7 @@ function Anosotros() {
                         ¡Únete a nosotros mientras fusionamos creatividad y destrezas técnicas en este emocionante capítulo de nuestras vidas como futuros profesionales de la programación!
                     </Card.Text>
                 </Card>
-                <Col xs={3} md={3} sm={3} lg={3}>
+                <Col xs={5} md={3} sm={4} lg={3}>
                     <Card  className='text-center'>
                         <Card.Img variant="top" alt='avatar de priscila'  src={avatarP}/>
                         <Card.Body>
@@ -40,7 +40,7 @@ function Anosotros() {
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col xs={3} md={3} sm={3} lg={3}>
+                <Col xs={5} md={3} sm={4} lg={3}>
                     <Card  className='text-center'>
                         <Card.Img variant="top" alt='avatar de juan martin'  src={avatarJM}/>
                         <Card.Body>
@@ -59,7 +59,7 @@ function Anosotros() {
                     </Card>
 
                 </Col>
-                <Col xs={3} md={3} sm={3} lg={3}>
+                <Col xs={5} md={3} sm={4} lg={3}>
                     <Card  className='text-center'>
                         <Card.Img variant="top" alt='avatar de emiliano'  src={avatarE} />
                         <Card.Body>
@@ -77,7 +77,7 @@ function Anosotros() {
                     </Card>
 
                 </Col>
-                <Col xs={3} md={3} sm={3} lg={3}>
+                <Col xs={5} md={3} sm={4} lg={3}>
                     <Card  className='text-center'>
                         <Card.Img variant="top" alt='avatar de martin' src={avatarM}/>
                         <Card.Body>
@@ -94,7 +94,7 @@ function Anosotros() {
                         </Card.Body>
                     </Card>
                 </Col>
-                <Col xs={3} md={3} sm={3} lg={3}>
+                <Col xs={5} md={3} sm={4} lg={3}>
                     <Card  className='text-center'>
                         <Card.Img variant="top" alt='avatar de joaquin'  src={avatarE}/>
                         <Card.Body>
