@@ -16,6 +16,7 @@ import { cabeceraTablaMenu, cabeceraTablaUsuario, cabeceraTablaPedido } from './
 import './App.css';
 
 import { useLogin } from './context/LoginContext';
+import Estadisticas from './components/estadisticas/Estadisticas';
 
 
 function App() {
@@ -46,16 +47,21 @@ useEffect(()=>{
       setTotalPedido([...totalPedido, pedido]);
     setTotal( totalMontoPedido + total)
   }
-const eliminarPedido = (id) => {
+const eliminarPedido = (id, nombre) => {
   let totalNuevo = 0 ; 
-  const pedidoActulizado = pedidos.filter(pedido => pedido.codigo !== id)
+  const pedidoActulizado = pedidos.filter(pedido => pedido._id !== id); 
+  const totalPedidoActulizado = totalPedido.filter(pedido => pedido.menu !== nombre); 
   setPedidos(pedidoActulizado); 
+  setTotalPedido(totalPedidoActulizado); 
 
- if (pedidoActulizado.length == 0)  return setTotal(totalNuevo);
-
-  pedidoActulizado.forEach(producto =>{
-    let precioDescuento = producto.descuento? producto.precio -((producto.precio * producto.montoDescuento)/100) : producto.precio;
-    totalNuevo = totalNuevo + precioDescuento;
+ if (pedidoActulizado.length == 0 && totalPedidoActulizado.length == 0 ) {
+  setTotal(totalNuevo)
+  setCantidadPedido(0); 
+  return ;
+}
+totalPedidoActulizado.forEach(producto =>{
+    let precioNuevo =  producto.precio * producto.cantidad;
+    totalNuevo = totalNuevo + precioNuevo;
     setTotal(totalNuevo);
   })
 }
@@ -112,6 +118,7 @@ useEffect(()=>{
  <Route  path='/administracionMenu' element={ <TablaAdministracion cabecera={cabeceraTablaMenu} title={'Menú'} opcion='menu' />}/>
   <Route  path='/administracionUsuario' element={ <TablaAdministracion cabecera={cabeceraTablaUsuario} title={'Usuario'} opcion='usuario'/>}/>
   <Route  path='/administracionPedido' element={ <TablaAdministracion cabecera={cabeceraTablaPedido} title={'Pedido'} opcion='pedido'  />}/>
+  <Route path='/estadisticas' element={<Estadisticas /> } />
 </Route>
  <Route path='/login' element={ <Login/>} />
  <Route path='/contactanos'  element={<Contacto />}/>

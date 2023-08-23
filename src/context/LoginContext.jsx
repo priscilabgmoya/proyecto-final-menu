@@ -13,11 +13,10 @@ export const useLogin = () => {
 export const LoginProvider = ({children}) =>{
     const [user, setUser] = useState(null)
     const [isAuthenticated , setIsAuthenticated] = useState(false)
-
+    const [cantidadMenues , setCantidadMenues] = useState({})
     const [menues , setMenues] = useState([]);
     const [usuarios, setUsuarios] = useState([]); 
     const [pedidos, setPedidos] = useState([]); 
-
     const login = async (form, values)=>{
         try {
             const res =  await loginUsuario(form, values); 
@@ -58,14 +57,29 @@ export const LoginProvider = ({children}) =>{
     const cargarPedidos = async () => {
         const data = await obtenerPedidos();
         setPedidos(data); 
-        return  ;
+        return; 
     }
     const cargarUsuarios = async () => {
         const data = await obtenerUsuarios();
         setUsuarios(data); 
         return  ;
     }
-
+    const cargarMenusPedido = async () => {
+        let menuesPedido = {}
+        let pedido =  await obtenerPedidos();
+        pedido.forEach(element => {
+            const menuPedido = element.menu;
+            menuPedido.forEach(menues => {
+                const element = menues.menu; 
+                if (!menuesPedido[element]) {
+                    menuesPedido[element] = 1 ;
+                  }
+                  menuesPedido[element] ++ ;
+            })
+        })
+        setCantidadMenues(menuesPedido); 
+        return  ; 
+}
     const buscarMenu = (termino, state) =>{
         if (termino == "") return cargarMenu();
         const filteredResults = menues.filter(item =>
@@ -93,6 +107,7 @@ export const LoginProvider = ({children}) =>{
     useEffect(()=>{
         validarLogin();
     },[])
+
     return(
         <LoginContext.Provider value={{
             login,
@@ -103,6 +118,8 @@ export const LoginProvider = ({children}) =>{
             buscarMenu,
             buscarUsuario,
             buscarPedido,
+            cargarMenusPedido,
+            cantidadMenues,
             pedidos,
             usuarios,
             menues,
