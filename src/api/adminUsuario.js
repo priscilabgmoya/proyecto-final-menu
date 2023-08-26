@@ -144,7 +144,7 @@ async function buscarUsuario(id){
 }
 async function modificarUsuario (usuario) {
   
-  const res = fetch(`${URL_PUT_USUARIO}` ,  {
+  const res = fetch(`${URL_PUT_USUARIO_ADMIN}` ,  {
     method: 'PUT',
     headers: { "Content-Type": "application/json" ,  "x-token" : cookies.jwToken  },
     body: JSON.stringify(usuario)

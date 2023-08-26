@@ -4,7 +4,7 @@ import { GrLogout } from 'react-icons/gr';
 import {RiAccountPinCircleLine} from 'react-icons/ri';
 import { useLogin } from '../../context/LoginContext';
 import { useEffect, useState } from 'react';
-import { buscarUsuario, modificarUsuario } from '../../api/adminUsuario';
+import { buscarUsuario, modificarUsuarioNoAdmin } from '../../api/adminUsuario';
 
 function PerfilUsuario() {
     const {user, logout} = useLogin(); 
@@ -30,7 +30,7 @@ function PerfilUsuario() {
            }else {
                e.preventDefault(); 
                console.log(objeto); 
-               await modificarUsuario(objeto); 
+               await modificarUsuarioNoAdmin(objeto); 
                await obtenerDatos(user.usuario.id); 
            }
        }
