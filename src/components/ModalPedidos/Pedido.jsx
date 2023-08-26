@@ -28,8 +28,8 @@ function Pedido({ pedidos, eliminarPedido, total, modificarTotal, totalPedido, h
     calcularCantidad(); 
   }, [pedidos, total])
 
-  const eliminarCardPedido = (id) => {
-    eliminarPedido(id);
+  const eliminarCardPedido = (id, nombre) => {
+    eliminarPedido(id, nombre);
   }
 const agregarNuevoPedido = async (pedido) =>{
   await nuevoPedido(pedido)
@@ -84,7 +84,7 @@ const calcularCantidad = () => {
                 precio={item.precio} 
                 descuento={item.descuento} 
                 montoDescuento={item.porcentaje}
-                eliminarPedido={()=>{eliminarCardPedido(item._id)}}
+                eliminarPedido={()=>{eliminarCardPedido(item._id, item.nombre)}}
                 modificarTotal={modificarTotal}
                 pedidoHome={totalPedido}
                 />
@@ -98,8 +98,8 @@ const calcularCantidad = () => {
           </Modal.Body>
           <Modal.Footer className='contenedorFooter'>
             {
-              isAuthenticated ?  <Button className='btn-resumen' onClick={verPedido} disabled={totalPedido.length !== 0 ? false : true }>Ir a Pagar</Button> :
-              <div className='mensaje-error'> Para Realizar la compra, debe estar logeado </div>
+              isAuthenticated ?  <Button className='btn-resumen' onClick={verPedido} disabled={pedidos.length !== 0 ? false : true }>Ir a Pagar</Button> :
+              <div className='mensaje-error'> Para Realizar la compra, debe iniciar sesion </div>
             }
            
           </Modal.Footer>  

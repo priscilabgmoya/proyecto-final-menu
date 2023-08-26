@@ -4,13 +4,13 @@ import {AiFillEdit ,AiFillDelete} from 'react-icons/ai';
 import { useLogin } from '../../context/LoginContext';
 
 function TbodyPedido ({total,firstIndex,lastIndex, handleShow }){
-    const {pedidos, cargarPedidos} = useLogin()
+    const {pedidos, cargarPedidos , cargarMenusPedido,cantidadMenues} = useLogin()
 
     useEffect(()=>{
         cargarPedidos();  
-   },[])
-
-   total(pedidos);
+    },[])
+    
+    total(pedidos);
     return(
         <>
         {

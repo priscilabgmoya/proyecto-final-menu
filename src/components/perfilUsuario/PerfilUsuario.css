@@ -1,0 +1,58 @@
+.contenedorItemas{
+    display: flex;
+    flex-direction: column;
+}
+.iconAccount{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 80px ;
+    color: rgba(235, 145, 109, 0.658);
+}
+.contenedorPerfilUsuario{
+    background-color: rgba(0, 0, 0, 0.219) !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+.textoPerfil{
+    color: var( --ghost-white);
+}
+.contenedorBoton{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btnEditarPerfil , .btnGuardarPerfil {
+    margin: 10px 11px ;
+    padding:  10px 20px !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    border-radius: 25px !important;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    border: none !important;
+}
+.btnEditarPerfil{
+    background-color: rgb(245, 202, 202) !important;
+}
+.btnGuardarPerfil{
+    background-color: #157347 !important;
+  }
+  .btnGuardarPerfil:hover{
+    color: black !important;
+    background-color: lightgreen !important;
+  }
+@media (max-width: 768px) {
+    .contenedorItemas{
+        display: flex;
+        flex-direction: row;
+    }
+    .iconAccount{
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        font-size: 40px ;
+        color: rgba(235, 145, 109, 0.658);
+    }
+}

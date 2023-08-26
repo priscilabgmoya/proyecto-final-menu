@@ -15,7 +15,6 @@ function obtenerPedidos(){
            })
          }
          const data =   await res.json().then(data => {return data}); 
-        
        return  data.data; 
      }
     )
