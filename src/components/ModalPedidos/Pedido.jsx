@@ -99,7 +99,7 @@ const calcularCantidad = () => {
           <Modal.Footer className='contenedorFooter'>
             {
               isAuthenticated ?  <Button className='btn-resumen' onClick={verPedido} disabled={pedidos.length !== 0 ? false : true }>Ir a Pagar</Button> :
-              <div className='mensaje-error'> Para Realizar la compra, debe estar logeado </div>
+              <div className='mensaje-error'> Para Realizar la compra, debe iniciar sesion </div>
             }
            
           </Modal.Footer>  
