@@ -17,6 +17,8 @@ import './App.css';
 
 import { useLogin } from './context/LoginContext';
 import Estadisticas from './components/estadisticas/Estadisticas';
+import PerfilUsuario from './components/perfilUsuario/PerfilUsuario';
+import ProtegerRutasPerfil from './ProtegerRutasPerfil';
 
 
 function App() {
@@ -114,18 +116,21 @@ useEffect(()=>{
     <Routes>
 
 <Route path="/" element={<Home  agregarPedido={agregarPedido} />} />
+ <Route path='/login' element={ <Login/>} />
+ <Route  path='/registarse' element={<Register/>}/>
+ <Route path='/contactanos'  element={<Contacto />}/>
+ <Route path='/quienesSomos' element ={<Anosotros/>} />
+ <Route  path='/error404' element={<Error404/>}/>
 <Route element={<ProtegerRutas/>}>
  <Route  path='/administracionMenu' element={ <TablaAdministracion cabecera={cabeceraTablaMenu} title={'Menú'} opcion='menu' />}/>
   <Route  path='/administracionUsuario' element={ <TablaAdministracion cabecera={cabeceraTablaUsuario} title={'Usuario'} opcion='usuario'/>}/>
   <Route  path='/administracionPedido' element={ <TablaAdministracion cabecera={cabeceraTablaPedido} title={'Pedido'} opcion='pedido'  />}/>
   <Route path='/estadisticas' element={<Estadisticas /> } />
 </Route>
- <Route path='/login' element={ <Login/>} />
- <Route path='/contactanos'  element={<Contacto />}/>
- <Route path='/quienesSomos' element ={<Anosotros/>} />
- <Route  path='/error404' element={<Error404/>}/>
- <Route  path='/registarse' element={<Register/>}/>
- <Route  path='/recuperarContrasena' element={<RecuperarContraseña />}/>
+ <Route element={<ProtegerRutasPerfil />}> 
+ <Route path='/perfilUsuario' element={<PerfilUsuario /> } />
+<Route  path='/recuperarContrasena' element={<RecuperarContraseña />}/>
+ </Route>
 </Routes>
 
 

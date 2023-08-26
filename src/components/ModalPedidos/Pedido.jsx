@@ -63,7 +63,6 @@ const calcularCantidad = () => {
       setPreferenceId(res); 
       handleShow(); 
     }
-    console.log(nuevoPedido);
   }
 
   {
