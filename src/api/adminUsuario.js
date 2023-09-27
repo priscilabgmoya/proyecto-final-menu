@@ -121,7 +121,7 @@ async function buscarUsuarioAdmin(id){
  if(res) return res; 
 }
 async function buscarUsuario(id){
-  const res =  fetch(`${URL_GET_USUARIO}/${id}`,{
+  const res = await fetch(`${URL_GET_USUARIO}/${id}`,{
     headers: { "Content-Type": "application/json" ,  "x-token" : cookies.jwToken  },
     credentials: 'same-origin'
  }).then(async (res) => {
@@ -177,7 +177,6 @@ if(res) return res;
 }
 
 async function modificarUsuarioNoAdmin (usuario) {
-
   const respuesta = validarRegistro(usuario); 
   if(respuesta) return swal({
     title: 'Adventencia!', 
@@ -191,7 +190,6 @@ async function modificarUsuarioNoAdmin (usuario) {
     headers: { "Content-Type": "application/json" ,  "x-token" : cookies.jwToken  },
     body: JSON.stringify(usuario)
  }).then(async (res) => {
-
   if(res.status == 401 || res.status == 404 || res.status == 500 || res.status == 409 || res.status == 400){
     const data =   await res.json().then(data => {return data}); 
      swal({
