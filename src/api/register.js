@@ -24,12 +24,10 @@ async function crearNuevoUsuario(form, values){
         body: JSON.stringify(values)
      })
      .then(async (res) => {
-        debugger
         if (res.status == 500 || res.status == 409  ||  res.status == 400 ) {
            const data =   await res.json().then(data => {return data.errors}); 
            if(data.length >= 1){
             data.map(data => {
-                debugger
               return swal({
                 title: 'Error!', 
                 text: `${data.msg}`,

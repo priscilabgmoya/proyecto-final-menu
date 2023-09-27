@@ -72,7 +72,6 @@ async function crearNuevoUsuario (usuario) {
  }).then(async (res) => {
   
   if(res.status == 401 || res.status == 404 || res.status == 500 || res.status == 409 || res.status == 400){
-    debugger
     const data =   await res.json().then(data => {return data.errors}); 
     if(data.length > 1){
       data.map(data => {
