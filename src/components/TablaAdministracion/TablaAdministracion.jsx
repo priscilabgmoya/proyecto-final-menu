@@ -96,7 +96,7 @@ const buscar =(opciones, termino,state) =>{
               <Col xs={12} md={4} sm={4} lg={3} >
                 <Form.Group className='buscador-tabla'>
                   <Form.Label>Buscar:</Form.Label>
-                 <Form.Control type="text" value={searchTerm} onChange={handleSearchChange}  change = {change}/>
+                 <Form.Control type="text" value={searchTerm} onChange={handleSearchChange}  change = {change} placeholder={`por nombre ${opcion == 'menu' ? " de producto" :  ""}`}/>
                   </Form.Group>
                   </Col>
                   <Col xs={12} md={4} sm={6} lg={6} className='title'>
@@ -114,7 +114,7 @@ const buscar =(opciones, termino,state) =>{
               <Col xs={12} md={5} sm={6} lg={4}  className='my-2'>
                 <Form.Group className='buscador-tabla'>
                   <Form.Label className='buscarPedido'>Buscar:</Form.Label>
-                 <Form.Control type="text" value={searchTerm} onChange={handleSearchChange} />
+                 <Form.Control type="text" value={searchTerm} onChange={handleSearchChange}  placeholder='por usuario'/>
                   </Form.Group>
                   </Col>
                   </>  
