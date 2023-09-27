@@ -18,7 +18,7 @@ const staticFooter = [
         title: 'Navegación', 
         item_uno: {
             title: 'Inicio', 
-            url: '/inicio'
+            url: '/'
         },
         item_dos: {
             title: 'Quienés Somos', 
