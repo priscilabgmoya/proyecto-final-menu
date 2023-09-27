@@ -190,6 +190,7 @@ return(
              onChange={handleChange}
               value={objeto?.nombre}
              readOnly
+             disabled
              min={2} max={200} minLength={2} maxLength={200}
              required name={'nombre'} id={'nombre'} />
            <Form.Control.Feedback type="invalid"> {`Ingrese un nombre`} </Form.Control.Feedback>
@@ -201,6 +202,7 @@ return(
              type="email" placeholder={`Ingrese un email`}
              onChange={handleChange}
              readOnly
+             disabled
               value={objeto?.email}
              min={2} max={200} minLength={2} maxLength={200}
              required name={'email'} id={'email'} />

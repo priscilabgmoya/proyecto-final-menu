@@ -15,7 +15,7 @@ const Login = () => {
     })
     const navigate = useNavigate();
     useEffect(()=>{
-        if (isAuthenticated && user.usuario.rol["rol"] == "usuario")navigate('/')
+        if (isAuthenticated && user.usuario.rol["rol"] == "usuario")navigate('/');
         if (isAuthenticated && user.usuario.rol["rol"] == "administrador")  navigate('/administracionMenu'); 
         if (isAuthenticated && user.usuario.rol["rol"] == "superAdmin") console.log("adios");
     },[isAuthenticated])
