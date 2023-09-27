@@ -24,14 +24,27 @@ async function crearNuevoUsuario(form, values){
         body: JSON.stringify(values)
      })
      .then(async (res) => {
+        debugger
         if (res.status == 500 || res.status == 409  ||  res.status == 400 ) {
-           const data =   await res.json().then(data => {return data}); 
+           const data =   await res.json().then(data => {return data.errors}); 
+           if(data.length >= 1){
+            data.map(data => {
+                debugger
+              return swal({
+                title: 'Error!', 
+                text: `${data.msg}`,
+                icon: 'error',
+                buttons: 'Aceptar'
+              })
+            })
+          }else {
             return swal({
-            title: 'Error!', 
-            text: `${data.msg}`,
-            icon: 'error',
-            buttons: 'Aceptar'
-          })
+              title: 'Error!', 
+              text: `${data.msg}`,
+              icon: 'error',
+              buttons: 'Aceptar'
+            })
+          }
         } else {
             emailjs.send("service_a1ozg25" ,"template_eewvnom",nuevoMensaje,"Vza7tJpPbfn6v0_k5")
             .then(res=> {
