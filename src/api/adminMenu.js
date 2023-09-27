@@ -78,7 +78,7 @@ function eliminarMenu(id){
  .catch((error) => console.log(error));
  if(res) return res;
 }
-async function crearNuevoMenu (menu) {
+async function crearNuevoMenu(menu) {
   
   const respuesta = validarMenuNuevo(menu); 
   if(respuesta) return swal({

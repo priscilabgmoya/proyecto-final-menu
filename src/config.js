@@ -3,6 +3,8 @@
  export const URL_LOGIN='https://frikysangucheria.vercel.app/api/V1/login',
 URL_VALIDAR_TOKEN ='https://frikysangucheria.vercel.app/api/V1/verificarToken',
 URL_LOGOUT = 'https://frikysangucheria.vercel.app/api/V1/',
+//! URL MERCADO PAGO
+URL_MERCADO_PAGO = 'https://frikysangucheria.vercel.app/api/V1/create_preference', 
 //! URLs USUARIO
 URL_GET_USUARIOS = 'https://frikysangucheria.vercel.app/api/V1/obtenerUsuarios',
 URL_GET_USUARIO_ADMIN ='https://frikysangucheria.vercel.app/api/V1/obtenerUsuarioAdmin',

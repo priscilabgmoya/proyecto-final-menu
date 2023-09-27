@@ -1,6 +1,8 @@
+import { URL_MERCADO_PAGO } from "../config";
+
 async function createPreference(pedido) {
     try {
-        const res = await fetch('http://localhost:3000/api/V1/create_preference',
+        const res = await fetch(`${URL_MERCADO_PAGO}`,
         {
             method: 'POST',
             headers: { "Content-Type": "application/json"  },

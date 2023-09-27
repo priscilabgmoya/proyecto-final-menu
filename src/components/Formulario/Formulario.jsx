@@ -1,6 +1,7 @@
-import { useEffect } from "react";
 import './Formulario.css'; 
-import { useState } from "react";
+import { crearNuevoMenu } from '../../api/adminMenu';
+import { crearNuevoUsuario } from '../../api/adminUsuario';
+import { useState,useEffect } from "react";
 import { Form, Row, Col ,InputGroup} from "react-bootstrap";
 import { MdCloudUpload } from "react-icons/md";
 import { ObtenerEstados, ObtenerRoles } from "../../helpers/helpApi";

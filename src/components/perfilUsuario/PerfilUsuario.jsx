@@ -1,4 +1,5 @@
 import { Button, Col, Container, Row,Form ,Nav} from 'react-bootstrap';
+import {useNavigate} from 'react-router-dom';
 import './PerfilUsuario.css';
 import { GrLogout } from 'react-icons/gr';
 import {RiAccountPinCircleLine} from 'react-icons/ri';
@@ -7,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { buscarUsuario, modificarUsuarioNoAdmin } from '../../api/adminUsuario';
 
 function PerfilUsuario() {
+  const navigate = useNavigate();
     const {user, logout} = useLogin(); 
     const [validated, setValidated] = useState(false);
     const [objeto, setObjeto] = useState({});
@@ -29,19 +31,22 @@ function PerfilUsuario() {
              setValidated(true);
            }else {
                e.preventDefault(); 
-               console.log(objeto); 
                await modificarUsuarioNoAdmin(objeto); 
                await obtenerDatos(user.usuario.id); 
+               handleShowInput();
+               document.getElementById("password").value = ""; 
+               document.getElementById("passwordTwo").value = ""; 
            }
        }
-       const  obtenerDatos = async (id) => {
-          const usuario =  await buscarUsuario(id); 
-        setObjeto(usuario);
+
+       
+       
+       const  obtenerDatos = async (user) => {
+         setObjeto(user.usuario);
         }
-    
-      useEffect(() => {
-        obtenerDatos(user.usuario.id)
-      }, []);
+        useEffect(()=> {
+          obtenerDatos(user);
+        }, [user]);
 
     return(
         <Container >
@@ -64,11 +69,11 @@ function PerfilUsuario() {
                         <h2 className="textoPerfil" >Modificar Datos Personales</h2>
                         <Row className="mb-1 ">
                         <Form.Group  as={Col}  md="12"  className='py-1'>
-                        <Form.Control type="text" name="nombre" id="name" value={objeto.nombre} placeholder='nombre' disabled={isEditing ? false : true} onChange={handleChange}  required minLength={1} maxLength={50} min={1} max={50} />
+                        <Form.Control type="text" name="nombre" id="name" value={objeto?.nombre} placeholder='nombre' disabled={isEditing ? false : true} onChange={handleChange}  required minLength={1} maxLength={50} min={1} max={50} />
                          <Form.Control.Feedback type='invalid'>Ingrese un Nombre </Form.Control.Feedback>
                          </Form.Group>
                          <Form.Group  as={Col}  md="12"  className='py-1'>
-                         <Form.Control type="email" name="email" id="users" value={objeto.email} placeholder='Correo' onChange={handleChange}  disabled={isEditing ? false : true} required minLength={1} maxLength={50} min={1} max={50} />
+                         <Form.Control type="email" name="correo" id="users" value={objeto?.email} placeholder='Correo' onChange={handleChange}  disabled={isEditing ? false : true} required minLength={1} maxLength={50} min={1} max={50} />
                          <Form.Control.Feedback type='invalid'>Ingrese un Correo </Form.Control.Feedback>
                          </Form.Group>
                          <Form.Group  as={Col}  md="12"  className='py-1'>
@@ -76,7 +81,7 @@ function PerfilUsuario() {
                          <Form.Control.Feedback type='invalid'>Ingrese una Contraseña</Form.Control.Feedback>
                          </Form.Group>
                          <Form.Group  as={Col}  md="12"  className='py-1'>
-                         <Form.Control type="password" name="contraseña" id="password" placeholder='Contraseña Nueva ' onChange={handleChange} disabled={isEditing ? false : true} required min={1} max={10} minLength={6} maxLength={10} />
+                         <Form.Control type="password" name="contraseña" id="passwordTwo" placeholder='Contraseña Nueva ' onChange={handleChange} disabled={isEditing ? false : true} required min={1} max={10} minLength={6} maxLength={10} />
                          <Form.Control.Feedback type='invalid'>Ingrese una Contraseña</Form.Control.Feedback>
                          </Form.Group>
                         </Row>
