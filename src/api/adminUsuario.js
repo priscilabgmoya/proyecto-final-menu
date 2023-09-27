@@ -72,13 +72,25 @@ async function crearNuevoUsuario (usuario) {
  }).then(async (res) => {
   
   if(res.status == 401 || res.status == 404 || res.status == 500 || res.status == 409 || res.status == 400){
-    const data =   await res.json().then(data => {return data}); 
-     swal({
-    title: 'Error!', 
-    text: `${data.msg}`,
-    icon: 'error',
-    buttons: 'Aceptar'
-  })
+    const data =   await res.json().then(data => {return data.errors}); 
+    if(data.length > 1){
+      data.map(data => {
+        return swal({
+          title: 'Error!', 
+          text: `${data.msg}`,
+          icon: 'error',
+          buttons: 'Aceptar'
+        })
+      })
+    }else {
+      return swal({
+        title: 'Error!', 
+        text: `${data.msg}`,
+        icon: 'error',
+        buttons: 'Aceptar'
+      })
+    }
+
     return null; 
   }
   if(res.status == 200 || res.status == 201) {
