@@ -1,39 +1,21 @@
 /* eslint-disable react/prop-types */
 import Button from 'react-bootstrap/Button'
-import { useEffect, useState } from 'react'
-import {CiCirclePlus,CiCircleMinus} from 'react-icons/ci'
 import {MdOutlineAddShoppingCart} from 'react-icons/md'
+import swal from 'sweetalert';
 const ProductCard = props => {
-  const [quantity, setQuantity] = useState(0)
-  const [finalPrice, setFinalPrice] = useState(0)
 
   const { menu, agregarPedido } = props
 
-  useEffect(() => {
-    let precioFinal = menu.descuento ? menu.precio - ( (menu.precio * menu.porcentaje)  /100) : menu.precio;
-    setFinalPrice(quantity *precioFinal)
-  }, [quantity])
-
-
-
   const handleSubmit = (codigo,nombre) => {
-    agregarPedido(nombre, codigo, quantity, finalPrice)
-    setQuantity(0); 
+    let precioFinal = menu.descuento ? menu.precio - ( (menu.precio * menu.porcentaje)  /100) : menu.precio;
+    agregarPedido(nombre, codigo, 1, precioFinal);
+    swal({
+      title: 'El producto se agrego al carrito',
+      icon: 'success',
+      buttons: 'Aceptar'
+    })
   }
   
-  const handleQuantity = operation => {
-    if(operation === '+') {
-      setQuantity(quantity + 1)
-      return 
-    }
-    if(quantity > 0) {
-      setQuantity(quantity - 1)
-      return
-    }
-    return setQuantity(0)
-    
-  }
-
   return (
     <>
       <article 
@@ -62,13 +44,8 @@ const ProductCard = props => {
             </div>
           </div>
           <div className='comprarProducto'>
-            <h5 className='cantidadMenu'>{quantity}</h5>
-          <div className='agregarProductos'>
-            <button className='btn btn-warning btnMenu' onClick={() => handleQuantity('-')}><CiCircleMinus className='iconMenuQuitar' /></button>
-            <button className='btn btn-success btnMenu' onClick={() => handleQuantity('+')}><CiCirclePlus className='iconMenuAgregar' /></button>
-          </div>
           <div className='d-flex '>
-            <Button className={quantity == 0 ? 'btnBloqueoCompra' :'btnHabilitarCompra'} onClick={()=>{handleSubmit(menu._id,menu.nombre)}} disabled ={quantity == 0 ? true : false} >
+            <Button className={'btnHabilitarCompra'} onClick={()=>{handleSubmit(menu._id,menu.nombre)}}  >
              <MdOutlineAddShoppingCart /> Agregar
             </Button>
           </div>
