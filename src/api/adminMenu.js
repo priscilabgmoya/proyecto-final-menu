@@ -95,6 +95,7 @@ async function crearNuevoMenu(menu) {
   const res = fetch(`${URL_POST_MENU}` ,  {
     method: 'POST',
     headers: { "Content-Type": "application/json" ,  "x-token" : cookies.jwToken  },
+    credentials: 'same-origin',
     body: JSON.stringify(menu)
  }).then(async (res) => {
   
