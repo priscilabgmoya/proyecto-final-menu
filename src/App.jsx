@@ -50,6 +50,11 @@ useEffect(()=>{
     }
       setTotalPedido([...totalPedido, pedido]);
     setTotal( totalMontoPedido + total)
+    swal({
+      title: 'El producto se agrego al carrito',
+      icon: 'success',
+      buttons: 'Aceptar'
+    })
   }
 const eliminarPedido = (id, nombre) => {
   let totalNuevo = 0 ; 
