@@ -34,7 +34,7 @@ function FormularioEditar({handleShow, idItem , opcion }){
           break;
           case 'usuario':
         const usuario =  await buscarUsuarioAdmin(id); 
-        setObjeto(usuario);
+        setObjeto(usuario._doc);
           break;
           case 'pedido':
          const pedido =  await buscarPedidoAdmin(id);
@@ -61,6 +61,7 @@ function FormularioEditar({handleShow, idItem , opcion }){
            cargarMenu();
           break;
           case 'usuario':
+            debugger
             const { estado, rol, ...objetocopia} = informacion; 
             let usuarioModificado ={
               id : id,
@@ -188,9 +189,8 @@ return(
            <Form.Control
              type="text" placeholder={`Ingrese un nombre`}
              onChange={handleChange}
-              value={objeto?.nombre}
+              value={objeto.nombre}
              readOnly
-             disabled
              min={2} max={200} minLength={2} maxLength={200}
              required name={'nombre'} id={'nombre'} />
            <Form.Control.Feedback type="invalid"> {`Ingrese un nombre`} </Form.Control.Feedback>
@@ -202,8 +202,7 @@ return(
              type="email" placeholder={`Ingrese un email`}
              onChange={handleChange}
              readOnly
-             disabled
-              value={objeto?.email}
+              value={objeto.email}
              min={2} max={200} minLength={2} maxLength={200}
              required name={'email'} id={'email'} />
            <Form.Control.Feedback type="invalid"> {`Ingrese un email `} </Form.Control.Feedback>

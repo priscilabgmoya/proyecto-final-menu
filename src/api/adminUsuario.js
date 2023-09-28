@@ -110,7 +110,7 @@ if(res) return res;
 }
 async function buscarUsuarioAdmin(id){
   
-  const res =  fetch(`${URL_GET_USUARIO_ADMIN}/${id}`,{
+  const res = await fetch(`${URL_GET_USUARIO_ADMIN}/${id}`,{
     headers: { "Content-Type": "application/json", "x-token" : cookies.jwToken },
     credentials: 'same-origin'
  }).then(async (res) => {
