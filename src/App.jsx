@@ -26,6 +26,8 @@ function App() {
 useEffect(()=>{
   cargarMenu();
 },[])
+
+
   const [pedidos , setPedidos] = useState([]); 
   const [totalPedido, setTotalPedido] = useState([]); 
   const [cantidadPedido, setCantidadPedido] = useState(0);
@@ -71,12 +73,9 @@ const modificarTotal = (cantidad,precio, menu) => {
   
   const pedidoModificar = totalPedido.find(pedido => pedido.menu == menu); 
   
-  if(cantidad == -1 && pedidoModificar.cantidad <= 1) return swal({
-    title: 'Adventencia!', 
-    text: 'Compra Minima 1(una) unidad de Menu',
-    icon: 'warning',
-    buttons: 'Aceptar'
-  })
+  if(cantidad == -1 && pedidoModificar.cantidad <= 1)  return  alert("Compra Minima 1(una) unidad de Menu");
+  
+
   setCantidadPedido(cantidadPedido + cantidad);
   let totalNuevo = totalMontoPedido + precio; 
   setTotal(totalNuevo); 

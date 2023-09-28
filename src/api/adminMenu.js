@@ -79,7 +79,6 @@ function eliminarMenu(id){
  if(res) return res;
 }
 async function crearNuevoMenu(menu) {
-  debugger
   const respuesta = validarMenuNuevo(menu); 
   if(respuesta) return swal({
     title: 'Adventencia!', 
