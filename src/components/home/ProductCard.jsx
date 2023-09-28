@@ -9,11 +9,6 @@ const ProductCard = props => {
   const handleSubmit = (codigo,nombre) => {
     let precioFinal = menu.descuento ? menu.precio - ( (menu.precio * menu.porcentaje)  /100) : menu.precio;
     agregarPedido(nombre, codigo, 1, precioFinal);
-    swal({
-      title: 'El producto se agrego al carrito',
-      icon: 'success',
-      buttons: 'Aceptar'
-    })
   }
   
   return (
